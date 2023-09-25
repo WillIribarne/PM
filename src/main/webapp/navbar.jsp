@@ -28,7 +28,7 @@
                 </li>
             </ul>
             <span class="d-flex fuente-navbar-estandar me-2">¿No tienes cuenta?</span>
-            <a href="#">Registrate</a>
+            <a href="RegistroServlet">Registrate</a>
         </div>
     </div>
 </nav>

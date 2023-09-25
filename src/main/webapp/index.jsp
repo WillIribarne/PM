@@ -2,15 +2,9 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <html lang="es">
-<head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PM - Tu negocio de moda</title>
-  <!-- Latest compiled and minified CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/style.css">
-</head>
+  <c:import url="header.jsp">
+    <c:param name="tituloPagina" value="PM - Tu negocio de moda"/>
+  </c:import>
 <body>
 <c:import url="navbar.jsp" />
 <div class="container-fluid m-0 p-0 g-0 bg-verde">

@@ -8,4 +8,14 @@
             30
         </session-timeout>
     </session-config>
+
+    <servlet>
+        <servlet-name>RegistroServlet</servlet-name>
+        <servlet-class>Servlets.RegistroServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegistroServlet</servlet-name>
+        <url-pattern>/RegistroServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
