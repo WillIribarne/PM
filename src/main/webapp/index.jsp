@@ -22,7 +22,7 @@
             <button type="button" class="btn btn-secondary btn-lg m-l-5 m-md-4 m-sm-3 m-2 p-xl-5 p-md-4 p-sm-3 p-2 fuente-botones-index">Sobre nosotros</button>
           </div>
           <div class="container">
-            <button type="button" class="btn btn-secondary btn-lg m-l-5 m-md-4 m-sm-3 m-2 p-xl-5 p-md-4 p-sm-3 p-2 fuente-botones-index">Otro boton falopa</button>
+            <button type="button" class="btn btn-secondary btn-lg m-l-5 m-md-4 m-sm-3 m-2 p-xl-5 p-md-4 p-sm-3 p-2 fuente-botones-index">Ver perfil</button>
           </div>
         </div>
       </div>
