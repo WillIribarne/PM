@@ -8,5 +8,6 @@
 <body>
 <c:import url="/navbar.jsp" />
     <p class="text-light text-center">tamos laburando</p>
+<c:import url="/footer.jsp" />
 </body>
 </html>

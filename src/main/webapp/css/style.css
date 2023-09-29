@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: #c3d636;
 }
 
 .bg-gris{
@@ -12,7 +12,6 @@ body{
 
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    
 }
 
 .fuente-navbar-brand{ 
@@ -20,6 +19,14 @@ h1{
     color: aliceblue;
     font-weight: 700;
     font-size: x-large;
+}
+
+.fuente-titulo-quienesSomos{ 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aliceblue;
+    font-weight: 700;
+    font-size: x-large;
+    font-size: 4em;
 }
 
 .fuente-botones-index{
