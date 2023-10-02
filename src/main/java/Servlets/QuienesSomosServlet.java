@@ -8,15 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "InicioSesionServlet", value = "/inicioSesion")
-public class InicioSesionServlet extends HttpServlet {
+@WebServlet(name = "QuienesSomosServlet", value = "/info")
+public class QuienesSomosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("http://localhost:8080/pm");
+        req.getRequestDispatcher("Vistas/quienesSomos.jsp").forward(req, resp);
     }
 }

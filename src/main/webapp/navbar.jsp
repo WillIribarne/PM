@@ -9,10 +9,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link fuente-navbar-estandar mx-2" href="#">Inicio</a>
+                    <a class="nav-link fuente-navbar-estandar mx-2" href="http://localhost:8080/pm">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fuente-navbar-estandar mx-2" href="#">Quienes Somos</a>
+                    <a class="nav-link fuente-navbar-estandar mx-2" href="info">Quienes Somos</a>
                 </li>
                 <li class="nav-item dropdown mx-2">
                     <a class="nav-link dropdown-toggle fuente-navbar-estandar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,12 +23,12 @@
                         <li><a class="dropdown-item fuente-navbar-estandar" href="#">Etiquetas</a></li>
                     </ul>
                 <li class="nav-item">
-                    <a class="nav-link fuente-navbar-estandar me-5" href="InicioSesion">Iniciar Sesión</a>
+                    <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
                 </li>
                 </li>
             </ul>
             <span class="d-flex fuente-navbar-estandar me-2">¿No tienes cuenta?</span>
-            <a href="Registro">Registrate</a>
+            <a href="registro">Registrate</a>
         </div>
     </div>
 </nav>

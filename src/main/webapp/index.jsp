@@ -14,10 +14,10 @@
     </div>
     <div class="col-lg-4">
       <div class="text-center">
-        <div class="row m-0">  <!--m-0-->
-            <button type="button" class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3">Ver catálogo</button> <!--m-l-5 m-md-4 m-sm-3 m-2 p-xl-5 p-md-4 p-sm-3 p-0-->
-            <button type="button" class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3">Sobre nosotros</button>
-            <button type="button" class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3">Ver perfil</button>
+        <div class="row m-0">
+          <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="" role="button">Ver catálogo</a>
+          <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="info" role="button">Sobre nosotros</a>
+          <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="" role="button">Ver Perfil</a>
           </div>
         </div>
       </div>
