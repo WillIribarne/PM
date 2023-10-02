@@ -10,7 +10,7 @@
 <div class="container-fluid m-0 p-0 g-0">
   <div class="row justify-content-center m-0">
     <div class="col-md-4">
-      <img src="imgs/PM-Index.jpeg" class="img-fluid" alt="">
+      <img src="recursos/imgs/PM-Index.jpeg" class="img-fluid" alt="">
     </div>
     <div class="col-lg-4">
       <div class="text-center">
