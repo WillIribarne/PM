@@ -24,6 +24,11 @@
         <servlet-class>Servlets.QuienesSomosServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>PerfilServlet</servlet-name>
+        <servlet-class>Servlets.PerfilServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
@@ -37,6 +42,11 @@
     <servlet-mapping>
         <servlet-name>QuienesSomosServlet</servlet-name>
         <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PerfilServlet</servlet-name>
+        <url-pattern>/perfil</url-pattern>
     </servlet-mapping>
 
 </web-app>
