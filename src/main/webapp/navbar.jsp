@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-dark navbar-expand-lg bg-negro">
     <div class="container-fluid">
-        <a class="navbar-brand fuente-navbar-brand" href="#">PM</a>
+        <a class="navbar-brand fuente-navbar-brand" href="http://localhost:8080/pm">PM</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,10 +19,18 @@
                         Catálogo
                     </a>
                     <ul class="dropdown-menu bg-dark">
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Categorías</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Etiquetas</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Zapatillas</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Ojotas</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Zapatos</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Pantalones</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Polleras</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Remeras</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Camperas</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Buzos</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Guantes</a></li>
+                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Gorros</a></li>
                     </ul>
-                <li class="nav-item">
+                <li class="nav-item"> <!-- Este debería ser un choose entre el boton Iniciar Sesión y el nombre del perfil del usuario logueado -->
                     <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
                 </li>
                 </li>
