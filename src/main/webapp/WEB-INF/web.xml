@@ -14,8 +14,19 @@
         <servlet-class>Servlets.RegistroServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>InicioSesionServlet</servlet-name>
+        <servlet-class>Servlets.InicioSesionServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
-        <url-pattern>/RegistroServlet</url-pattern>
+        <url-pattern>/Registro</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InicioSesionServlet</servlet-name>
+        <url-pattern>/InicioSesion</url-pattern>
+    </servlet-mapping>
+
 </web-app>

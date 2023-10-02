@@ -8,10 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "RegistroServlet", value = "/Registro")
-public class RegistroServlet extends HttpServlet {
+@WebServlet(name = "InicioSesionServlet", value = "/InicioSesion")
+public class InicioSesionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("Vistas/registro.jsp").forward(req, resp);
+        req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

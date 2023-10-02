@@ -23,12 +23,12 @@
                         <li><a class="dropdown-item fuente-navbar-estandar" href="#">Etiquetas</a></li>
                     </ul>
                 <li class="nav-item">
-                    <a class="nav-link fuente-navbar-estandar me-5" href="#">Iniciar Sesión</a>
+                    <a class="nav-link fuente-navbar-estandar me-5" href="InicioSesion">Iniciar Sesión</a>
                 </li>
                 </li>
             </ul>
             <span class="d-flex fuente-navbar-estandar me-2">¿No tienes cuenta?</span>
-            <a href="RegistroServlet">Registrate</a>
+            <a href="Registro">Registrate</a>
         </div>
     </div>
 </nav>
