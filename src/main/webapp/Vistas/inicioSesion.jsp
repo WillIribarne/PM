@@ -11,11 +11,11 @@
         <form action="" method="post" class="p-5 m-3">
             <div class="mb-3">
               <label for="exampleInputUser1" class="form-label text-light">Usuario</label>
-              <input type="user" class="form-control" id="usuario">
+              <input type="user" class="form-control" id="usuario" name="usuario">
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label text-light">Contraseña</label>
-              <input type="password" class="form-control" id="clave">
+              <input type="password" class="form-control" id="clave" name="clave">
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
