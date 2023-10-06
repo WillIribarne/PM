@@ -14,8 +14,39 @@
         <servlet-class>Servlets.RegistroServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>InicioSesionServlet</servlet-name>
+        <servlet-class>Servlets.InicioSesionServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>QuienesSomosServlet</servlet-name>
+        <servlet-class>Servlets.QuienesSomosServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PerfilServlet</servlet-name>
+        <servlet-class>Servlets.PerfilServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
-        <url-pattern>/RegistroServlet</url-pattern>
+        <url-pattern>/registro</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InicioSesionServlet</servlet-name>
+        <url-pattern>/inicioSesion</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>QuienesSomosServlet</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PerfilServlet</servlet-name>
+        <url-pattern>/perfil</url-pattern>
+    </servlet-mapping>
+
 </web-app>
