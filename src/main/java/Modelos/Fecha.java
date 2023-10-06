@@ -1,5 +1,5 @@
 
-package ModelosHardcodeados;
+package Modelos;
 
 class Fecha {
     private int dia;

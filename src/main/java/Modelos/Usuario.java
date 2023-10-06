@@ -1,5 +1,5 @@
 
-package ModelosHardcodeados;
+package Modelos;
 
 public class Usuario {
     private int id_usuario;

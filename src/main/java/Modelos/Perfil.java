@@ -1,5 +1,5 @@
 
-package ModelosHardcodeados;
+package Modelos;
 
 public class Perfil {
     private int id_perfil;

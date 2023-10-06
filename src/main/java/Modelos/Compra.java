@@ -1,5 +1,5 @@
 
-package ModelosHardcodeados;
+package Modelos;
 
 public class Compra {
     private int id_compra;
