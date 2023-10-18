@@ -43,7 +43,10 @@ public class InicioSesionServlet extends HttpServlet {
             //Usar el modelo para chequear si el registro fue exitoso.
             //Siempre redirigir a registroEstado.jsp., éste se va a encargar de mostrar lo necesario en caso de reg. exitoso o fallido
            // req.getRequestDispatcher("Vistas/inicioSesionEstadoMal.jsp").forward(req, resp);
- req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+            req.setAttribute("hayError", true);
+            req.setAttribute("mensajeError", "Credenciales incorrectas!");
+           
+           req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
      
            // req.setAttribute("hayError", true);
            // req.setAttribute("mensajeError", "Datos incorrectos incorrectas!");

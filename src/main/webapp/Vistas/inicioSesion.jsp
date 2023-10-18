@@ -9,8 +9,10 @@
   <c:import url="/navbar.jsp" />
   
  
+ 
   
     <div class="container bg-negro rounded-5">
+        
         <form action="" method="post" class="p-5 m-3">
             <div class="mb-3">
               <label for="exampleInputUser1" class="form-label text-light">Usuario</label>
@@ -24,8 +26,14 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label text-light" for="exampleCheck1">Recordarme</label>
             </div>
-                 <!-- Se arma un input oculto que va a enviar no solo el user y pass, sino también de dónde viene -->
-        <input type="hidden" name="deDondeViene" value="${param.origen}">
+            
+             <!-- notifica que los datos de inicio son incorrectos!-->
+            <c:if test="${hayError}">
+            <div class="container text-light">
+                <h3>${mensajeError}</h3>
+            </div>
+            </c:if>
+        
         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
             
         
