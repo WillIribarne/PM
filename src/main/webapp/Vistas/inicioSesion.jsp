@@ -7,6 +7,14 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp" />
+  
+ 
+  <c:if test="${hayError}">
+    <div class="container mt-3 p-3 bg-danger text-light">
+        <h2>${mensajeError}</h2>
+    </div>
+  </c:if>
+  
     <div class="container bg-negro rounded-5">
         <form action="" method="post" class="p-5 m-3">
             <div class="mb-3">
@@ -21,7 +29,11 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label text-light" for="exampleCheck1">Recordarme</label>
             </div>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                 <!-- Se arma un input oculto que va a enviar no solo el user y pass, sino también de dónde viene -->
+        <input type="hidden" name="deDondeViene" value="${param.origen}">
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            
+        
           </form>
     </div>
   <c:import url="/footer.jsp" />
