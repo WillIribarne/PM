@@ -9,11 +9,6 @@
   <c:import url="/navbar.jsp" />
   
  
-  <c:if test="${hayError}">
-    <div class="container mt-3 p-3 bg-danger text-light">
-        <h2>${mensajeError}</h2>
-    </div>
-  </c:if>
   
     <div class="container bg-negro rounded-5">
         <form action="" method="post" class="p-5 m-3">
