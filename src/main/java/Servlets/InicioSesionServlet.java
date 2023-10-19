@@ -44,7 +44,7 @@ public class InicioSesionServlet extends HttpServlet {
             //Siempre redirigir a registroEstado.jsp., éste se va a encargar de mostrar lo necesario en caso de reg. exitoso o fallido
            // req.getRequestDispatcher("Vistas/inicioSesionEstadoMal.jsp").forward(req, resp);
             req.setAttribute("hayError", true);
-            req.setAttribute("mensajeError", "Credenciales incorrectas!");
+            req.setAttribute("mensajeError", "Datos de inicio de sesion incorrectos!");
            
            req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
      

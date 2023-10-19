@@ -13,6 +13,7 @@
   
     <div class="container bg-negro rounded-5">
         
+         <!-- notifica que los datos de inicio son incorrectos!-->
         <form action="" method="post" class="p-5 m-3">
             <div class="mb-3">
               <label for="exampleInputUser1" class="form-label text-light">Usuario</label>

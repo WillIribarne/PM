@@ -29,7 +29,9 @@
                         <li><a class="dropdown-item fuente-navbar-estandar" href="#">Gorros</a></li>
                     </ul>
                 <li class="nav-item"> <!-- Este debería ser un choose entre el boton Iniciar Sesión y el nombre del perfil del usuario logueado -->
-                    <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
+                 
+                  <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
+                                
                 </li>
                 </li>
             </ul>
