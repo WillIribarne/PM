@@ -11,6 +11,11 @@
 <div class="container bg-negro p-5 my-5">
     <div class="row justify-content-center m-5">
         <p class="text-light text-center">Felicitaciones! Su usuario ha sido creado</p>
+ 
+        //
+        <p class="text-light text-center">Datos del usuario creado:</p>
+        <h1>Perfil de ${Perfil.usuario}</h1>
+        //
         <p class="text-light text-center">Haga click <a href="inicioSesion">aquí</a> para iniciar sesión.</p>
     </div>
 </div>
