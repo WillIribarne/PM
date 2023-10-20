@@ -2,6 +2,7 @@ package Servlets;
 
 import Modelos.Perfil;
 import Modelos.Usuario;
+import Modelos.UsuarioDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,7 +36,9 @@ public class RegistroServlet extends HttpServlet {
         
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
         Usuario u = new Usuario(user, pass);
-                   
+        
+         //Usuario user = new UsuarioDAO().autenticar(nom, pass);
+       
        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
    
 

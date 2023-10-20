@@ -31,12 +31,11 @@ public class InicioSesionServlet extends HttpServlet {
         if (user != null) { //si existe el usuario
          
             HttpSession session = req.getSession(); // Pido la sesión actual
-            session.setMaxInactiveInterval(90); // Seteo tiempo máximo de inactividad (en segundos)
+            session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
             session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión
-           resp.sendRedirect("http://localhost:8080/pm");
+            resp.sendRedirect(req.getContextPath());
      
-           
-          
+            //redirect porque no tengo por que recordarme otra vez el user y la contra
         } else {
               
         
