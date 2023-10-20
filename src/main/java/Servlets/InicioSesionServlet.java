@@ -34,8 +34,9 @@ public class InicioSesionServlet extends HttpServlet {
             session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
             session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión
             resp.sendRedirect(req.getContextPath());
-     
+            //req.getContextPath(): va a PM la principal
             //redirect porque no tengo por que recordarme otra vez el user y la contra
+            
         } else {
               
         
