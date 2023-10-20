@@ -12,17 +12,6 @@
     <div class="row justify-content-center m-5">
         <p class="text-light text-center">Felicitaciones! Su usuario ha sido creado</p>
  
-        //
-        
-        <p class="text-light text-center">Datos del usuario creado:</p>
-        <p class="text-light text-center">Perfil de ${p.nombre} ${p.apellido}</p>
-        <p class="text-light text-center">Fecha: ${p.fecha}</p>
-        <p class="text-light text-center">Email ${p.email}</p>
-        <p class="text-light text-center">Billetera ${p.billetera}</p>
-        <p class="text-light text-center">Domicilio ${p.domicilio}</p>
-        <p class="text-light text-center">Telefono ${p.telefono}</p>
-        
-        //
         <p class="text-light text-center">Haga click <a href="inicioSesion">aquí</a> para iniciar sesión.</p>
     </div>
 </div>

@@ -1,6 +1,7 @@
 package Servlets;
 
 import Modelos.Perfil;
+import Modelos.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,8 +22,23 @@ public class RegistroServlet extends HttpServlet {
         //Usar el modelo para chequear si el registro fue exitoso.
         //Siempre redirigir a registroEstado.jsp., éste se va a encargar de mostrar lo necesario en caso de reg. exitoso o fallido
        
+      
+        String user = req.getParameter("usuario");
+        String pass = req.getParameter("clave");
+        String nom = req.getParameter("nombre");
+        String ape = req.getParameter("apellido");
+        String date = req.getParameter("dateInput");
+        String email = req.getParameter("emailInput");
+        String domicilio = req.getParameter("domicilio");
+        String telefono = req.getParameter("telInput");
+        String foto = req.getParameter("photoInput");
+        
+        Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
+        Usuario u = new Usuario(user, pass);
+                   
        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
    
+
         
     }
 }
