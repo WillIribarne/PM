@@ -28,7 +28,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputUser1" class="form-label text-light">Domicilio</label>
-                <input type="user" class="form-control" id="usuario" name="domicilio">
+                <input type="user" class="form-control" id="domicilio" name="domicilio">
             </div>
             <div class="mb-3">
                 <label for="telInput" class="form-label text-light">Numero de Teléfono</label>

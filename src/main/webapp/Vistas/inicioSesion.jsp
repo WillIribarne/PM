@@ -7,7 +7,13 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp" />
+  
+ 
+ 
+  
     <div class="container bg-negro rounded-5">
+        
+         <!-- notifica que los datos de inicio son incorrectos!-->
         <form action="" method="post" class="p-5 m-3">
             <div class="mb-3">
               <label for="exampleInputUser1" class="form-label text-light">Usuario</label>
@@ -21,7 +27,17 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label text-light" for="exampleCheck1">Recordarme</label>
             </div>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            
+             <!-- notifica que los datos de inicio son incorrectos!-->
+            <c:if test="${hayError}">
+            <div class="container text-light">
+                <h3>${mensajeError}</h3>
+            </div>
+            </c:if>
+        
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            
+        
           </form>
     </div>
   <c:import url="/footer.jsp" />
