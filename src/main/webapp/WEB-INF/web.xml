@@ -15,6 +15,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>Servlets.LogOutServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>InicioSesionServlet</servlet-name>
         <servlet-class>Servlets.InicioSesionServlet</servlet-class>
     </servlet>
@@ -37,6 +42,11 @@
     <servlet-mapping>
         <servlet-name>InicioSesionServlet</servlet-name>
         <url-pattern>/inicioSesion</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/cerrarsesion</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
