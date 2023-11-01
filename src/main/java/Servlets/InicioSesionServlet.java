@@ -16,9 +16,14 @@ public class InicioSesionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
      
-        req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+        if(req.getSession()==null){
+            req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
          // Si viene de un filter, será con una ruta como "/login?origen=/perfil" o "/login?origen=/restringida"
-    
+        }else{ //si ya hay usuario, que vaya al perfil
+            req.getRequestDispatcher("Vistas/perfilUsuario.jsp").forward(req, resp);
+        
+        }
+        
     }
 
     @Override
