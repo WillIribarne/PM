@@ -22,8 +22,7 @@ public class RegistroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Usar el modelo para chequear si el registro fue exitoso.
         //Siempre redirigir a registroEstado.jsp., éste se va a encargar de mostrar lo necesario en caso de reg. exitoso o fallido
-       
-      
+
         String user = req.getParameter("usuario");
         String pass = req.getParameter("clave");
         String nom = req.getParameter("nombre");
@@ -37,8 +36,7 @@ public class RegistroServlet extends HttpServlet {
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
         Usuario u = new Usuario(user, pass);
         
-        //Usuario user = new UsuarioDAO().autenticar(nom, pass);
-       
+     
         req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
      
     }
