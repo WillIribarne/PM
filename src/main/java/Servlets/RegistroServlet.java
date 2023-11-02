@@ -38,11 +38,10 @@ public class RegistroServlet extends HttpServlet {
 
         //--------------------------------------------------------------------
         //verifico que esten cargados los datos
+        req.setAttribute("mensaje", true);
         if (u.sonCorrectosLosDatos(u) == true) { 
-            req.setAttribute("mensaje", true);
             req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
         } else {
-            req.setAttribute("mensaje", true);
             req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos" );
         }
         //--------------------------------------------------------------------
