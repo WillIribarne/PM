@@ -15,8 +15,9 @@ import java.io.IOException;
 public class InicioSesionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
-        req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+       
+             req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+       
         //Si viene de un filter, será con una ruta como "/login?origen=/perfil" o "/login?origen=/restringida"
     
     }

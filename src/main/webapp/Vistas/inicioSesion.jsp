@@ -7,10 +7,7 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp" />
-  
- 
- 
-  
+   
     <div class="container bg-negro rounded-5">
         
          <!-- notifica que los datos de inicio son incorrectos!-->
