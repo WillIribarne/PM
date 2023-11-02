@@ -37,11 +37,9 @@ public class RegistroServlet extends HttpServlet {
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
         Usuario u = new Usuario(user, pass);
         
-         //Usuario user = new UsuarioDAO().autenticar(nom, pass);
+        //Usuario user = new UsuarioDAO().autenticar(nom, pass);
        
-       req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
-   
-
-        
+        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
+     
     }
 }

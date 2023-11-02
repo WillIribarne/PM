@@ -22,6 +22,14 @@ public class Usuario {
         this.nombre = nombre;
         this.contrasenia = contrasenia;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
     
     
 }

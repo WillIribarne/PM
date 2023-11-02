@@ -16,6 +16,7 @@ public class PerfilServlet extends HttpServlet {
         //Si la hay, redireccionar a perfilUsuario con los datos del usuario.
         //Si no la hay, mandar a inicioSesion.jsp.
         //Por ahora solamente vamos a mandar a inicioSesion hasta que empecemos con el ingreso de datos
-        resp.sendRedirect("http://localhost:8080/pm/inicioSesion");
+        //resp.sendRedirect("http://localhost:8080/pm/inicioSesion");
+         req.getRequestDispatcher("Vistas/perfilUsuario.jsp").forward(req, resp);
     }
 }

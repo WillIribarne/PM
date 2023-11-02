@@ -15,15 +15,10 @@ import java.io.IOException;
 public class InicioSesionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-     
-        if(req.getSession()==null){
-            req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
-         // Si viene de un filter, será con una ruta como "/login?origen=/perfil" o "/login?origen=/restringida"
-        }else{ //si ya hay usuario, que vaya al perfil
-            req.getRequestDispatcher("Vistas/perfilUsuario.jsp").forward(req, resp);
         
-        }
-        
+        req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
+        //Si viene de un filter, será con una ruta como "/login?origen=/perfil" o "/login?origen=/restringida"
+    
     }
 
     @Override
@@ -38,7 +33,9 @@ public class InicioSesionServlet extends HttpServlet {
             HttpSession session = req.getSession(); // Pido la sesión actual
             session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
             session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión
+           
             resp.sendRedirect(req.getContextPath());
+            
             //req.getContextPath(): va a PM la principal
             //redirect porque no tengo por que recordarme otra vez el user y la contra
             

@@ -16,10 +16,11 @@
             <p class="text-light text-center">Domicilio:</p>
             <p class="text-light text-center">Telefono:</p>
             <p class="text-light text-center">FOTO:</p>
+            
     </div>
 </div>
+<a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="cerrarsesion" role="button">Cerrar Sesion</a>
 
-<button type="submit" class="btn btn-primary">Cerrar Sesion</button>
 <c:import url="/footer.jsp" />
 </body>
 </html>
