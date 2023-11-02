@@ -9,6 +9,7 @@
 <c:import url="/navbar.jsp" />
     <div class="container bg-negro">
         <form action="" method="post" class="p-5 m-3">
+
             <div class="mb-3">
                 <label for="userInput" class="form-label text-light">Usuario *</label>
                 <input type="user" class="form-control" id="usuario" name="usuario">

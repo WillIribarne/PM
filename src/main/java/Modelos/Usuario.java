@@ -7,9 +7,11 @@ public class Usuario {
     private String contrasenia;
    // private TipoUsuario tipo;
 
-    public Usuario(String nombre) {
+    public Usuario(String nombre, String contrasenia) {
         this.nombre = nombre;
+        this.contrasenia = contrasenia;
     }
+    
 
 //    public Usuario(int id_usuario, String nombre, String contrasenia, TipoUsuario tipo) {
 //        this.id_usuario = id_usuario;
@@ -20,18 +22,22 @@ public class Usuario {
 
     //falta chequear si existe o no el usuarii a crear
     
-    public boolean verificacionDatos(String nombre, String contrasenia){
-        return (nombre!=null && contrasenia!=null);
+    public boolean sonCorrectosLosDatos(Usuario s){
+        boolean flag;
+        
+        if(nombre.isEmpty() || contrasenia.isEmpty()){
+            flag=false;  
+        }
+        else
+        {
+             flag=true;
+        }
+        
+        return flag;
+        //return (s.nombre!=null && s.contrasenia!=null);
     }
     
-    public Usuario() {
-        this("","");
-    }
-    
-    public Usuario(String nombre, String contrasenia) {
-        this.nombre = nombre;
-        this.contrasenia = contrasenia;
-    }
+   
 
     public String getNombre() {
         return nombre;

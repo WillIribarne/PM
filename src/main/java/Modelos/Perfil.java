@@ -27,9 +27,9 @@ public class Perfil {
         this.id_usuario = 0;
     }
 
-    public boolean verificacionDatos (String nombre, String apellido, String fecha, String email, String domicilio, String telefono, String foto) {
-        return(nombre!= null   &&
-               apellido!=null  &&
+    public boolean verificacionDatos (Perfil p) {
+        return(//nombre!= null   &&
+               //apellido!=null  &&
                fecha!=null     &&
                email!= null) ;          
     }

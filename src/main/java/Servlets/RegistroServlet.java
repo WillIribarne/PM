@@ -35,9 +35,18 @@ public class RegistroServlet extends HttpServlet {
         
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
         Usuario u = new Usuario(user, pass);
-        
-     
-        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);
-     
+
+        //--------------------------------------------------------------------
+        //verifico que esten cargados los datos
+        if (u.sonCorrectosLosDatos(u) == true) { 
+            req.setAttribute("mensaje", true);
+            req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
+        } else {
+            req.setAttribute("mensaje", true);
+            req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos" );
+        }
+        //--------------------------------------------------------------------
+        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);   
+       
     }
 }
