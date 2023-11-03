@@ -28,14 +28,13 @@
                         <li><a class="dropdown-item fuente-navbar-estandar" href="#">Guantes</a></li>
                         <li><a class="dropdown-item fuente-navbar-estandar" href="#">Gorros</a></li>
                     </ul>
-                    
-                <li class="nav-item"> <!-- Este debería ser un choose entre el boton Iniciar Sesión y el nombre del perfil del usuario logueado -->
-                 
-                  <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
-                  
-                                
-                </li>
-                </li>
+                </li>   
+                
+                
+                        <li class="nav-item"> 
+                        <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
+                        </li>
+             
             </ul>
             <span class="d-flex fuente-navbar-estandar me-2">¿No tienes cuenta?</span>
             <a href="registro">Registrate</a>
