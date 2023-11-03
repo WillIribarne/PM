@@ -27,26 +27,12 @@ public class Perfil {
         this.id_usuario = 0;
     }
 
-//    public Perfil autenticar (String nombre, String apellido, Fecha fecha, String email, String domicilio, String telefono, String foto) {
-//        
-//        Perfil p = null;
-//        
-//        id_perfil=cont;
-//        this.nombre = nombre;
-//        this.apellido = apellido;
-//        this.fecha = fecha;
-//        this.email = email;
-//        this.domicilio = domicilio;
-//        this.telefono = telefono;
-//        this.foto = foto;
-//        id_usuario=cont;
-//        
-//        cont++;
-//          
-//        return p;
-//        
-//    }
-//    
+    public boolean verificacionDatos (Perfil p) {
+        return(//nombre!= null   &&
+               //apellido!=null  &&
+               fecha!=null     &&
+               email!= null) ;          
+    }
     
     
     
