@@ -40,6 +40,14 @@
                         </c:otherwise>
                     </c:choose>
                 </li>
+                <c:if test="${true}"> <!-- si el usuario está logueado, mostrar billetera-->
+                    <li class="nav-item"> 
+                        <span class="d-flex fuente-navbar-brand me-2">$ 2,00</span> <!-- ${usuario.billetera} -->
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-light rounded-pill fw-bolder fs-4 py-0" href="billetera" >+</button>
+                    </li>
+                </c:if>
             </ul>
             <c:choose>
                 <c:when test="${false}"> <!-- nota: {usuario.estadoLogin = 1} es lo mismo que un {true}, pero no se si es posible hacer 'x = boolean', por eso el 1-->
