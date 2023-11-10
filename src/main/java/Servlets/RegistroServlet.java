@@ -3,6 +3,8 @@ package Servlets;
 import Modelos.Perfil;
 import Modelos.Usuario;
 import Modelos.UsuarioDAO;
+import Modelos.DAO;
+import Modelos.PerfilDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,6 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "RegistroServlet", value = "/registro")
 public class RegistroServlet extends HttpServlet {
@@ -39,8 +43,22 @@ public class RegistroServlet extends HttpServlet {
         //--------------------------------------------------------------------
         //verifico que esten cargados los datos
         req.setAttribute("mensaje", true);
-        if (u.sonCorrectosLosDatos(u) == true) { 
+        if (u.sonCorrectosLosDatos(u) == true && p.sonCorrectosLosDatos(p)) { 
             req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
+            //creo en la bd el perfil y el usuario
+            UsuarioDAO uDAO = new UsuarioDAO();
+            PerfilDAO pDAO = new PerfilDAO();
+            try {
+                uDAO.add(u);
+            } catch (Exception ex) {
+                Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                pDAO.add(p);
+            } catch (Exception ex) {
+                Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         } else {
             req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos" );
         }

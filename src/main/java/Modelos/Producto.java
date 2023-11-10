@@ -19,7 +19,7 @@ public class Producto {
         this.stock = stock;
         this.descripcion = descripcion;
     }
-    
+
      public Producto() {
         this.id_producto = id_producto;
         this.nombre = nombre;
@@ -29,5 +29,35 @@ public class Producto {
         this.stock = stock;
         this.descripcion = descripcion;
     }
+     
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public Categoria getCat() {
+        return cat;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+    
    
 }

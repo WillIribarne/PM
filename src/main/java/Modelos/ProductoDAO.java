@@ -9,62 +9,46 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ProductoDAO implements DAO{
-    List <Producto> productos;
+public class ProductoDAO implements DAO<Producto, Integer, String>{
 
-    public ProductoDAO() {
-        this.productos = new ArrayList<>();
+    @Override
+    public void create(Producto e) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void create(Object entidad) throws Exception {
-
+    public void add(Producto e) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void add(Object entidad) throws Exception {
-
+    public void update(Producto e) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update() throws Exception {
-
+    public void delete(Integer id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete() throws Exception {
-
+    public List<Producto> getAll() throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List getAll() {
-        List <Producto> productos = new LinkedList<>();
-        String query = "SELECT * FROM recetas";
-        try(Connection con = ConnectionPool.getInstance().getConnection();
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();){
-            while (rs.next()){ //.next(): devuelve el siguiente elemento y devuelve si tiene algo o esta vacío (boolean)
-                productos.add(rsRowToProducto(rs));
-            }
-        } catch (SQLException ex){
-            throw new RuntimeException(ex);
-        }
-        return productos;
+    public List getProducts(Categoria cat) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Object getById(Object id) throws Exception {
-        return null;
+    public Producto getById(Integer id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private Producto rsRowToProducto(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id_producto");
-        String nombre = rs.getString("nombre");
-        String marca = rs.getString("marca");
-        Categoria cat = Categoria.valueOf(rs.getString("categoria"));
-        double precio = rs.getDouble("precio");
-        int stock = rs.getInt("stock");
-        String descripcion = rs.getString("descripcion");
-        return new Producto(id, nombre, marca, cat, precio, stock, descripcion);
+    @Override
+    public Producto getUsuario(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 }
