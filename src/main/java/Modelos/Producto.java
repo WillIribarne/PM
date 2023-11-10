@@ -6,11 +6,11 @@ public class Producto {
    private String nombre;
    private String marca;
    private Categoria cat;
-   private float precio;
+   private double precio;
    private int stock;
    private String descripcion;
 
-    public Producto(int id_producto, String nombre, String marca, Categoria cat, float precio, int stock, String descripcion) {
+    public Producto(int id_producto, String nombre, String marca, Categoria cat, double precio, int stock, String descripcion) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.marca = marca;
