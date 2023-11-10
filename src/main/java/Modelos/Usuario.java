@@ -12,7 +12,6 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
     
-
 //    public Usuario(int id_usuario, String nombre, String contrasenia, TipoUsuario tipo) {
 //        this.id_usuario = id_usuario;
 //        this.nombre = nombre;
