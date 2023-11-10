@@ -1,0 +1,57 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<html lang="es">
+  <c:import url="/header.jsp">
+    <c:param name="tituloPagina" value="PM - Catálogo"/>
+  </c:import>
+<body>
+  <c:import url="/navbar.jsp"/>
+    <p class="fuente-botones-index">Catálogo 
+    <c:choose>
+        <c:when test="${false}">
+            <span class="fuente-botones-index">- ${categoria}</span>
+        </c:when>
+        <c:otherwise>
+            <span class="fuente-botones-index">- Todos los Productos</span>
+        </c:otherwise>
+    </c:choose>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <c:forEach items="${productos}" var="producto">
+                    <tr>
+                        <th scope="row">${producto.nombre}</th>
+                        <td>${producto.marca}</td>
+                        <td>${producto.descripcion}</td>
+                        <td>${producto.precio}</td>
+                        <td>${producto.stock}</td>
+                        <c:choose>
+                            <c:when test="${true}"> 
+                            <td><button type="button" class="btn btn-warning" href="">Editar</button></td>
+                            </c:when>
+                            <c:when test="${false}"> 
+                                <td><button type="button" class="btn btn-success" href="">Comprar</button></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><button type="button" class="btn btn-danger" href="">No stock</button></td>
+                            </c:otherwise>
+                        </c:choose>
+                      </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+  <c:import url="/footer.jsp"/>
+</body>
+</html>
