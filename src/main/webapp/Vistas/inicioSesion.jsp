@@ -3,13 +3,11 @@
 
 <html lang="es">
   <c:import url="/header.jsp">
-    <c:param name="tituloPagina" value="PM - Tu negocio de moda"/>
+    <c:param name="tituloPagina" value="PM - Inicio Sesión"/>
   </c:import>
 <body>
-  <c:import url="/navbar.jsp" />
-   
+  <c:import url="/navbar.jsp"/>
     <div class="container bg-negro rounded-5">
-        
         <form action="${pageContext.request.contextPath}/inicioSesion" method="post" class="p-5 m-3">
             <div class="mb-3">
               <label for="exampleInputUser1" class="form-label text-light">Usuario</label>
@@ -30,12 +28,9 @@
                 <h3>${mensajeError}</h3>
             </div>
             </c:if>
-        
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-            
-        
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
           </form>
     </div>
-  <c:import url="/footer.jsp" />
+  <c:import url="/footer.jsp"/>
 </body>
 </html>

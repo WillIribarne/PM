@@ -15,7 +15,6 @@ public class Perfil {
     int cont=0;
     
     public Perfil(String nombre, String apellido, String fecha, String email, String domicilio, String telefono, String foto) {
-        this.id_perfil = 0;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fecha;
@@ -24,13 +23,12 @@ public class Perfil {
         this.domicilio = domicilio;
         this.telefono = telefono;
         this.foto = foto;
-        this.id_usuario = 0;
     }
 
-    public boolean verificacionDatos (Perfil p) {
-        return(//nombre!= null   &&
-               //apellido!=null  &&
-               fechaNac!=null     &&
+    public boolean sonCorrectosLosDatos (Perfil p) {
+        return(nombre!= null   &&
+               apellido!=null  &&
+               fechaNac!=null  &&
                email!= null) ;          
     }
 
