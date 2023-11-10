@@ -3,7 +3,7 @@
 
 <html lang="es">
   <c:import url="/header.jsp">
-    <c:param name="tituloPagina" value="PM - Catálogo"/>
+    <c:param name="tituloPagina" value="PM - Tu Tienda de Moda"/>
   </c:import>
 <body>
   <c:import url="/navbar.jsp"/>
