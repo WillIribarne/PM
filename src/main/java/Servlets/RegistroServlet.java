@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +35,7 @@ public class RegistroServlet extends HttpServlet {
         String date = req.getParameter("dateInput");
         String email = req.getParameter("emailInput");
         String domicilio = req.getParameter("domicilio");
-        String telefono = req.getParameter("telInput");
+        String telefono = req.getParameter("tel");
         String foto = req.getParameter("photoInput");
         
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
@@ -43,21 +44,20 @@ public class RegistroServlet extends HttpServlet {
         //--------------------------------------------------------------------
         //verifico que esten cargados los datos
         req.setAttribute("mensaje", true);
-        if (u.sonCorrectosLosDatos(u) == true && p.sonCorrectosLosDatos(p)) { 
-            req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
-            //creo en la bd el perfil y el usuario
-            UsuarioDAO uDAO = new UsuarioDAO();
-            PerfilDAO pDAO = new PerfilDAO();
+        if (u.sonCorrectosLosDatos(u) == true && p.sonCorrectosLosDatos(p)  == true) { 
             try {
+                req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
+                //creo en la bd el perfil y el usuariocreacion
+                UsuarioDAO uDAO = new UsuarioDAO();
+                PerfilDAO pDAO = new PerfilDAO();
                 uDAO.add(u);
+                Perfil pp = new Perfil(p,uDAO.getID(u.getNombre()));
+        
+                pDAO.add(pp);
             } catch (Exception ex) {
                 Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try {
-                pDAO.add(p);
-            } catch (Exception ex) {
-                Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
             
         } else {
             req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos" );

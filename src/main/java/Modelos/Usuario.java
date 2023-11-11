@@ -13,6 +13,13 @@ public class Usuario {
         this.tipo="final";
     }
 
+    public Usuario(int id_usuario, String nombre, String contrasenia, String tipo) {
+        this.id_usuario = id_usuario;
+        this.nombre = nombre;
+        this.contrasenia = contrasenia;
+        this.tipo = tipo;
+    }
+
 
     //falta chequear si existe o no el usuarii a crear
     
