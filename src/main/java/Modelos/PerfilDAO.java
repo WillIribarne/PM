@@ -6,6 +6,7 @@ package Modelos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -25,15 +26,15 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,foto,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
             //ver el id
-            preparedStatement.setString(2, p.getNombre());
-            preparedStatement.setString(3, p.getApellido());
-            preparedStatement.setString(4, p.getFechaNac());
-            preparedStatement.setString(3, p.getEmail());
-            preparedStatement.setDouble(4, p.getBilletera());
-            preparedStatement.setString(3, p.getDomicilio());
-            preparedStatement.setString(4, p.getTelefono());
-            preparedStatement.setString(3, p.getFoto());
-            preparedStatement.setInt(4, p.getId_usuario());
+            preparedStatement.setString(1, p.getNombre());
+            preparedStatement.setString(2, p.getApellido());
+            preparedStatement.setString(3, "...");
+            preparedStatement.setString(4, "...");
+            preparedStatement.setDouble(5, p.getBilletera());
+            preparedStatement.setString(6, p.getDomicilio());
+            preparedStatement.setString(7, p.getTelefono());
+            preparedStatement.setString(8, p.getFoto());
+            preparedStatement.setInt(9, p.getId_usuario());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -61,12 +62,17 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     }
 
     @Override
-    public Perfil getById(Integer id) throws Exception {
+    public Perfil getBy(Perfil e) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Perfil getUsuario(String nombre) {
+    public int getID(String nombre) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Perfil rsRowTo(ResultSet rs) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

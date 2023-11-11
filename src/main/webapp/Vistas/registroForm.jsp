@@ -32,13 +32,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputUser1" class="form-label text-light">Domicilio</label>
-                            <input type="user" class="form-control" id="domicilio" name="domicilio">
+                            <input type="domicilio" class="form-control" id="domicilio" name="domicilio">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="userInput" class="form-label text-light">Apellido *</label>
-                            <input type="user" class="form-control" id="apellido" name="apellido">
+                            <input type="apellido" class="form-control" id="apellido" name="apellido">
                         </div>
                         <div class="mb-3">
                             <label for="emailInput" class="form-label text-light">Direccion de mail *</label>
@@ -46,13 +46,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="telInput" class="form-label text-light">Numero de Teléfono</label>
-                            <input type="tel" class="form-control" id="telInput" name="telefono" placeholder="123-456-7890">
+                            <input type="tel" class="form-control" id="tel" name="tel">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="mb-3">
                             <label for="photoInput" class="form-label text-light">Elige una foto de perfil</label>
-                            <input type="file" class="form-control" id="photoInput" name="foto">
+                            <input type="file" class="form-control" id="file" name="file">
                         </div>
                     </div>
                 </div>
