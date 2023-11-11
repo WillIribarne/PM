@@ -38,6 +38,32 @@ public class Perfil {
         this.foto = p.foto;
         this.id_usuario=ID;
     }
+    
+    public Perfil(Perfil p) {
+        this.nombre = p.nombre;
+        this.apellido = p.apellido;
+        this.fechaNac = p.fechaNac;
+        this.email = p.email;
+        this.billetera = 0;
+        this.domicilio = p.domicilio;
+        this.telefono = p.telefono;
+        this.foto = p.foto;
+        this.id_usuario=p.id_perfil;
+    }
+
+    public Perfil(int id_perfil, String nombre, String apellido, String fechaNac, String email, float billetera, String domicilio, String telefono, String foto, int id_usuario) {
+        this.id_perfil = id_perfil;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNac;
+        this.email = email;
+        this.billetera = billetera;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.foto = foto;
+        this.id_usuario=id_usuario;
+    }
+    
 
     public boolean sonCorrectosLosDatos (Perfil p) {
         boolean flag;

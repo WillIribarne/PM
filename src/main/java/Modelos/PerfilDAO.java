@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -51,10 +52,7 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public List<Perfil> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     @Override
     public List getProducts(Categoria cat) {
@@ -62,8 +60,20 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     }
 
     @Override
-    public Perfil getBy(Perfil e) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Perfil getByID(Integer ID) throws Exception {
+        Perfil perfil = null;
+        String query = "SELECT * FROM perfil WHERE id_usuario = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, ID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    perfil = rsRowTo(resultSet);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return perfil;
     }
 
     @Override
@@ -72,8 +82,29 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     }
 
     @Override
-    public Perfil rsRowTo(ResultSet rs) throws Exception {
+    public Perfil rsRowTo(ResultSet rs) throws Exception { 
+        return new Perfil(
+                    rs.getInt("id_usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getString("fechaNac"),
+                    rs.getString("email"),
+                    rs.getFloat("billetera"),
+                    rs.getString("domicilio"),
+                    rs.getString("telefono"),
+                    rs.getString("foto"),
+                    rs.getInt("id_usuario")
+            );
+    }
+
+    @Override
+    public List<Perfil> getAll() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public Perfil get(Integer id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

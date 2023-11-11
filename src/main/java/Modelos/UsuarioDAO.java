@@ -76,18 +76,23 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
        }
 
 
-    public Usuario autenticar(String nombre, String pass) {
-        Usuario u = null;
-        if (pass.equals("123")) {
-            switch (nombre) {
-                case "user1":
-                    u = new Usuario(nombre, pass);
-                    break;
-                case "user2":
-                    u = new Usuario(nombre, pass);
+    public Usuario autenticar(String nombre, String pass)throws Exception  {
+
+        Usuario user = null;
+        
+        String query = "SELECT * FROM usuario WHERE nombre = ? AND contrasenia = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, nombre);
+            preparedStatement.setString(2, pass);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    user = rsRowTo(resultSet);
+                }
             }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
-        return u;
+        return user;
     }
 
     @Override
@@ -102,8 +107,13 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
     }    
 
     @Override
-    public Usuario getBy(Usuario e) throws Exception {
+    public Usuario getByID(Integer id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    @Override
+    public Usuario get(Integer id) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

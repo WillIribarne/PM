@@ -18,8 +18,9 @@ public interface DAO <E, Z, L>{
     public abstract List<E> getAll() throws Exception;
     public List getProducts(Categoria cat) throws Exception;
     
-    public abstract E getBy(E e) throws Exception;
-    public abstract int getID(L nombre) throws Exception;
+    public abstract E getByID(Z id) throws Exception;
+    public abstract E get/*ByID*/(Z id) throws Exception;
+    public abstract int getID(L l) throws Exception;
     public E rsRowTo(ResultSet rs)throws Exception;
 
 }
