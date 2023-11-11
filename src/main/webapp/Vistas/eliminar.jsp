@@ -3,11 +3,11 @@
 
 <html lang="es">
   <c:import url="/header.jsp">
-    <c:param name="tituloPagina" value="PM - Comprar Producto"/>
+    <c:param name="tituloPagina" value="PM - Eliminar Producto"/>
   </c:import>
 <body>
   <c:import url="/navbar.jsp"/>
-    <p class="fuente-botones-index">Desea realizar la siguiente compra?</p>
+    <p class="fuente-botones-index">Desea eliminar el producto del catálogo?</p>
     <div class="container bg-negro p-5 my-5">
         <div class="row">
             <div class="col-sm-6">
@@ -29,7 +29,7 @@
                 
             </div>
             <div class="col-sm-6 d-flex justify-content-center">
-                <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" href="">Realizar Compra</button>
+                <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" href="">Eliminar producto</button>
                 <button type="button" class="btn btn-lg btn-warning" href="">Mejor no</button>
             </div>
         </div>
