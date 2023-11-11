@@ -16,6 +16,9 @@
             <span class="fuente-botones-index">- Todos los Productos</span>
         </c:otherwise>
     </c:choose>
+    <c:if test="${true}">
+      <button type="button" class="btn btn-warning fw-bold" href="">Agregar Nuevo Producto</button>
+    </c:if>
     </p>
     <div class="table-responsive">
         <table class="table table-dark table-hover">
