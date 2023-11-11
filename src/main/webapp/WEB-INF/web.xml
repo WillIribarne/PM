@@ -30,6 +30,11 @@
     </servlet>
     
     <servlet>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <servlet-class>Servlets.CatalogoServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>InicioSesionServlet</servlet-name>
         <servlet-class>Servlets.InicioSesionServlet</servlet-class>
     </servlet>
@@ -48,6 +53,12 @@
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <url-pattern>/catalogo</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet-mapping>
         <servlet-name>InicioSesionServlet</servlet-name>
