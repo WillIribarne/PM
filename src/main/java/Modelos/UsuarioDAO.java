@@ -95,6 +95,24 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
         return user;
     }
 
+    public boolean existeElUsuario(String user)throws Exception  {
+        boolean flag=false;
+        
+        String query = "SELECT * FROM usuario WHERE nombre = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, user);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) { //lo encuentra
+                    flag=true;
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return flag;
+    }
+    
+    
     @Override
     public Usuario rsRowTo(ResultSet rs) throws Exception {
             return new Usuario(

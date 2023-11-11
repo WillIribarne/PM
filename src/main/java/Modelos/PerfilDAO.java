@@ -106,5 +106,7 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     public Perfil get(Integer id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }

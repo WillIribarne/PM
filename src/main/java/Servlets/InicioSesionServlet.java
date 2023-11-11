@@ -35,9 +35,10 @@ public class InicioSesionServlet extends HttpServlet {
             String pass = req.getParameter("clave");
             Usuario user = new UsuarioDAO().autenticar(nom, pass); //chequeo si el usuario es existente
             
-            if (user != null) { //si existe el usuario
+            if (user != null) { //si existe el usuario 
+                                //null: no existe 
+                                //user: existe                
                 
-                //chequeo que el usuario exista
                 HttpSession session = req.getSession(); // Pido la sesión actual
                 session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
                 session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión

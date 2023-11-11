@@ -40,27 +40,33 @@ public class RegistroServlet extends HttpServlet {
         
         Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
         Usuario u = new Usuario(user, pass);
-
+        UsuarioDAO uDAO = new UsuarioDAO();
+        
         //--------------------------------------------------------------------
         //verifico que esten cargados los datos
         req.setAttribute("mensaje", true);
-        if (u.sonCorrectosLosDatos(u) == true && p.sonCorrectosLosDatos(p)  == true) { 
-            try {
-                req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
-                //creo en la bd el perfil y el usuariocreacion
-                UsuarioDAO uDAO = new UsuarioDAO();
-                PerfilDAO pDAO = new PerfilDAO();
-                uDAO.add(u);
-                Perfil pp = new Perfil(p,uDAO.getID(u.getNombre()));
-        
-                pDAO.add(pp);
-            } catch (Exception ex) {
-                Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            if(uDAO.existeElUsuario(u.getNombre())==false){ //chequeo que no sea existente el nombre de usuario
+                //if (u.sonCorrectosLosDatos(u) == true && p.sonCorrectosLosDatos(p)  == true) {
+                try {
+                    req.setAttribute("mensajeInfo", "Felicitaciones! Su usuario ha sido creado con éxito" );
+                    //creo en la bd el perfil y el usuariocreacion
+                    PerfilDAO pDAO = new PerfilDAO();
+                    uDAO.add(u);
+                    Perfil pp = new Perfil(p,uDAO.getID(u.getNombre()));
+                    
+                    pDAO.add(pp);
+                } catch (Exception ex) {
+                    Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            } else {
+                req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos."
+                        + "             En el caso de que los haya completado todos, modifique el nombre de usuario debido a que ya existe" );
             }
-            
-            
-        } else {
-            req.setAttribute("mensajeInfo", "ERROR - No se pudo crear el usuario, por favor complete todos los campos pedidos" );
+        } catch (Exception ex) {
+            Logger.getLogger(RegistroServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         //--------------------------------------------------------------------
         req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);   
