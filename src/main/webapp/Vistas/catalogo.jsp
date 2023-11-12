@@ -52,7 +52,7 @@
                         <!--     <td><button type="button" class="btn btn-warning" href="">Editar</button></td>-->
                        <%--    </c:when>  --%>
                           <%--    <c:otherwise>--%>
-                                <td><button type="submit" class="btn btn-success" href="">Comprar</button></td>
+                                <td><button type="submit" class="btn btn-success" href="">Agregar al carrito</button></td>
                           <%--    </c:otherwise>--%>
                          <%--   <c:otherwise> --%>
                               <!--  <td><button type="button" class="btn btn-danger" href="">No stock</button></td>-->

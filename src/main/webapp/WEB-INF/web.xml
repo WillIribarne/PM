@@ -23,6 +23,11 @@
         <servlet-name>RegistroServlet</servlet-name>
         <servlet-class>Servlets.RegistroServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>BilleteraServlet</servlet-name>
+        <servlet-class>Servlets.BilleteraServlet</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>LogOutServlet</servlet-name>
@@ -52,6 +57,11 @@
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>BilleteraServlet</servlet-name>
+        <url-pattern>/billetera</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

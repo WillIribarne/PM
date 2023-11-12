@@ -30,8 +30,8 @@
             </div>
             <div class="col-sm-6 d-flex justify-content-center">
                 <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" href="">Comprar</button>
-                <button type="button" class="btn btn-lg btn-warning me-lg-5 me-2" href="">Seguir viendo el catalogo</button>
-                <button type="button" class="btn btn-lg btn-danger me-lg-5 me-2" href="">Vaciar carrito</button>
+                <a href="catalogo" class="btn btn-lg btn-warning me-lg-5 me-2">Seguir viendo el catálogo</a>
+                <button type="button" class="btn btn-lg btn-danger me-lg-5 me-2" href="comprar">Vaciar carrito</button>
             </div>
         </div>
     </div>

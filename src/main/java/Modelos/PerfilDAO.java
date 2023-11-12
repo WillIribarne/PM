@@ -22,6 +22,40 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public double getValorBilletera (int ID)throws Exception{
+       double valorBilletera=0;
+        String query = "SELECT * FROM perfil WHERE id_usuario = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, ID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                   valorBilletera = resultSet.getDouble("billetera");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return valorBilletera;
+    
+    }
+ 
+    public double updateBilletera(int ID, double valorAgregado) throws Exception {
+    double valorActual=getValorBilletera(ID); //obtengo lo que hay dentro de billetera
+    double nuevoValor=valorActual+valorAgregado; //genero el nuevo valor de la billetera
+    String query = "UPDATE perfil SET billetera = ? WHERE id_usuario = ?";
+    
+    try (Connection con = ConnectionPool.getInstance().getConnection();
+         PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        preparedStatement.setDouble(1, nuevoValor);
+        preparedStatement.setInt(2, ID);
+        preparedStatement.executeUpdate();
+
+    } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+    return nuevoValor;
+ }
+    
     @Override
     public void add(Perfil p) throws Exception {
         String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,foto,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";

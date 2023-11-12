@@ -43,8 +43,9 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end m-2">
-                <button type="button" class="btn btn-success" href="billetera">Agregar dinero</button>
-            </div>
+                <a class="btn btn-success" href="billetera" role="button">Agregar dinero</a>
+             </div>
+             
         </div>
     </div>
     <div class="row m-5">

@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpSession;
 public class Filter1 implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+       
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpSession session = httpRequest.getSession();
         if (session != null && session.getAttribute("userLogueado") != null) {   
