@@ -19,7 +19,7 @@ public class Producto {
         this.stock = stock;
         this.descripcion = descripcion;
     }
-
+    
      public Producto() {
         this.id_producto = id_producto;
         this.nombre = nombre;
