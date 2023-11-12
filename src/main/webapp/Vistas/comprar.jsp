@@ -7,7 +7,7 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp"/>
-    <p class="fuente-botones-index">Desea realizar la siguiente compra?</p>
+    <p class="fuente-botones-index">CARRITO</p>
     <div class="container bg-negro p-5 my-5">
         <div class="row">
             <div class="col-sm-6">
@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm-6">
                 <h2>
-                <p class="text-light"> <span class="fw-bolder">Saldo actual:</span> <span class="text-success">(billetera)</span></p>
+                <p class="text-light"> <span class="fw-bolder">Saldo actual:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
                 <p class="text-light"> <span class="fw-bolder">Precio:</span> <span class="text-danger">(producto.precio)</span></p>
             </h2>
             </div>
@@ -29,8 +29,9 @@
                 
             </div>
             <div class="col-sm-6 d-flex justify-content-center">
-                <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" href="">Realizar Compra</button>
-                <button type="button" class="btn btn-lg btn-warning" href="">Mejor no</button>
+                <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" href="">Comprar</button>
+                <button type="button" class="btn btn-lg btn-warning me-lg-5 me-2" href="">Seguir viendo el catalogo</button>
+                <button type="button" class="btn btn-lg btn-danger me-lg-5 me-2" href="">Vaciar carrito</button>
             </div>
         </div>
     </div>
