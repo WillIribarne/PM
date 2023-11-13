@@ -55,7 +55,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     //agrego el producto seleccionado al carrito
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
                     List <Producto> product = (List <Producto>) session.getAttribute("carrito");
-
+                    if(product.isEmpty()){
+                        List <Producto> carrito = new LinkedList<>();
+                    }
                     product.add(p);
 
                     // Actualiza el vector en la sesión
@@ -63,6 +65,16 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                    
                 } catch (Exception ex) {
                     Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+            else
+            {
+                //chequeo si el carrito esta vacio
+                List <Producto> product = (List <Producto>) session.getAttribute("carrito");    
+                if (product.isEmpty()){
+                    req.setAttribute("hayError", true);
+                    req.setAttribute("mensajeError", "No hay ningun producto en el carrito");
                 }
                 
             }
@@ -77,9 +89,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
            
         }
         
-        //visualizar carrito
         
-       
+                
        
     
    }
