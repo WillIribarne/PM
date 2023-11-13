@@ -9,6 +9,7 @@ public class Producto {
    private double precio;
    private int stock;
    private String descripcion;
+   
 
     public Producto(int id_producto, String nombre, String marca, Categoria cat, double precio, int stock, String descripcion) {
         this.id_producto = id_producto;
@@ -57,6 +58,7 @@ public class Producto {
     public String getDescripcion() {
         return descripcion;
     }
+    
     
     
    

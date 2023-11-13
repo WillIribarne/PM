@@ -39,7 +39,6 @@ public class BilleteraServlet extends HttpServlet {
             String boton = req.getParameter("boton");
             int valorAAgregar=0;
             // Realizar la lógica según el botón presionado
-            String mensaje = "";
             switch (boton) {
                 case "100":
                    valorAAgregar=100;

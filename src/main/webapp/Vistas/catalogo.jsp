@@ -19,9 +19,13 @@
             <span class="fuente-botones-index">- Todos los Productos</span>
         </c:otherwise>
     </c:choose>
-    <c:if test="${true}">
-      <button type="button" class="btn btn-warning fw-bold" href="">Agregar Nuevo Producto</button>
-    </c:if>
+    
+    <td style="text-align: right;">
+    <button name="Carrito" value=0 type="submit" class="btn btn-success" href="comprar">Ver el carrito</button>
+    </td>                     
+   <%--  <c:if test="${true}">--%>
+     <!--  <button type="button" class="btn btn-warning fw-bold" href="">Agregar Nuevo Producto</button>-->
+   <%--  </c:if>--%>
     </p>
     
     <div class="table-responsive">
@@ -45,19 +49,9 @@
                         <td>${producto.descripcion}</td>
                         <td>${producto.precio}</td>
                         <td>${producto.stock}</td>
-                        
-       
-                    <%--  <c:choose>--%>
-                        <%--    <c:when test="${tipoUser}">   --%>
-                        <!--     <td><button type="button" class="btn btn-warning" href="">Editar</button></td>-->
-                       <%--    </c:when>  --%>
-                          <%--    <c:otherwise>--%>
-                                <td><button type="submit" class="btn btn-success" href="">Agregar al carrito</button></td>
-                          <%--    </c:otherwise>--%>
-                         <%--   <c:otherwise> --%>
-                              <!--  <td><button type="button" class="btn btn-danger" href="">No stock</button></td>-->
-                        <%--    </c:otherwise> --%>
-                    <%--  </c:choose>--%>
+                        <td>
+                        <button name="Carrito" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
+                         </td> 
                       </tr>
                 </c:forEach>
             </tbody> 

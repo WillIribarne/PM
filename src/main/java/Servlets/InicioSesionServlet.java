@@ -2,6 +2,7 @@ package Servlets;
 
 import Modelos.Perfil;
 import Modelos.PerfilDAO;
+import Modelos.Producto;
 import Modelos.Usuario;
 import Modelos.UsuarioDAO;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,13 +41,20 @@ public class InicioSesionServlet extends HttpServlet {
                                 //null: no existe 
                                 //user: existe                
                 
+                //elevo a nivel session el perfil y usuario
                 HttpSession session = req.getSession(); // Pido la sesión actual
                 session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
                 session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión
                 Perfil perfil = new PerfilDAO().getByID(user.getId_usuario());
                 HttpSession sessionPerfil = req.getSession();
                 sessionPerfil.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
-                sessionPerfil.setAttribute("perfilLogueado", perfil); // Asigno la info del usuario a la sesión
+                sessionPerfil.setAttribute("perfilLogueado", perfil); // Asigno la info del perfil a la sesión
+                
+                //creo un carrito a nivel session
+                List<Producto> carrito;
+                HttpSession sessionCarrito = req.getSession(); // Pido la sesión actual
+                sessionCarrito.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
+                sessionCarrito.setAttribute("carrito", sessionCarrito); // Asigno la info del carrito a la sesión
 
                 resp.sendRedirect(req.getContextPath());
 
