@@ -7,13 +7,16 @@
 </c:import>
 <body>
 <c:import url="/navbar.jsp" />
-<div class="container bg-negro p-5 my-5">
+<div class="container bg-negro p-md-5 my-5">
+    <div class="d-flex align-items-start m-5">
+        <p class="text-light text-center fs-1 fw-bolder">Mi perfil: ${userLogueado.nombre}</p>
+    </div>
     <div class="row m-5 justify-content-between">
-        <div class="d-flex align-items-start">
-            <p class="text-light text-center fs-1 fw-bolder">Usuario: ${userLogueado.nombre}</p>
-        </div>
-        <div>                                                           
+        <div class="col-md-6">                                                           
             <img src="recursos/imgs/PM-Index.jpeg" width="120" height="120"> <!-- esto es la foto -->
+        </div>
+        <div class="col-md-6 d-flex justify-content-end my-2 py-md-4">
+            <a class="btn btn-info btn fs-4 fw-bold" href="" role="button">Ver compras anteriores</a>
         </div>
     </div>
     <div class="row m-5">
@@ -21,7 +24,6 @@
             <h2>
                 <p class="badge text-bg-light">Nombre Completo: </p>
                 <p class="text-light">${perfilLogueado.nombre}  ${perfilLogueado.apellido}</p>
-                <!-- <p class="text-light text-center">Apellido:</p> (esto es medio al pedo, mejor poner nombre completo) -->
             </h2>
             <h4>
                 <p class="badge text-bg-light">Email:</p>
@@ -45,12 +47,14 @@
             <div class="d-flex justify-content-end m-2">
                 <a class="btn btn-success" href="billetera" role="button">Agregar dinero</a>
              </div>
-             
         </div>
     </div>
-    <div class="row m-5">
-       <div class="col-md-6 d-flex justify-content-end">
-            <a class="btn btn-secondary btn-lg fuente-botones-index" href="cerrarsesion" role="button">Cerrar Sesión</a>
+    <div class="row m-5 justify-content-between">
+        <div class="col-md-6">
+            <a class="btn btn-primary btn-lg fuente-botones-index my-2" href="" role="button">Editar Perfil</a>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-secondary btn-lg fuente-botones-index my-2" href="cerrarsesion" role="button">Cerrar Sesión</a>
         </div>
     </div>
 </div>
