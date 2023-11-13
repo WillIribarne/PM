@@ -7,65 +7,49 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp"/>
-    
-    <div class="container bg-negro p-5 my-5">
-        <div class="row">
-            <div class="col-sm-6">
-        
-       <p class="text-light"> <span class="fw-bolder">Carrito</span> <span class="text-success"></span></p>
-      
-        <c:forEach items="${carrito.carr}" var="producto">     
-            <p class="text-light"><span class="fw-bolder">Nombre </span>${producto.nombre}</p>
-            <p class="text-light"><span class="fw-bolder">Marca: </span>${producto.marca}</p>
-            <p class="text-light"><span class="fw-bolder">Descripcion: </span>${producto.descripcion}</p>
-            <p class="text-light"><span class="fw-bolder">Precio: </span>${producto.precio}</p>
-            <p class="text-light"><span class="fw-bolder">  </span> </p>
-            
-       </c:forEach>
-                      
-            </div>
-            <div class="col-sm-6">
-                <h2>
-                <p class="text-light"> <span class="fw-bolder">Billetera:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
-                </h2>
-                <h2>
-                <p class="text-light"> <span class="fw-bolder">Precio a pagar:</span> <span class="text-success">${carrito.precio}</span></p>
-                </h2>
-              
-                
-       
-        </div>
-        <div class="row">
-            <div class="col-sm-6 d-flex justify-content-center">
-                
-            </div>
-            <div class="col-sm-6 d-flex justify-content-center">
-
-        <c:choose>
+  <div class="container bg-negro p-5 my-5">
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="text-light"> <span class="fw-bolder">Carrito</span> <span class="text-success"></span></p>
+        <c:forEach items="${carrito.carr}" var="producto">
+          <div class="bg-secondary my-2">
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Nombre: </span>${producto.nombre}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Marca: </span>${producto.marca}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Descripcion: </span>${producto.descripcion}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Precio: </span>${producto.precio}</p>
+          </div>    
+        </c:forEach>
+      </div>
+      <div class="col-md-6">
+        <h2>
+          <p class="text-light"> <span class="fw-bolder">Billetera:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
+        </h2>
+        <h2>
+          <p class="text-light"> <span class="fw-bolder">Precio a pagar:</span> <span class="text-success">${carrito.precio}</span></p>
+        </h2>
+        <div class="d-flex justify-content-center">
+          <c:choose>
             <c:when test="${mensajeError != null && mensajeError == 'No hay ningun producto en el carrito'}">
-                <div class="container text-light">
+              <div class="container text-light">
                 <h3>${mensajeError}</h3>
-                </div>
-                <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
+              </div>
+              <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
             </c:when>
-             <c:otherwise>
-                 
-            <form action="comprar" method="post">
-            <button type="submit" class="btn btn-lg btn-warning me-lg-5 me-2" name="butt" value="1">Comprar</button>
-             </form>
-            
-            <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
-            
-            <form action="comprar" method="post">
-            <button type="submit" class="btn btn-lg btn-warning me-lg-5 me-2" name="butt" value="3">Vaciar carrito</button>
-             </form>
-
-             </c:otherwise>  
-        </c:choose>
-            </div>
+            <c:otherwise>
+              <div class="text-center">
+                <a class="btn btn-lg btn-success me-lg-5 my-3 p-md-2" href="catalogo" role="button">Comprar</a>
+                <br>
+                <a class="btn btn-lg btn-warning me-lg-5 mb-3 p-md-2" href="catalogo" role="button">Seguir viendo el catálogo</a>
+                <br>
+                <a class="btn btn-lg btn-danger me-lg-5 mb-3 p-md-2" href="catalogo" role="button">Vaciar carrito</a>
+                <br>
+              </div> 
+            </c:otherwise>  
+          </c:choose>
         </div>
+      </div>
     </div>
+  </div>
   <c:import url="/footer.jsp"/>
 </body>
 </html>
-
