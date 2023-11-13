@@ -24,6 +24,11 @@
         <servlet-class>Servlets.RegistroServlet</servlet-class>
     </servlet>
     
+     <servlet>
+        <servlet-name>ComprarServlet</servlet-name>
+        <servlet-class>Servlets.ComprarServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>BilleteraServlet</servlet-name>
         <servlet-class>Servlets.BilleteraServlet</servlet-class>
@@ -57,6 +62,11 @@
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ComprarServlet</servlet-name>
+        <url-pattern>/comprar</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

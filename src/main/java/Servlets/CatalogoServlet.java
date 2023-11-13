@@ -1,5 +1,6 @@
 package Servlets;
 
+import Modelos.Carrito;
 import Modelos.Categoria;
 import Modelos.Producto;
 import Modelos.ProductoDAO;
@@ -46,7 +47,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
         if (session != null && session.getAttribute("userLogueado") != null){
             //antes de mandar al jsp de compras, chequea si queres agregar un producto y ver el carrito o unicamente ver el carrito
             
-            String b = req.getParameter("valorBoton"); // Obtener el valor del botón "Carrito" que fue presionado
+            String b = req.getParameter("valorButton"); // Obtener el valor del botón "Carrito" que fue presionado
             int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
  
             //(boton==0) significa solamene ver el carrito
@@ -54,14 +55,17 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                 try {
                     //agrego el producto seleccionado al carrito
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
-                    List <Producto> product = (List <Producto>) session.getAttribute("carrito");
-                    if(product.isEmpty()){
-                        List <Producto> carrito = new LinkedList<>();
-                    }
-                    product.add(p);
+                    //List <Producto> product = (List <Producto>) session.getAttribute("carrito");
+                    Carrito carr = (Carrito) session.getAttribute("carrito");
+                    carr.addProductoAlCarrito(p);
+                    carr.modificarCosto(p.getPrecio());
+//                    if(product.isEmpty()){
+//                        List <Producto> carrito = new LinkedList<>();
+//                    }
+//                    product.add(p);
 
                     // Actualiza el vector en la sesión
-                    session.setAttribute("carrito", product);
+                    session.setAttribute("carrito", carr);
                    
                 } catch (Exception ex) {
                     Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,8 +75,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
             else
             {
                 //chequeo si el carrito esta vacio
-                List <Producto> product = (List <Producto>) session.getAttribute("carrito");    
-                if (product.isEmpty()){
+               Carrito carr = (Carrito) session.getAttribute("carrito");
+               if (carr.estaVacio()){
                     req.setAttribute("hayError", true);
                     req.setAttribute("mensajeError", "No hay ningun producto en el carrito");
                 }

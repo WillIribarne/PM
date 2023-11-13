@@ -1,5 +1,6 @@
 package Servlets;
 
+import Modelos.Carrito;
 import Modelos.Perfil;
 import Modelos.PerfilDAO;
 import Modelos.Producto;
@@ -54,9 +55,11 @@ public class InicioSesionServlet extends HttpServlet {
                 
                 //creo un carrito a nivel session
                 List <Producto> carrito = new LinkedList<>();
+                Carrito car = new Carrito(carrito);
+                
                 HttpSession sessionCarrito = req.getSession(); // Pido la sesión actual
                 sessionCarrito.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
-                sessionCarrito.setAttribute("carrito", carrito); // Asigno la info del carrito a la sesión
+                sessionCarrito.setAttribute("carrito", car); // Asigno la info del carrito a la sesión
 
                 resp.sendRedirect(req.getContextPath());
 
