@@ -8,17 +8,20 @@
 <body>
   <c:import url="/navbar.jsp"/>
     <div class="container rounded-5 bg-negro p-5 my-5">
-        <div class="row align-items-center">
+        <div class="row align-items-center"
+            <h1 class="text-light m-5">${mensajeError}</h1>>
             <c:choose>
-            <c:when test="${true}">
-                <h1 class="text-light m-5">La compra se ha realizado con éxito!</h1>
+            <c:when test="${hayError}">
+                <h1 class="text-light m-5">"MUCHAS GRACIAS POR COMPRAR EN PROGRAMODA! - Su compra se realizo con exito</h1>
             </c:when>
-            <c:when test="${false}"> <!-- cuando billetera < precio -->
+            <c:when test="${not hayError}">> <!-- cuando billetera < precio -->
                 <div class="col-md-8">
-                    <p class="fs-1 text-light text-center m-5">No hay dinero suficiente en la billetera</p>
+                    <p class="fs-1 text-light text-center m-5">ERROR - No se pudo realizar la compra debito a que tu billetera no dispone del saldo necesario para realizar la compra</p>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-lg btn-success" href="">Agrega dinero</button>
+                    <button type="button" class="btn btn-lg btn-success" name="b" value="1" href="billetera">Agrega dinero</button>
+                    <button type="button" class="btn btn-lg btn-success" name="b" value="2" href="compra">Cancelar compra</button>
+                
                 </div>
             </c:when>
             <c:otherwise>
@@ -28,10 +31,10 @@
         </div>
         <div class="row">
             <div class="col-md-6 d-flex justify-content-center">
-                <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="" role="button">Volver a Inicio</a>
+                <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="inicio" role="button">Volver a Inicio</a>
             </div>
             <div class="col-md-6 d-flex justify-content-center">
-                <a class="btn btn-warning btn-lg fuente-botones-index m-xl-5 my-3" href="" role="button">Ir a catálogo</a>
+                <a class="btn btn-warning btn-lg fuente-botones-index m-xl-5 my-3" href="catalogo" role="button">Ir a catálogo</a>
             </div>
         </div>
     </div>

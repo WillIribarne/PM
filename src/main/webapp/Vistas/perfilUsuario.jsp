@@ -49,10 +49,7 @@
         </div>
     </div>
     <div class="row m-5">
-        <div class="col-md-6">
-            <a class="btn btn-primary btn-lg fuente-botones-index" href="" role="button">Editar Perfil</a>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
+       <div class="col-md-6 d-flex justify-content-end">
             <a class="btn btn-secondary btn-lg fuente-botones-index" href="cerrarsesion" role="button">Cerrar Sesión</a>
         </div>
     </div>

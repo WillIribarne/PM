@@ -82,7 +82,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                 }
                 
             }
-             
             //llevo a la pagina de comprar
             req.getRequestDispatcher("Vistas/comprar.jsp").forward(req, resp);
         }
@@ -90,7 +89,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
             req.setAttribute("hayError", true);
             req.setAttribute("mensajeError", "ATENCIÓN: Debe iniciar sesion antes de realizar una compra");
             req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
-           
         }
         
         

@@ -26,7 +26,7 @@
             </div>
             <div class="col-sm-6">
                 <h2>
-                <p class="text-light"> <span class="fw-bolder">Saldo actual:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
+                <p class="text-light"> <span class="fw-bolder">Billetera:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
                 </h2>
                 <h2>
                 <p class="text-light"> <span class="fw-bolder">Precio a pagar:</span> <span class="text-success">${carrito.precio}</span></p>
@@ -46,13 +46,20 @@
                 <div class="container text-light">
                 <h3>${mensajeError}</h3>
                 </div>
-                 <a href="catalogo" class="btn btn-lg btn-warning me-lg-5 me-2" name="button" value="2">Seguir viendo el catálogo</a>
+                <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
             </c:when>
              <c:otherwise>
-             <button type="button" class="btn btn-lg btn-success me-lg-5 me-2" name="button" value="1">Comprar</button>
-            <a href="catalogo" class="btn btn-lg btn-warning me-lg-5 me-2" name="button" value="2">Seguir viendo el catálogo</a>
-            <button type="button" class="btn btn-lg btn-danger me-lg-5 me-2" name="button" value="3">Vaciar carrito</button>
-   
+                 
+            <form action="comprar" method="post">
+            <button type="submit" class="btn btn-lg btn-warning me-lg-5 me-2" name="butt" value="1">Comprar</button>
+             </form>
+            
+            <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
+            
+            <form action="comprar" method="post">
+            <button type="submit" class="btn btn-lg btn-warning me-lg-5 me-2" name="butt" value="3">Vaciar carrito</button>
+             </form>
+
              </c:otherwise>  
         </c:choose>
             </div>
