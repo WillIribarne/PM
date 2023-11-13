@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,10 +53,10 @@ public class InicioSesionServlet extends HttpServlet {
                 sessionPerfil.setAttribute("perfilLogueado", perfil); // Asigno la info del perfil a la sesión
                 
                 //creo un carrito a nivel session
-                List<Producto> carrito;
+                List <Producto> carrito = new LinkedList<>();
                 HttpSession sessionCarrito = req.getSession(); // Pido la sesión actual
                 sessionCarrito.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
-                sessionCarrito.setAttribute("carrito", sessionCarrito); // Asigno la info del carrito a la sesión
+                sessionCarrito.setAttribute("carrito", carrito); // Asigno la info del carrito a la sesión
 
                 resp.sendRedirect(req.getContextPath());
 

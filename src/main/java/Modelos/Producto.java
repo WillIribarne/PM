@@ -30,6 +30,15 @@ public class Producto {
         this.stock = stock;
         this.descripcion = descripcion;
     }
+    
+     public Producto(String nombre, String marca, Categoria cat, double precio, int stock, String descripcion) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.cat = cat;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
+    }
      
     public int getId_producto() {
         return id_producto;

@@ -11,18 +11,28 @@
     <div class="container bg-negro p-5 my-5">
         <div class="row">
             <div class="col-sm-6">
-                <h2>
-                    <p class="text-light"> <span class="fw-bolder">Producto: </span>(nombre.producto)</p>
-                </h2>
-                <p class="text-light"> <span class="fw-bolder">Marca: </span>(nombre.marca)</p>
-                <p class="text-light"> <span class="fw-bolder">"(nombre.descripcion)"</p>
+          
+       <c:forEach items="${carrito}" var="producto">     
+            <p class="text-light"><span class="fw-bolder">Nombre </span>${producto.nombre}</p>
+            <p class="text-light"><span class="fw-bolder">Marca: </span>${producto.marca}</p>
+            <p class="text-light"><span class="fw-bolder">Descripcion: </span>${producto.descripcion}</p>
+            <p class="text-light"><span class="fw-bolder">Precio: </span>${producto.precio}</p>
+            <p class="fuente-botones-index"> </p>
+       </c:forEach>
+
+                
             </div>
             <div class="col-sm-6">
                 <h2>
                 <p class="text-light"> <span class="fw-bolder">Saldo actual:</span> <span class="text-success">${perfilLogueado.billetera}</span></p>
-                <p class="text-light"> <span class="fw-bolder">Precio:</span> <span class="text-danger">(producto.precio)</span></p>
-            </h2>
-            </div>
+                </h2>
+                
+                
+                
+                
+                
+                
+                
         </div>
         <div class="row">
             <div class="col-sm-6 d-flex justify-content-center">

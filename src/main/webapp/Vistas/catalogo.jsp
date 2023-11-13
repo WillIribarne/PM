@@ -21,7 +21,7 @@
     </c:choose>
     
     <td style="text-align: right;">
-    <button name="Carrito" value=0 type="submit" class="btn btn-success" href="comprar">Ver el carrito</button>
+    <button name="valorBoton" value=0 type="submit" class="btn btn-success" href="comprar">Ver el carrito</button>
     </td>                     
    <%--  <c:if test="${true}">--%>
      <!--  <button type="button" class="btn btn-warning fw-bold" href="">Agregar Nuevo Producto</button>-->
@@ -50,7 +50,7 @@
                         <td>${producto.precio}</td>
                         <td>${producto.stock}</td>
                         <td>
-                        <button name="Carrito" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
+                        <button name="valorBoton" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
                          </td> 
                       </tr>
                 </c:forEach>

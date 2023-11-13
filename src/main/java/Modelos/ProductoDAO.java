@@ -61,13 +61,13 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
         public Producto get(Integer ID) throws Exception{
         Producto product = null;
         String query = "SELECT * FROM producto WHERE id_producto = ?";
-        try(Connection con = ConnectionPool.getInstance().getConnection();
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();){
-            ps.setInt(1, ID);
-                if (rs.next()) {
-                    product = rsRowTo(rs);
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, ID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    product = rsRowTo(resultSet);
                 }
+            }
         } catch (SQLException ex){
             throw new RuntimeException(ex);
         }
