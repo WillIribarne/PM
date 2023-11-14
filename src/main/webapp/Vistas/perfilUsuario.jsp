@@ -24,7 +24,7 @@
                 <!-- <p class="text-light text-center">Apellido:</p> (esto es medio al pedo, mejor poner nombre completo) -->
             </h2>
             <h4>
-                <p class="badge text-bg-light">Email:</p>
+                <p class="badge text-bg-light">Email: </p>
                 <p class="text-light">${perfilLogueado.email}</p>
                 <p class="badge text-bg-light">Domicilio:</p>
                 <p class="text-light">${perfilLogueado.domicilio}</p>

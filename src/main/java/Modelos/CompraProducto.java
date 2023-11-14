@@ -14,11 +14,26 @@ public class CompraProducto {
         this.cantidad = cantidad;
     }
 
-    public CompraProducto(int id_compra_producto, int compra_id_compra, int producto_id_producto, int cantidad) {
-        this.id_compra_producto = id_compra_producto;
-        this.compra_id_compra = compra_id_compra;
-        this.producto_id_producto = producto_id_producto;
-        this.cantidad = cantidad;
+    public CompraProducto( int id_compra, int id_producto, int cant) {
+        this.compra_id_compra = id_compra;
+        this.producto_id_producto = id_producto;
+        this.cantidad = cant;
+    }
+
+    public int getId_compra_producto() {
+        return id_compra_producto;
+    }
+
+    public int getCompra_id_compra() {
+        return compra_id_compra;
+    }
+
+    public int getProducto_id_producto() {
+        return producto_id_producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
     }
     
     

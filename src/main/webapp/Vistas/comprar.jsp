@@ -15,7 +15,7 @@
        <p class="text-light"> <span class="fw-bolder">Carrito</span> <span class="text-success"></span></p>
       
         <c:forEach items="${carrito.carr}" var="producto">     
-            <p class="text-light"><span class="fw-bolder">Nombre </span>${producto.nombre}</p>
+            <p class="text-light"><span class="fw-bolder">Nombre </span>${producto.nombre} ${producto.id_producto}</p>
             <p class="text-light"><span class="fw-bolder">Marca: </span>${producto.marca}</p>
             <p class="text-light"><span class="fw-bolder">Descripcion: </span>${producto.descripcion}</p>
             <p class="text-light"><span class="fw-bolder">Precio: </span>${producto.precio}</p>

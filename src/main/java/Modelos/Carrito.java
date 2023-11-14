@@ -46,6 +46,10 @@ public class Carrito {
         return precio;
     }
     
+    public void resetPrecio() {
+        this.precio=0;
+    }
+    
     public void vaciarCarrito (){
         
     }

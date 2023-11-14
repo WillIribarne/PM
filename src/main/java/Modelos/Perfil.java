@@ -68,6 +68,7 @@ public class Perfil {
 
     }
 
+
     public void setBilletera(double billetera) {
         this.billetera = billetera;
     }
@@ -117,6 +118,10 @@ public class Perfil {
 
     public int getId_usuario() {
         return id_usuario;
+    }
+
+    public void setId_perfil(int id_perfil) {
+        this.id_perfil = id_perfil;
     }
 
     public int getCont() {

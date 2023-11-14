@@ -80,6 +80,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     req.setAttribute("hayError", true);
                     req.setAttribute("mensajeError", "No hay ningun producto en el carrito");
                 }
+                                 
                 
             }
             //llevo a la pagina de comprar
