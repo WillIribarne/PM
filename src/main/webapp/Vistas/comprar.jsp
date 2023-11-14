@@ -19,6 +19,8 @@
             <p class="text-light"><span class="fw-bolder">Marca: </span>${producto.marca}</p>
             <p class="text-light"><span class="fw-bolder">Descripcion: </span>${producto.descripcion}</p>
             <p class="text-light"><span class="fw-bolder">Precio: </span>${producto.precio}</p>
+            <p class="text-light"><span class="fw-bolder">Cantidad: </span>${producto.stock}</p>
+            <p class="text-light"><span class="fw-bolder">-----------------------------------------------------</p>
             <p class="text-light"><span class="fw-bolder">  </span> </p>
             
        </c:forEach>

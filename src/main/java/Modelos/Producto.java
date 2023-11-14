@@ -68,7 +68,13 @@ public class Producto {
         return descripcion;
     }
     
+    public int setCantidad() {
+        return stock++;
+    }
     
-    
+    public int setCantidad(int n) {
+        return stock=n;
+    }
+      
    
 }

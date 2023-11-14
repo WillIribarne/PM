@@ -55,14 +55,13 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                 try {
                     //agrego el producto seleccionado al carrito
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
-                    //List <Producto> product = (List <Producto>) session.getAttribute("carrito");
                     Carrito carr = (Carrito) session.getAttribute("carrito");
+                    
+                    //agrego al carrito
                     carr.addProductoAlCarrito(p);
+                    
+                    //modifico el costo total a pagar
                     carr.modificarCosto(p.getPrecio());
-//                    if(product.isEmpty()){
-//                        List <Producto> carrito = new LinkedList<>();
-//                    }
-//                    product.add(p);
 
                     // Actualiza el vector en la sesión
                     session.setAttribute("carrito", carr);
