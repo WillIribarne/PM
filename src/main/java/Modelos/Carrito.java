@@ -84,7 +84,20 @@ public class Carrito {
     }
     
     public void vaciarCarrito (){
-        
+        carr.clear();
     }
-                    
+    
+    public void devolverAlCarrito(List <Producto> carritoDevuelto){
+        for (Producto p : carritoDevuelto){
+            addProductosDevueltos(p);         
+       }
+    }
+    
+    public void addProductosDevueltos (Producto p){
+        for(Producto x : carr){
+            if(x.getId_producto()==p.getId_producto()){                
+                modificoLaCantidad(x); //aumento el contador de cantidad
+            }
+        }
+    }   
 }

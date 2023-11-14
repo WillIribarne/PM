@@ -110,7 +110,7 @@ import java.util.logging.Logger;
             Carrito c = (Carrito)session.getAttribute("carrito");
             c.resetPrecio();
             List <Producto> product = c.getCarr();
-            product.clear();
+            c.vaciarCarrito();
             req.getRequestDispatcher("Vistas/catalogo.jsp").forward(req, resp);
             session.setAttribute("carrito", c);    
         }

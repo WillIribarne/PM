@@ -76,5 +76,9 @@ public class Producto {
         return stock=n;
     }
       
-   
-}
+    public int disminuirCantidad() {
+        return stock--;
+    }
+    
+    
+ }
