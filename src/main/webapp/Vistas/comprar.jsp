@@ -17,6 +17,7 @@
             <p class="text-light"><span class="badge fs-6 fw-bolder">Marca: </span>${producto.marca}</p>
             <p class="text-light"><span class="badge fs-6 fw-bolder">Descripcion: </span>${producto.descripcion}</p>
             <p class="text-light"><span class="badge fs-6 fw-bolder">Precio: </span>${producto.precio}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Precio: </span>${producto.cantidad}</p>
           </div>    
         </c:forEach>
       </div>
