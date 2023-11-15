@@ -12,7 +12,7 @@
             <h1 class="text-light m-5">${mensajeError}</h1>>
             <c:choose>
             <c:when test="${hayError}">
-                <h1 class="text-light m-5">"MUCHAS GRACIAS POR COMPRAR EN PROGRAMODA! - Su compra se realizo con exito</h1>
+                <h1 class="text-light m-5">"MUCHAS GRACIAS POR COMPRAR EN PROGRAMODA! - Su compra se realizo con exito. Cuando desee la puede retirar por el local!</h1>
             </c:when>
             <c:when test="${not hayError}">> <!-- cuando billetera < precio -->
                 <div class="col-md-8">

@@ -1,6 +1,8 @@
 
 package Modelos;
 
+import java.util.List;
+
 public class RegistroCompras {
     private int id_registro_compras;
     private int id_perfil;
@@ -30,5 +32,7 @@ public class RegistroCompras {
         return id_perfil;
     }
     
-    
+    public void getRegistroDeCOmpras(){
+       //HACER
+    }
 }

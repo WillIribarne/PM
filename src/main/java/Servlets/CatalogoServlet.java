@@ -28,8 +28,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
         HttpSession sessionProducto = req.getSession(); // Pido la sesión actual
         ProductoDAO pDAO = new ProductoDAO();
         sessionProducto.setAttribute("productos", pDAO.getAll());
-        
-        
+          
     } catch (Exception ex) {
         Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -59,6 +58,12 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     
                     //agrego al carrito
                     carr.addProductoAlCarrito(p);
+                    
+                    //reduzco el stock del producto en el catalogo
+                   // p.disminuirCantidad();
+                    
+                    //actualizo sesion
+                    //session.setAttribute("carrito", carr);
                     
                     //modifico el costo total a pagar
                     carr.modificarCosto(p.getPrecio());
@@ -90,10 +95,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
             req.setAttribute("mensajeError", "ATENCIÓN: Debe iniciar sesion antes de realizar una compra");
             req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
         }
-        
-        
-                
        
-    
    }
 }

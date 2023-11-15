@@ -88,8 +88,10 @@ import java.util.logging.Logger;
                        comprProduDAO.add(comprProd);
                     }
     
-    //              vacio el carrito
-                    product.clear();
+    //              vacio el carrito y reseteo el precio a pagar
+                    c.vaciarCarrito();
+                    c.modificarCosto();
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(ComprarServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -109,7 +111,7 @@ import java.util.logging.Logger;
             
             Carrito c = (Carrito)session.getAttribute("carrito");
             c.resetPrecio();
-            List <Producto> product = c.getCarr();
+           // List <Producto> product = c.getCarr();
             c.vaciarCarrito();
             req.getRequestDispatcher("Vistas/catalogo.jsp").forward(req, resp);
             session.setAttribute("carrito", c);    
