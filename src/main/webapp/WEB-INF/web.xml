@@ -28,10 +28,15 @@
         <servlet-name>ComprarServlet</servlet-name>
         <servlet-class>Servlets.ComprarServlet</servlet-class>
     </servlet>
-    
+
     <servlet>
         <servlet-name>BilleteraServlet</servlet-name>
         <servlet-class>Servlets.BilleteraServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <servlet-class>Servlets.RegistroUsuarioServlet</servlet-class>
     </servlet>
 
     <servlet>
@@ -40,10 +45,16 @@
     </servlet>
     
     <servlet>
+        <servlet-name>MasInfoUserServlet</servlet-name>
+        <servlet-class>Servlets.MasInfoUserServlet</servlet-class>
+    </servlet>
+    
+    
+    <servlet>
         <servlet-name>CatalogoServlet</servlet-name>
         <servlet-class>Servlets.CatalogoServlet</servlet-class>
     </servlet>
-    
+     
     <servlet>
         <servlet-name>InicioSesionServlet</servlet-name>
         <servlet-class>Servlets.InicioSesionServlet</servlet-class>
@@ -53,7 +64,7 @@
         <servlet-name>QuienesSomosServlet</servlet-name>
         <servlet-class>Servlets.QuienesSomosServlet</servlet-class>
     </servlet>
-
+    
     <servlet>
         <servlet-name>PerfilServlet</servlet-name>
         <servlet-class>Servlets.PerfilServlet</servlet-class>
@@ -62,6 +73,17 @@
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <url-pattern>/registroUsuario</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>MasInfoUserServlet</servlet-name>
+        <url-pattern>/masinfo</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

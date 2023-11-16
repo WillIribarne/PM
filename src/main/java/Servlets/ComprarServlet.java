@@ -71,7 +71,7 @@ import java.util.logging.Logger;
 //                    
                     //*tabla: compra
                     LocalDate fechaActual = LocalDate.now();
-                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-yyyy-MM");
+                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                     String fecha = fechaActual.format(formato);
                       
                     Compra comp = new Compra(regCompras.getId_registro_compras(),fecha,c.getPrecio());

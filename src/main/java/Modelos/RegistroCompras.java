@@ -16,6 +16,11 @@ public class RegistroCompras {
         this.id_perfil = id;
     }
 
+    public RegistroCompras(int id_registro_compras, int id_perfil) {
+        this.id_registro_compras = id_registro_compras;
+        this.id_perfil = id_perfil;
+    }
+
     public void setId_registro_compras(int id) {
         this.id_registro_compras = id;
     }
@@ -35,4 +40,5 @@ public class RegistroCompras {
     public void getRegistroDeCOmpras(){
        //HACER
     }
+
 }

@@ -16,7 +16,7 @@
             <img src="recursos/imgs/PM-Index.jpeg" width="120" height="120"> <!-- esto es la foto -->
         </div>
         <div class="col-md-6 d-flex justify-content-end my-2 py-md-4">
-            <a class="btn btn-info btn fs-4 fw-bold" href="" role="button">Ver compras anteriores</a>
+            <a class="btn btn-info btn fs-4 fw-bold" href="registroUsuario" role="button">Ver compras anteriores</a>
         </div>
     </div>
     <div class="row m-5">

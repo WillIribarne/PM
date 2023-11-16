@@ -48,17 +48,18 @@
                         <th scope="row">${producto.nombre}</th>
                         <td>${producto.marca}</td>
                         <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
+                        <td>$ ${producto.precio}</td>
                         <td>${producto.stock}</td>
                         <td>
-                          <c:choose>
-                            <c:when test="${usuario.tipo = 'Admin'}">
+                        <button name="valorButton" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
+                       <%--   <c:choose>
+                          <%--  <c:when test="${usuario.tipo = 'Admin'}">
                               <button name="valorButton" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Editar producto</button>
                             </c:when>
                             <c:otherwise>
                               <button name="valorButton" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
                             </c:otherwise>
-                          </c:choose>
+                          </c:choose>--%>
                         </td> 
                       </tr>
                       </c:if>

@@ -1,6 +1,7 @@
 
 package Modelos;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Producto {
@@ -82,11 +83,11 @@ public class Producto {
         return stock--;
     }
 
-    void modificarEnLaBD(Producto p) throws Exception {
+    public void modificarEnLaBD(Producto p) throws Exception {
         ProductoDAO pDAO = new ProductoDAO();
          pDAO.update(p);
-         
     }
+    
     
     
  }
