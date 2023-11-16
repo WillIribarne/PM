@@ -23,10 +23,25 @@
         <servlet-name>RegistroServlet</servlet-name>
         <servlet-class>Servlets.RegistroServlet</servlet-class>
     </servlet>
+    
+     <servlet>
+        <servlet-name>ComprarServlet</servlet-name>
+        <servlet-class>Servlets.ComprarServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>BilleteraServlet</servlet-name>
+        <servlet-class>Servlets.BilleteraServlet</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>LogOutServlet</servlet-name>
         <servlet-class>Servlets.LogOutServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <servlet-class>Servlets.CatalogoServlet</servlet-class>
     </servlet>
     
     <servlet>
@@ -48,6 +63,22 @@
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
     </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ComprarServlet</servlet-name>
+        <url-pattern>/comprar</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>BilleteraServlet</servlet-name>
+        <url-pattern>/billetera</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CatalogoServlet</servlet-name>
+        <url-pattern>/catalogo</url-pattern>
+    </servlet-mapping>
+    
 
     <servlet-mapping>
         <servlet-name>InicioSesionServlet</servlet-name>

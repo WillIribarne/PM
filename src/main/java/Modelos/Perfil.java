@@ -9,7 +9,7 @@ public class Perfil {
     private String apellido;
     private String fechaNac; //modificar
     private String email;
-    private float billetera;
+    private double billetera;
     private String domicilio;
     private String telefono;
     private String foto; //ver
@@ -51,7 +51,7 @@ public class Perfil {
         this.id_usuario=p.id_perfil;
     }
 
-    public Perfil(int id_perfil, String nombre, String apellido, String fechaNac, String email, float billetera, String domicilio, String telefono, String foto, int id_usuario) {
+    public Perfil(int id_perfil, String nombre, String apellido, String fechaNac, String email, double billetera, String domicilio, String telefono, String foto, int id_usuario) {
         this.id_perfil = id_perfil;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -64,7 +64,15 @@ public class Perfil {
         this.id_usuario=id_usuario;
     }
     
+    public Perfil() {
 
+    }
+
+
+    public void setBilletera(double billetera) {
+        this.billetera = billetera;
+    }
+    
     public boolean sonCorrectosLosDatos (Perfil p) {
         boolean flag;
         
@@ -92,7 +100,7 @@ public class Perfil {
         return email;
     }
 
-    public float getBilletera() {
+    public double getBilletera() {
         return billetera;
     }
 
@@ -110,6 +118,10 @@ public class Perfil {
 
     public int getId_usuario() {
         return id_usuario;
+    }
+
+    public void setId_perfil(int id_perfil) {
+        this.id_perfil = id_perfil;
     }
 
     public int getCont() {

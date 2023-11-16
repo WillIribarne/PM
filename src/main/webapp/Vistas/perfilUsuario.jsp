@@ -24,7 +24,7 @@
                 <!-- <p class="text-light text-center">Apellido:</p> (esto es medio al pedo, mejor poner nombre completo) -->
             </h2>
             <h4>
-                <p class="badge text-bg-light">Email:</p>
+                <p class="badge text-bg-light">Email: </p>
                 <p class="text-light">${perfilLogueado.email}</p>
                 <p class="badge text-bg-light">Domicilio:</p>
                 <p class="text-light">${perfilLogueado.domicilio}</p>
@@ -43,15 +43,13 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end m-2">
-                <button type="button" class="btn btn-success" href="billetera">Agregar dinero</button>
-            </div>
+                <a class="btn btn-success" href="billetera" role="button">Agregar dinero</a>
+             </div>
+             
         </div>
     </div>
     <div class="row m-5">
-        <div class="col-md-6">
-            <a class="btn btn-primary btn-lg fuente-botones-index" href="" role="button">Editar Perfil</a>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end">
+       <div class="col-md-6 d-flex justify-content-end">
             <a class="btn btn-secondary btn-lg fuente-botones-index" href="cerrarsesion" role="button">Cerrar Sesión</a>
         </div>
     </div>

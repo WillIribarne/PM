@@ -1,6 +1,8 @@
 
 package Modelos;
 
+import java.util.List;
+
 public class Producto {
    private int id_producto;
    private String nombre;
@@ -9,6 +11,7 @@ public class Producto {
    private double precio;
    private int stock;
    private String descripcion;
+   
 
     public Producto(int id_producto, String nombre, String marca, Categoria cat, double precio, int stock, String descripcion) {
         this.id_producto = id_producto;
@@ -19,9 +22,18 @@ public class Producto {
         this.stock = stock;
         this.descripcion = descripcion;
     }
-
+    
      public Producto() {
         this.id_producto = id_producto;
+        this.nombre = nombre;
+        this.marca = marca;
+        this.cat = cat;
+        this.precio = precio;
+        this.stock = stock;
+        this.descripcion = descripcion;
+    }
+    
+     public Producto(String nombre, String marca, Categoria cat, double precio, int stock, String descripcion) {
         this.nombre = nombre;
         this.marca = marca;
         this.cat = cat;
@@ -58,6 +70,23 @@ public class Producto {
         return descripcion;
     }
     
+    public int setCantidad() {
+        return stock++;
+    }
     
-   
-}
+    public int setCantidad(int n) {
+        return stock=n;
+    }
+      
+    public int disminuirCantidad() {
+        return stock--;
+    }
+
+    void modificarEnLaBD(Producto p) throws Exception {
+        ProductoDAO pDAO = new ProductoDAO();
+         pDAO.update(p);
+         
+    }
+    
+    
+ }

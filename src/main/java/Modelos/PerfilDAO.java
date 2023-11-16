@@ -22,6 +22,56 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public double getValorBilletera (int ID)throws Exception{
+       double valorBilletera=0;
+        String query = "SELECT * FROM perfil WHERE id_usuario = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, ID);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                   valorBilletera = resultSet.getDouble("billetera");
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return valorBilletera;
+    
+    }
+ 
+    public double updateBilletera(int ID, double valorAgregado) throws Exception {
+    double valorActual=getValorBilletera(ID); //obtengo lo que hay dentro de billetera
+    double nuevoValor=valorActual+valorAgregado; //genero el nuevo valor de la billetera
+    String query = "UPDATE perfil SET billetera = ? WHERE id_usuario = ?";
+    
+    try (Connection con = ConnectionPool.getInstance().getConnection();
+         PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        preparedStatement.setDouble(1, nuevoValor);
+        preparedStatement.setInt(2, ID);
+        preparedStatement.executeUpdate();
+
+    } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+    return nuevoValor;
+ }
+    
+    public double setBilletera(int ID, double billetera, double valorAgregado) throws Exception {
+    double nuevoValor=billetera-valorAgregado; //obtengo lo que hay dentro de billetera
+    String query = "UPDATE perfil SET billetera = ? WHERE id_usuario = ?";
+    
+    try (Connection con = ConnectionPool.getInstance().getConnection();
+         PreparedStatement preparedStatement = con.prepareStatement(query)) {
+        preparedStatement.setDouble(1, nuevoValor);
+        preparedStatement.setInt(2, ID);
+        preparedStatement.executeUpdate();
+
+    } catch (SQLException ex) {
+        throw new RuntimeException(ex);
+    }
+    return nuevoValor;
+ }
+    
     @Override
     public void add(Perfil p) throws Exception {
         String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,foto,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -29,8 +79,8 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
             //ver el id
             preparedStatement.setString(1, p.getNombre());
             preparedStatement.setString(2, p.getApellido());
-            preparedStatement.setString(3, "...");
-            preparedStatement.setString(4, "...");
+            preparedStatement.setString(3, p.getFechaNac());
+            preparedStatement.setString(4, p.getEmail());
             preparedStatement.setDouble(5, p.getBilletera());
             preparedStatement.setString(6, p.getDomicilio());
             preparedStatement.setString(7, p.getTelefono());
@@ -76,9 +126,21 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         return perfil;
     }
 
-    @Override
-    public int getID(String nombre) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public int getID(int ID_usuario) throws Exception {
+    Perfil perfil = null;
+        String query = "SELECT * FROM perfil WHERE id_usuario = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, ID_usuario);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    perfil = rsRowTo(resultSet);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return perfil.getId_perfil();
     }
 
     @Override
@@ -106,5 +168,12 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     public Perfil get(Integer id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public int getID(String l) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
 
 }
