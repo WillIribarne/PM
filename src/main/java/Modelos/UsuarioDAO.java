@@ -29,8 +29,9 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
             //ver el id
             preparedStatement.setString(1, u.getNombre());
-            preparedStatement.setString(2, u.getContrasenia());
-            preparedStatement.setString(3, u.getTipo());
+            preparedStatement.setString(2, u.getContrasenia());           
+           // preparedStatement.setString(3, TipoUsuario.Final); 
+            preparedStatement.setString(3, TipoUsuario.Final.name());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -115,13 +116,13 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
     
     @Override
     public Usuario rsRowTo(ResultSet rs) throws Exception {
-            return new Usuario(
-                    rs.getInt("id_usuario"),
-                    rs.getString("nombre"),
-                    rs.getString("contrasenia"),
-                    rs.getString("Tipo")
-            );
- 
+        //
+        int id = rs.getInt("id_usuario");
+        String nombre = rs.getString("nombre");
+        String marca = rs.getString("contrasenia");
+        TipoUsuario u = TipoUsuario.valueOf(rs.getString("Tipo"));
+   
+        return new Usuario( id,nombre,marca,u);
     }    
 
     @Override

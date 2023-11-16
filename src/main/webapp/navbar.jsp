@@ -22,7 +22,7 @@
                 <li class="nav-item"> 
                     <c:choose>
                         <c:when test="${usuarioIngresado}"> 
-                            <a class="nav-link fuente-navbar-estandar me-5" href="perfil">Bienvenid@: ${perfilLogueado.nombre} ${perfilLogueado.apellido}</a>
+                            <a class="nav-link fuente-navbar-estandar me-5" href="perfil">Hola ${perfilLogueado.nombre} ${perfilLogueado.apellido} :)</a>
                         </c:when>
                         <c:otherwise>
                             <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
@@ -31,15 +31,11 @@
                 </li>
                 
                <c:choose>
-                <c:when test="${usuarioIngresado}">
+                <c:when test="${usuarioIngresado && tipoUser==1}">
                     <li class="nav-item">
                         <a class="nav-link fuente-navbar-estandar me-5" href="billetera">Billetera: $ ${perfilLogueado.billetera} </a>
                         </li>
-                   
                 </c:when>
-                <c:otherwise>
-                 
-                </c:otherwise>
                 </c:choose>
             
             </ul>

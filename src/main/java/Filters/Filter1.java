@@ -19,7 +19,6 @@ public class Filter1 implements Filter {
             chain.doFilter(request, response); // Ir al siguiente en la cadena de filters
             //request.setAttribute("usuarioIngresado", true);
         } else {
-           
             request.setAttribute("hayError", true);
             request.setAttribute("mensajeError", "ATENCIÓN: Debe iniciar sesion primero");
             request.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(request, response);

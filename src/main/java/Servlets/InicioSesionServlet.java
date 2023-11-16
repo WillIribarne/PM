@@ -4,6 +4,7 @@ import Modelos.Carrito;
 import Modelos.Perfil;
 import Modelos.PerfilDAO;
 import Modelos.Producto;
+import Modelos.TipoUsuario;
 import Modelos.Usuario;
 import Modelos.UsuarioDAO;
 import jakarta.servlet.ServletException;
@@ -52,6 +53,10 @@ public class InicioSesionServlet extends HttpServlet {
 
                 //se ingreso el usuario
                 session.setAttribute("usuarioIngresado", true); 
+                //setteo si es admin o final
+                TipoUsuario tipoUser = user.getTipo();
+                if (tipoUser==TipoUsuario.Final) session.setAttribute("tipoUser", 1); 
+                else session.setAttribute("tipoUser", 2);
                 
                 Perfil perfil = new PerfilDAO().getByID(user.getId_usuario());
                 //modificar la manera de obtener el id

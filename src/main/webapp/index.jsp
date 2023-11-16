@@ -18,9 +18,14 @@
           <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogo" role="button">Ver catálogo</a>
           <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="info" role="button">Sobre nosotros</a>
           <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="perfil" role="button">Mi Perfil</a>
-          <c:if test="${true}">
-            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Agregar al catálogo</a>
-          </c:if>
+          
+          <!--tipoUser=1 es usuario Final y tipoUser=2 es admin-->
+          <c:choose>
+          <c:when test="${tipoUser==2}"> 
+              <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Agregar al catálogo</a>
+           </c:when>
+          </c:choose>
+ 
         </div>
       </div>
     </div>
