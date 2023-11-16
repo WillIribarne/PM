@@ -21,25 +21,30 @@
                 
                 <li class="nav-item"> 
                     <c:choose>
-                        <c:when test="${false}"> <!-- nota: {usuario.estadoLogin = 1} es lo mismo que un {true}, pero no se si es posible hacer 'x = boolean', por eso el 1-->
-                            <a class="nav-link fuente-navbar-estandar me-5" href="perfil">${usuario.nombreCompleto}</a>
+                        <c:when test="${usuarioIngresado}"> 
+                            <a class="nav-link fuente-navbar-estandar me-5" href="perfil">Bienvenid@: ${perfilLogueado.nombre} ${perfilLogueado.apellido}</a>
                         </c:when>
                         <c:otherwise>
                             <a class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
                         </c:otherwise>
                     </c:choose>
                 </li>
-                <c:if test="${true}"> <!-- si el usuario está logueado, mostrar billetera-->
-                    <li class="nav-item"> 
-                        <span class="d-flex fuente-navbar-brand me-2">$ 2,00</span> <!-- ${usuario.billetera} -->
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-light rounded-pill fw-bolder fs-4 py-0" href="billetera" >+</button>
-                    </li>
-                </c:if>
+                
+               <c:choose>
+                <c:when test="${usuarioIngresado}">
+                    <li class="nav-item">
+                        <a class="nav-link fuente-navbar-estandar me-5" href="billetera">Billetera: $ ${perfilLogueado.billetera} </a>
+                        </li>
+                   
+                </c:when>
+                <c:otherwise>
+                 
+                </c:otherwise>
+                </c:choose>
+            
             </ul>
             <c:choose>
-                <c:when test="${false}"> <!-- nota: {usuario.estadoLogin = 1} es lo mismo que un {true}, pero no se si es posible hacer 'x = boolean', por eso el 1-->
+                <c:when test="${usuarioIngresado}">
                 <span class="d-flex fuente-navbar-brand me-2">Bienvenido a PrograModa</span>
                 </c:when>
                 <c:otherwise>

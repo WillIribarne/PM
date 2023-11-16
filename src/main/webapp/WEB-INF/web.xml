@@ -18,6 +18,7 @@
         <url-pattern>/perfil</url-pattern>
         <url-pattern></url-pattern>
     </filter-mapping>
+
     
     <servlet>
         <servlet-name>RegistroServlet</servlet-name>
