@@ -49,6 +49,8 @@ public class InicioSesionServlet extends HttpServlet {
                 session.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
                 session.setAttribute("userLogueado", user); // Asigno la info del usuario a la sesión
                 Perfil perfil = new PerfilDAO().getByID(user.getId_usuario());
+                //modificar la manera de obtener el id
+                //perfil = new PerfilDAO().getByID(user.getId_usuario()); //obtengo el id
                 HttpSession sessionPerfil = req.getSession();
                 sessionPerfil.setMaxInactiveInterval(1800); // Seteo tiempo máximo de inactividad (en segundos)
                 sessionPerfil.setAttribute("perfilLogueado", perfil); // Asigno la info del perfil a la sesión

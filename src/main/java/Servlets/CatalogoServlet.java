@@ -1,6 +1,7 @@
 package Servlets;
 
 import Modelos.Carrito;
+import Modelos.Catalogo;
 import Modelos.Categoria;
 import Modelos.Producto;
 import Modelos.ProductoDAO;
@@ -27,9 +28,13 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
         //agarro los productos a la session para que se muestre en el catalogo
         HttpSession sessionProducto = req.getSession(); // Pido la sesión actual
         ProductoDAO pDAO = new ProductoDAO();
-        sessionProducto.setAttribute("productos", pDAO.getAll());
+//        sessionProducto.setAttribute("productos", pDAO.getAll());
         
-        
+        //lo hago con la lista de catalogo
+        Catalogo cat = new Catalogo();
+        cat.setCatalogo(pDAO.getAll());
+        sessionProducto.setAttribute("productos", cat.getCatalogo());
+          
     } catch (Exception ex) {
         Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -55,17 +60,42 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                 try {
                     //agrego el producto seleccionado al carrito
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
-                    //List <Producto> product = (List <Producto>) session.getAttribute("carrito");
                     Carrito carr = (Carrito) session.getAttribute("carrito");
+                    // Carrito carr = (Carrito) session.getAttribute("productos");
+                   //carr.setCarr((List<Producto>) session.getAttribute("carrito"));
+                   
+                    ProductoDAO pDAO = new ProductoDAO();
+                    pDAO.updateStock(p.getId_producto(),p.getStock()-1);
+                    
+                    Catalogo catal = new Catalogo();
+                    catal.setCatalogo(pDAO.getAll());
+                    session.setAttribute("productos", catal.getCatalogo());
+                    
+                    
+                    //agrego al carrito
                     carr.addProductoAlCarrito(p);
+                    //modifico el costo total a pagar
                     carr.modificarCosto(p.getPrecio());
-//                    if(product.isEmpty()){
-//                        List <Producto> carrito = new LinkedList<>();
-//                    }
-//                    product.add(p);
+                    
+                    //reduzco el stock del producto en el catalogo
+                   // Catalogo catal = new Catalogo();
+                    //catal.setCatalogo((List<Producto>)session.getAttribute("productos"));
+                   // catal.disminuyoStock(p.getId_producto());
+                    
+//                    Catalogo catal = new Catalogo();
+//                    catal.setCatalogo(pDAO.getAll());
+//                    session.setAttribute("productos", catal.getCatalogo());
+        
+                    //catal.devolverAlCatalogo(carr.getCarr());
+                    
+                    //actualizo sesion
+                    //session.setAttribute("carrito", carr);
+                    
+                    
 
-                    // Actualiza el vector en la sesión
+                    // Actualiza  la sesión
                     session.setAttribute("carrito", carr);
+                    //session.setAttribute("productos", catal.getCatalogo());
                    
                 } catch (Exception ex) {
                     Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,6 +110,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     req.setAttribute("hayError", true);
                     req.setAttribute("mensajeError", "No hay ningun producto en el carrito");
                 }
+                                 
                 
             }
             //llevo a la pagina de comprar
@@ -90,10 +121,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
             req.setAttribute("mensajeError", "ATENCIÓN: Debe iniciar sesion antes de realizar una compra");
             req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
         }
-        
-        
-                
        
-    
    }
 }

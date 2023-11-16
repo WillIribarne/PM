@@ -7,6 +7,7 @@
   </c:import>
 <body>
   <c:import url="/navbar.jsp"/>
+
   <div class="container bg-negro p-5 my-5">
     <div class="row">
       <div class="col-sm-6">
@@ -30,6 +31,7 @@
         </h2>
         <div class="d-flex justify-content-center">
           <c:choose>
+
             <c:when test="${mensajeError != null && mensajeError == 'No hay ningun producto en el carrito'}">
               <div class="container text-light">
                 <h3>${mensajeError}</h3>

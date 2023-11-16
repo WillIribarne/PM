@@ -27,22 +27,22 @@
                             <input type="user" class="form-control" id="nombre" name="nombre">
                         </div>
                         <div class="mb-3">
-                            <label for="dateInput" class="form-label text-light">Fecha de nacimiento *</label>
-                            <input type="date" class="form-control" id="dateInput" name="date">
+                            <label for="fechaInput" class="form-label text-light">Fecha de nacimiento *</label>
+                            <input type="fecha" class="form-control" id="fecha" name="fecha">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputUser1" class="form-label text-light">Domicilio</label>
+                            <label for="domicilioInput" class="form-label text-light">Domicilio</label>
                             <input type="domicilio" class="form-control" id="domicilio" name="domicilio">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
-                            <label for="userInput" class="form-label text-light">Apellido *</label>
+                            <label for="apellidoInput" class="form-label text-light">Apellido *</label>
                             <input type="apellido" class="form-control" id="apellido" name="apellido">
                         </div>
                         <div class="mb-3">
-                            <label for="emailInput" class="form-label text-light">Direccion de mail *</label>
-                            <input type="email" class="form-control" id="emailInput" name="email" placeholder="mimail@mail.com">
+                            <label for="correoInput" class="form-label text-light">Direccion de mail *</label>
+                            <input type="correo" class="form-control" id="correo" name="correo" placeholder="mimail@mail.com">
                         </div>
                         <div class="mb-3">
                             <label for="telInput" class="form-label text-light">Numero de Teléfono</label>

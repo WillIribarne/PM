@@ -15,16 +15,53 @@ public class Carrito {
 
     public Carrito() {
     }
+
+    public void setCarr(List<Producto> carr) {
+        this.carr = carr;
+    }
+    
+    public boolean existeEnLaLista(){
+       boolean flag=false;
+       
+        return flag;
+    }
+    
+    public void modificoLaCantidad(Producto p){
+        p.setCantidad();
+    }
+    
+    public void valeUnoLaCantidad(Producto p){
+        p.setCantidad(1);
+    }
+    
+    public boolean chequeo(Producto p){
+        boolean flag=false;
+        for(Producto x : carr){
+            if(x.getId_producto()==p.getId_producto()){
+                flag=true;
+                modificoLaCantidad(x); //aumento el contador de cantidad
+            }
+        }
+        
+        if(flag==false) valeUnoLaCantidad(p);
+        
+        return flag;
+    }
     
     public List addProductoAlCarrito (Producto p){
         if(carr.isEmpty()){
             List <Producto> carrito = new LinkedList<>();
         }
         
-        carr.add(p);
+        //chequeo si ya existe en la lista
+        boolean f=chequeo(p);
         
+        //lo agrego
+        if(f==false){
+            carr.add(p);
+        }
+          
         return carr;
-        
     }
 
     public boolean estaVacio(){
@@ -34,7 +71,7 @@ public class Carrito {
         this.precio=this.precio+precioAgregado;
     }
     
-    public void modificarCosto (){
+    public void modificarCostoACero (){
         this.precio=0;
     }
     
@@ -46,8 +83,25 @@ public class Carrito {
         return precio;
     }
     
-    public void vaciarCarrito (){
-        
+    public void resetPrecio() {
+        this.precio=0;
     }
-                    
+    
+    public void vaciarCarrito (){
+        carr.clear();
+    }
+    
+    public void devolverAlCarrito(List <Producto> carritoDevuelto){
+        for (Producto p : carritoDevuelto){
+            addProductosDevueltos(p);         
+       }
+    }
+    
+    public void addProductosDevueltos (Producto p){
+        for(Producto x : carr){
+            if(x.getId_producto()==p.getId_producto()){                
+                modificoLaCantidad(x); //aumento el contador de cantidad
+            }
+        }
+    }   
 }

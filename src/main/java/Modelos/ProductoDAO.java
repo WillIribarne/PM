@@ -17,19 +17,60 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
     }
 
     @Override
-    public void add(Producto e) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public void add(Producto producto) throws Exception {
+    String query = "INSERT INTO producto (nombre, marca, categoria, precio, stock, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            //ver el id
+            preparedStatement.setString(2, producto.getNombre());
+            preparedStatement.setString(3, producto.getMarca());
+            preparedStatement.setString(4,  producto.getCat().name());
+            preparedStatement.setDouble(5, producto.getPrecio());
+            preparedStatement.setInt(6, producto.getStock());
+            preparedStatement.setString(7, producto.getDescripcion());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+     }
 
     @Override
-    public void update(Producto e) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Producto p) throws Exception {
+        String query = "UPDATE producto SET nombre = ?, marca = ?, categoria = ?, precio = ?,stock=?, descripcion = ? WHERE id_producto = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, p.getNombre());
+            preparedStatement.setString(2, p.getMarca());
+            preparedStatement.setString(3,  p.getCat().name());
+            preparedStatement.setDouble(4, p.getPrecio());
+            preparedStatement.setInt(5, p.getStock());
+            preparedStatement.setString(6, p.getDescripcion());
+            preparedStatement.setInt(7, p.getId_producto());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    
+    public void updateStock(int id, int stock) throws Exception {
+        String query = "UPDATE producto SET stock = ? WHERE id_producto = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, stock);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
     public void delete(Integer id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        String query = "DELETE FROM producto WHERE id_producto = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }}
 
     @Override
     public List getAll() throws Exception {
@@ -57,8 +98,8 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-     @Override
-        public Producto get(Integer ID) throws Exception{
+    @Override
+    public Producto get(Integer ID) throws Exception{
         Producto product = null;
         String query = "SELECT * FROM producto WHERE id_producto = ?";
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {

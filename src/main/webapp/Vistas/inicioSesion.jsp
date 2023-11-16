@@ -17,10 +17,10 @@
               <label for="exampleInputPassword1" class="form-label text-light">Contraseña</label>
               <input type="password" class="form-control" id="clave" name="clave">
             </div>
-            <div class="mb-3 form-check">
+          <!--   <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label text-light" for="exampleCheck1">Recordarme</label>
-            </div>
+            </div> --!>
             
              <!-- notifica que los datos de inicio son incorrectos o que debe iniciar sesion antes de ver el perfil!-->
             <c:if test="${hayError}">
