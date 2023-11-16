@@ -35,15 +35,27 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
 
     @Override
     public void update(Producto p) throws Exception {
-        String query = "UPDATE producto SET nombre = ?, id_producto = ?, nombre = ?, marca = ?, categoria = ?, precio = ?, descripcion = ? WHERE id_producto = ?";
+        String query = "UPDATE producto SET nombre = ?, marca = ?, categoria = ?, precio = ?,stock=?, descripcion = ? WHERE id_producto = ?";
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, p.getId_producto());
-            preparedStatement.setString(2, p.getNombre());
-            preparedStatement.setString(3, p.getMarca());
-            preparedStatement.setString(4,  p.getCat().name());
-            preparedStatement.setDouble(5, p.getPrecio());
-            preparedStatement.setInt(6, p.getStock());
-            preparedStatement.setString(7, p.getDescripcion());
+            preparedStatement.setString(1, p.getNombre());
+            preparedStatement.setString(2, p.getMarca());
+            preparedStatement.setString(3,  p.getCat().name());
+            preparedStatement.setDouble(4, p.getPrecio());
+            preparedStatement.setInt(5, p.getStock());
+            preparedStatement.setString(6, p.getDescripcion());
+            preparedStatement.setInt(7, p.getId_producto());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    
+    
+    public void updateStock(int id, int stock) throws Exception {
+        String query = "UPDATE producto SET stock = ? WHERE id_producto = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setInt(1, stock);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);

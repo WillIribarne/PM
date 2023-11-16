@@ -1,6 +1,8 @@
 
 package Modelos;
 
+import java.util.List;
+
 public class Producto {
    private int id_producto;
    private String nombre;
@@ -78,6 +80,12 @@ public class Producto {
       
     public int disminuirCantidad() {
         return stock--;
+    }
+
+    void modificarEnLaBD(Producto p) throws Exception {
+        ProductoDAO pDAO = new ProductoDAO();
+         pDAO.update(p);
+         
     }
     
     

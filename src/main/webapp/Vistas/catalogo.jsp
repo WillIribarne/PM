@@ -43,7 +43,7 @@
         
             <tbody class="table-group-divider">
                 <c:forEach items="${productos}" var="producto">
-                    <c:if test="${producto.stock != 0}">
+                    <c:if test="${producto.stock > 0 }">
                     <tr>
                         <th scope="row">${producto.nombre}</th>
                         <td>${producto.marca}</td>

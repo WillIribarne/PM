@@ -15,6 +15,10 @@ public class Carrito {
 
     public Carrito() {
     }
+
+    public void setCarr(List<Producto> carr) {
+        this.carr = carr;
+    }
     
     public boolean existeEnLaLista(){
        boolean flag=false;
@@ -67,7 +71,7 @@ public class Carrito {
         this.precio=this.precio+precioAgregado;
     }
     
-    public void modificarCosto (){
+    public void modificarCostoACero (){
         this.precio=0;
     }
     

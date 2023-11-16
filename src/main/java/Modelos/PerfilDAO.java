@@ -79,8 +79,8 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
             //ver el id
             preparedStatement.setString(1, p.getNombre());
             preparedStatement.setString(2, p.getApellido());
-            preparedStatement.setString(3, "...");
-            preparedStatement.setString(4, "...");
+            preparedStatement.setString(3, p.getFechaNac());
+            preparedStatement.setString(4, p.getEmail());
             preparedStatement.setDouble(5, p.getBilletera());
             preparedStatement.setString(6, p.getDomicilio());
             preparedStatement.setString(7, p.getTelefono());

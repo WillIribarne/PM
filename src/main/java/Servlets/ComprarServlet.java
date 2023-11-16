@@ -1,6 +1,7 @@
 package Servlets;
 
 import Modelos.Carrito;
+import Modelos.Catalogo;
 import Modelos.Categoria;
 import Modelos.Compra;
 import Modelos.CompraDAO;
@@ -82,7 +83,7 @@ import java.util.logging.Logger;
                     //*tabla: compra_producto: cargo todos los productos comprados
                     CompraProductoDAO comprProduDAO = new CompraProductoDAO();
                     
-                    //modificar el carrito
+                    //modificar el carrito, agrego producto y modifico la cantidad comprada
                     for(Producto x : product){
                        CompraProducto comprProd = new CompraProducto(comp.getId_compra(),x.getId_producto() ,x.getStock());
                        comprProduDAO.add(comprProd);
@@ -90,7 +91,11 @@ import java.util.logging.Logger;
     
     //              vacio el carrito y reseteo el precio a pagar
                     c.vaciarCarrito();
-                    c.modificarCosto();
+                    c.modificarCostoACero();
+                    // Actualiza  la sesión
+                    session.setAttribute("carrito", c);
+                    
+                   
                     
                 } catch (Exception ex) {
                     Logger.getLogger(ComprarServlet.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,13 +113,26 @@ import java.util.logging.Logger;
         }
         else if (boton==3)//vaciar carrito
         {
-            
-            Carrito c = (Carrito)session.getAttribute("carrito");
-            c.resetPrecio();
-           // List <Producto> product = c.getCarr();
-            c.vaciarCarrito();
-            req.getRequestDispatcher("Vistas/catalogo.jsp").forward(req, resp);
-            session.setAttribute("carrito", c);    
+            try {
+                Carrito c = (Carrito)session.getAttribute("carrito");
+                Catalogo cat = new Catalogo();
+                cat.setCatalogo((List<Producto>)session.getAttribute("productos"));
+                
+                
+                //devuelvo los productos al catalogo
+                cat.devolverAlCatalogo(c.getCarr());
+                session.setAttribute("productos", cat.getCatalogo());
+                
+                //vacio el carrito y le saco el precio total
+                c.resetPrecio();
+                c.vaciarCarrito();
+                session.setAttribute("carrito", c);
+                
+                req.getRequestDispatcher("Vistas/catalogo.jsp").forward(req, resp);
+            } catch (Exception ex) {
+                Logger.getLogger(ComprarServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               
         }
     }
     

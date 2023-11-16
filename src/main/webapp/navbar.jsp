@@ -15,21 +15,10 @@
                 <li class="nav-item">
                     <a class="nav-link fuente-navbar-estandar mx-2" href="info">Quienes Somos</a>
                 </li>
-                <li class="nav-item dropdown mx-2">
-                    <a class="nav-link dropdown-toggle fuente-navbar-estandar" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catálogo</a>
-                    <ul class="dropdown-menu bg-dark">
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Zapatillas</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Ojotas</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Zapatos</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Pantalones</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Polleras</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Remeras</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Camperas</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Buzos</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Guantes</a></li>
-                        <li><a class="dropdown-item fuente-navbar-estandar" href="#">Gorros</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link fuente-navbar-estandar mx-2" href="catalogo">Catalogo</a>
                 </li>
+                
                 <li class="nav-item"> 
                     <c:choose>
                         <c:when test="${false}"> <!-- nota: {usuario.estadoLogin = 1} es lo mismo que un {true}, pero no se si es posible hacer 'x = boolean', por eso el 1-->

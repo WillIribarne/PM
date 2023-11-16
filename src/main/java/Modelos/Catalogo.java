@@ -55,9 +55,9 @@ public class Catalogo {
 //        return flag;
 //    }
 //    
-//    public void modificoLaCantidad(Producto p){
-//        p.setCantidad();
-//    }
+    public void modificoLaCantidad(Producto p){
+        p.setCantidad();
+    }
 //    
 //    public void valeUnoLaCantidad(Producto p){
 //        p.setCantidad(1);
@@ -120,21 +120,28 @@ public class Catalogo {
 //        carr.clear();
 //    }
 //    
-//    public void devolverAlCarrito(List <Producto> carritoDevuelto){
-//        for (Producto p : carritoDevuelto){
-//            addProductosDevueltos(p);         
-//       }
-//    }
-//    
-//    public void addProductosDevueltos (Producto p){
-//        for(Producto x : carr){
-//            if(x.getId_producto()==p.getId_producto()){                
-//                modificoLaCantidad(x); //aumento el contador de cantidad
-//            }
-//        }
-//    }   
-
+    public void devolverAlCatalogo(List <Producto> carritoDevuelto) throws Exception{
+        for (Producto p : carritoDevuelto){    
+       for(Producto x : catalogo){
+            if(x.getId_producto()==p.getId_producto()){                
+                x.setCantidad(x.getStock()+p.getStock()); //aumento el contador de cantidad
+//                x.modificarEnLaBD();
+//                //lo modifico en la BD
+            }           
+            }
+        }
+        
+        modificarEnLaBD();
+    }
+    
+ 
     public List<Producto> getCatalogo() {
         return catalogo;
+    }
+
+    private void modificarEnLaBD() throws Exception {
+      for(Producto p : catalogo){
+             p.modificarEnLaBD(p);
+         }
     }
 }

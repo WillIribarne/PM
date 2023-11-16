@@ -32,8 +32,8 @@ public class RegistroServlet extends HttpServlet {
         String pass = req.getParameter("clave");
         String nom = req.getParameter("nombre");
         String ape = req.getParameter("apellido");
-        String date = req.getParameter("dateInput");
-        String email = req.getParameter("emailInput");
+        String date = req.getParameter("fecha");
+        String email = req.getParameter("correo");
         String domicilio = req.getParameter("domicilio");
         String telefono = req.getParameter("tel");
         String foto = req.getParameter("photoInput");
