@@ -61,8 +61,6 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     //agrego el producto seleccionado al carrito
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
                     Carrito carr = (Carrito) session.getAttribute("carrito");
-                    // Carrito carr = (Carrito) session.getAttribute("productos");
-                   //carr.setCarr((List<Producto>) session.getAttribute("carrito"));
                    
                     ProductoDAO pDAO = new ProductoDAO();
                     pDAO.updateStock(p.getId_producto(),p.getStock()-1);
@@ -77,22 +75,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                     //modifico el costo total a pagar
                     carr.modificarCosto(p.getPrecio());
                     
-                    //reduzco el stock del producto en el catalogo
-                   // Catalogo catal = new Catalogo();
-                    //catal.setCatalogo((List<Producto>)session.getAttribute("productos"));
-                   // catal.disminuyoStock(p.getId_producto());
                     
-//                    Catalogo catal = new Catalogo();
-//                    catal.setCatalogo(pDAO.getAll());
-//                    session.setAttribute("productos", catal.getCatalogo());
-        
-                    //catal.devolverAlCatalogo(carr.getCarr());
-                    
-                    //actualizo sesion
-                    //session.setAttribute("carrito", carr);
-                    
-                    
-
                     // Actualiza  la sesión
                     session.setAttribute("carrito", carr);
                     //session.setAttribute("productos", catal.getCatalogo());
@@ -113,6 +96,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
                                  
                 
             }
+           
             //llevo a la pagina de comprar
             req.getRequestDispatcher("Vistas/comprar.jsp").forward(req, resp);
         }

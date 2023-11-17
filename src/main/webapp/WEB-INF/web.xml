@@ -18,6 +18,7 @@
         <url-pattern>/perfil</url-pattern>
         <url-pattern></url-pattern>
     </filter-mapping>
+
     
     <servlet>
         <servlet-name>RegistroServlet</servlet-name>
@@ -30,20 +31,41 @@
     </servlet>
     
     <servlet>
+        <servlet-name>EditarProductoServlet</servlet-name>
+        <servlet-class>Servlets.EditarProductoServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>BilleteraServlet</servlet-name>
         <servlet-class>Servlets.BilleteraServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <servlet-class>Servlets.RegistroUsuarioServlet</servlet-class>
+    </servlet>
 
+    <servlet>
+        <servlet-name>CatalogoAdminServlet</servlet-name>
+        <servlet-class>Servlets.CatalogoAdminServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>LogOutServlet</servlet-name>
         <servlet-class>Servlets.LogOutServlet</servlet-class>
     </servlet>
     
     <servlet>
+        <servlet-name>MasInfoUserServlet</servlet-name>
+        <servlet-class>Servlets.MasInfoUserServlet</servlet-class>
+    </servlet>
+    
+    
+    <servlet>
         <servlet-name>CatalogoServlet</servlet-name>
         <servlet-class>Servlets.CatalogoServlet</servlet-class>
     </servlet>
-    
+     
     <servlet>
         <servlet-name>InicioSesionServlet</servlet-name>
         <servlet-class>Servlets.InicioSesionServlet</servlet-class>
@@ -53,7 +75,12 @@
         <servlet-name>QuienesSomosServlet</servlet-name>
         <servlet-class>Servlets.QuienesSomosServlet</servlet-class>
     </servlet>
-
+    
+    <servlet>
+        <servlet-name>agregarProductoServlet</servlet-name>
+        <servlet-class>Servlets.agregarProductoServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>PerfilServlet</servlet-name>
         <servlet-class>Servlets.PerfilServlet</servlet-class>
@@ -62,6 +89,32 @@
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>agregarProductoServlet</servlet-name>
+        <url-pattern>/producto</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>EditarProductoServlet</servlet-name>
+        <url-pattern>/editarProducto</url-pattern>
+    </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>CatalogoAdminServlet</servlet-name>
+        <url-pattern>/catalogoAdmin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>RegistroUsuarioServlet</servlet-name>
+        <url-pattern>/registroUsuario</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet-mapping>
+        <servlet-name>MasInfoUserServlet</servlet-name>
+        <url-pattern>/masinfo</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

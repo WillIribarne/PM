@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -99,14 +100,35 @@ public class RegistroComprasDAO implements DAO<RegistroCompras, Integer, String>
 
     return lastId;
 }   
-    @Override
-    public RegistroCompras rsRowTo(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+  
 
     @Override
     public int getID(String l) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+        
+    
+    public List getRegistroCompra(int id) throws Exception {
+        List<RegistroCompras> regComp = new LinkedList<>();
+        String query = "SELECT * FROM registro_compras WHERE id_perfil = " + id;
+    
+        try(Connection con = ConnectionPool.getInstance().getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();){
+            while (rs.next()){ //.next(): devuelve el siguiente elemento y devuelve si tiene algo o esta vacío (boolean)
+                regComp.add(rsRowTo(rs));
+            }
+        } catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+        return regComp;
+    }
+    
+      @Override
+    public RegistroCompras rsRowTo(ResultSet rs) throws Exception {
+        return new RegistroCompras(
+                    rs.getInt("id_registro_compras"),
+                    rs.getInt("id_perfil"));
+    }
 }

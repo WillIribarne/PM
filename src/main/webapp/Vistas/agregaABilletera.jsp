@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-3 d-flex justify-content-center">
                
-            <td><button name="boton" value="20000" type="submit" class="btn btn-success btn-lg fuente-botones-index m-xl-5 p-xl-4 my-3" href="">A$20000</button></td>
+            <td><button name="boton" value="20000" type="submit" class="btn btn-success btn-lg fuente-botones-index m-xl-5 p-xl-4 my-3" href="">$20000</button></td>
                       
             </div>
         </div>

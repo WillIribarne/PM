@@ -102,7 +102,20 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
+     public List getAll() throws Exception {
+        List <Perfil> perfil = new LinkedList<>();
+        String query = "SELECT * FROM perfil";
+        try(Connection con = ConnectionPool.getInstance().getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();){
+            while (rs.next()){ //.next(): devuelve el siguiente elemento y devuelve si tiene algo o esta vacío (boolean)
+                perfil.add(rsRowTo(rs));
+            }
+        } catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+        return perfil;
+    }
 
     @Override
     public List getProducts(Categoria cat) {
@@ -159,10 +172,7 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
             );
     }
 
-    @Override
-    public List<Perfil> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 
     @Override
     public Perfil get(Integer id) throws Exception {

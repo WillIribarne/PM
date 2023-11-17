@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -94,10 +95,34 @@ public class CompraDAO implements DAO<Compra, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public Compra rsRowTo(ResultSet rs) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   
+    public Compra getRegistroCompra(int id) throws Exception {
+        Compra compra = null;
+        String query = "SELECT * FROM compra WHERE id_registro_compras = ?";
+
+        try (Connection con = ConnectionPool.getInstance().getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            // Configurar el parámetro ID
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    compra = rsRowTo(rs);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        return compra;
     }
 
+     @Override
+    public Compra rsRowTo(ResultSet rs) throws Exception {
+        return new Compra(
+                    rs.getInt("id_compra"),
+                    rs.getInt("id_registro_compras"),
+                    rs.getString("fecha"),
+                    rs.getDouble("monto"));
+    }
     
 }

@@ -5,19 +5,19 @@ public class Usuario {
     private int id_usuario;
     private String nombre;
     private String contrasenia;
-    private String tipo; //cambiar en la bd
+    private TipoUsuario tipo; //cambiar en la bd
 
     public Usuario(String nombre, String contrasenia) {
         this.nombre = nombre;
         this.contrasenia = contrasenia;
-        this.tipo="final";
+        this.tipo=tipo;//TipoUsuario.Final;
     }
 
-    public Usuario(int id_usuario, String nombre, String contrasenia, String tipo) {
+    public Usuario(int id_usuario, String nombre, String contrasenia, TipoUsuario tipo) {
         this.id_usuario = id_usuario;
         this.nombre = nombre;
         this.contrasenia = contrasenia;
-        this.tipo = tipo;
+        this.tipo=tipo;//TipoUsuario.Final;
     }
 
 
@@ -52,7 +52,7 @@ public class Usuario {
         return id_usuario;
     }
 
-    public String getTipo() {
+    public TipoUsuario getTipo() {
         return tipo;
     }
 
