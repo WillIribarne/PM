@@ -16,7 +16,7 @@ public class Perfil {
     private int id_usuario=0;
     int cont=0;
     
-    public Perfil(String nombre, String apellido, String fecha, String email, String domicilio, String telefono, String foto) {
+    public Perfil(String nombre, String apellido, String fecha, String email, String domicilio, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaNac = fecha;
@@ -24,7 +24,7 @@ public class Perfil {
         this.billetera = 0;
         this.domicilio = domicilio;
         this.telefono = telefono;
-        this.foto = foto;
+        this.foto = "foto";
     }
     
     public Perfil(Perfil p, int ID) {
@@ -35,7 +35,7 @@ public class Perfil {
         this.billetera = 0;
         this.domicilio = p.domicilio;
         this.telefono = p.telefono;
-        this.foto = p.foto;
+        this.foto ="foto";
         this.id_usuario=ID;
     }
     
@@ -47,11 +47,11 @@ public class Perfil {
         this.billetera = 0;
         this.domicilio = p.domicilio;
         this.telefono = p.telefono;
-        this.foto = p.foto;
+       this.foto = "foto";
         this.id_usuario=p.id_perfil;
     }
 
-    public Perfil(int id_perfil, String nombre, String apellido, String fechaNac, String email, double billetera, String domicilio, String telefono, String foto, int id_usuario) {
+    public Perfil(int id_perfil, String nombre, String apellido, String fechaNac, String email, double billetera, String domicilio, String telefono,String foto,int id_usuario) {
         this.id_perfil = id_perfil;
         this.nombre = nombre;
         this.apellido = apellido;

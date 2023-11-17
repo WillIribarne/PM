@@ -36,9 +36,11 @@ public class RegistroServlet extends HttpServlet {
         String email = req.getParameter("correo");
         String domicilio = req.getParameter("domicilio");
         String telefono = req.getParameter("tel");
-        String foto = req.getParameter("photoInput");
+        //String foto = "foto";
         
-        Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
+        //Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
+        Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono);
+       
         Usuario u = new Usuario(user, pass);
         UsuarioDAO uDAO = new UsuarioDAO();
         
