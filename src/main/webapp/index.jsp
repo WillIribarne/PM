@@ -22,10 +22,13 @@
           <!--tipoUser=1 es usuario Final y tipoUser=2 es admin-->
           <c:choose>
           <c:when test="${tipoUser==2}"> 
-              <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Agregar al catálogo</a>
-           </c:when>
-          </c:choose>
- 
+             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="agregarproducto" role="button">Agregar producto</a>
+          
+              <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadousuarios" role="button">Listado de usuarios</a>
+              <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Listado de compras</a>
+          </c:when>
+          </c:choose>     
+              
         </div>
       </div>
     </div>

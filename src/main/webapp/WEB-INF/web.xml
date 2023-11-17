@@ -67,6 +67,11 @@
     </servlet>
     
     <servlet>
+        <servlet-name>agregarProductoServlet</servlet-name>
+        <servlet-class>Servlets.agregarProductoServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>PerfilServlet</servlet-name>
         <servlet-class>Servlets.PerfilServlet</servlet-class>
     </servlet>
@@ -74,6 +79,11 @@
     <servlet-mapping>
         <servlet-name>RegistroServlet</servlet-name>
         <url-pattern>/registro</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>agregarProductoServlet</servlet-name>
+        <url-pattern>/agregarproducto</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

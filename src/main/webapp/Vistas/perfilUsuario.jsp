@@ -22,7 +22,7 @@
             <a class="btn btn-info btn fs-4 fw-bold" href="registroUsuario" role="button">Ver compras anteriores</a>
         </div>
         </c:when>
-         </c:choose>
+        </c:choose>
     </div>
     <div class="row m-5">
         <div class="col-md-6">
