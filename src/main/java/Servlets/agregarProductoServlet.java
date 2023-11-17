@@ -50,8 +50,9 @@ public class agregarProductoServlet extends HttpServlet {
         
         pDAO.add(prod);
 
+        req.setAttribute("mensajeInfo", false); //configuro el mensaje de estado
         
-        req.getRequestDispatcher("Vistas/registroEstado.jsp").forward(req, resp);   
+        req.getRequestDispatcher("Vistas/estadoProducto.jsp").forward(req, resp);   
     } catch (Exception ex) {
         Logger.getLogger(agregarProductoServlet.class.getName()).log(Level.SEVERE, null, ex);
     }

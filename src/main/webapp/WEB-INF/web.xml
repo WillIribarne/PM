@@ -29,6 +29,11 @@
         <servlet-name>ComprarServlet</servlet-name>
         <servlet-class>Servlets.ComprarServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <servlet-name>EditarProductoServlet</servlet-name>
+        <servlet-class>Servlets.EditarProductoServlet</servlet-class>
+    </servlet>
 
     <servlet>
         <servlet-name>BilleteraServlet</servlet-name>
@@ -40,6 +45,11 @@
         <servlet-class>Servlets.RegistroUsuarioServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>CatalogoAdminServlet</servlet-name>
+        <servlet-class>Servlets.CatalogoAdminServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>LogOutServlet</servlet-name>
         <servlet-class>Servlets.LogOutServlet</servlet-class>
@@ -84,6 +94,16 @@
     <servlet-mapping>
         <servlet-name>agregarProductoServlet</servlet-name>
         <url-pattern>/producto</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>EditarProductoServlet</servlet-name>
+        <url-pattern>/editarProducto</url-pattern>
+    </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>CatalogoAdminServlet</servlet-name>
+        <url-pattern>/catalogoAdmin</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

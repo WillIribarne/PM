@@ -12,9 +12,11 @@
         <p class="text-light text-center fs-1 fw-bolder">Mi perfil: ${userLogueado.nombre}</p>
     </div>
     <div class="row m-5 justify-content-between">
+        <!--
         <div class="col-md-6">                                                           
-            <img src="recursos/imgs/PM-Index.jpeg" width="120" height="120"> <!-- esto es la foto -->
+            <img src="recursos/imgs/PM-Index.jpeg" width="120" height="120">
         </div>
+         -->
         <!--tipoUser=1 es usuario Final y tipoUser=2 es admin-->
           <c:choose>
           <c:when test="${tipoUser==1}"> 
@@ -62,9 +64,11 @@
         </div>
     </div>
     <div class="row m-5 justify-content-between">
+       <!--
         <div class="col-md-6">
             <a class="btn btn-primary btn-lg fuente-botones-index my-2" href="" role="button">Editar Perfil</a>
         </div>
+       -->
         <div class="col-md-6">
             <a class="btn btn-secondary btn-lg fuente-botones-index my-2" href="cerrarsesion" role="button">Cerrar Sesión</a>
         </div>
