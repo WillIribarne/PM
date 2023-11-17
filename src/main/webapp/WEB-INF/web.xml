@@ -83,7 +83,7 @@
     
     <servlet-mapping>
         <servlet-name>agregarProductoServlet</servlet-name>
-        <url-pattern>/agregarproducto</url-pattern>
+        <url-pattern>/producto</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

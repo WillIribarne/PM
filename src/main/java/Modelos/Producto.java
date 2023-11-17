@@ -87,6 +87,47 @@ public class Producto {
         ProductoDAO pDAO = new ProductoDAO();
          pDAO.update(p);
     }
+
+    public Categoria devolverCategoria(String selectedValue) {
+        Categoria cat = null;
+       switch  (selectedValue){
+           case "Zapatillas":
+               cat=Categoria.Zapatillas;
+               break;
+           case "Ojotas":
+               cat=Categoria.Ojotas;
+                break;
+            case "Zapatos":
+                cat=Categoria.Zapatos;
+                break;
+            case "Pantalon":
+                cat=Categoria.Pantalon;
+                break;
+            case "Pollera":
+                cat=Categoria.Pollera;
+                break;
+            case "Remera":
+                cat=Categoria.Remera;
+                break;
+            case "Campera":
+                cat=Categoria.Campera;
+                break;
+            case "Buzo":
+                cat=Categoria.Buzo;
+                break;
+            case "Guantes":
+                cat=Categoria.Guantes;
+                break;
+            case "Gorro":
+                cat=Categoria.Gorro;
+                break;
+             default:
+                cat=Categoria.Gorro;
+                break;
+       }
+       
+       return cat;
+    }
     
     
     
