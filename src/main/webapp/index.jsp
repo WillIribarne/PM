@@ -21,7 +21,7 @@
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoAdmin" role="button">Editar catálogo</a>
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="producto" role="button">Agregar producto</a>
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadousuarios" role="button">Listado de usuarios</a>
-            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Listado de compras</a>
+            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadoproductostotal" role="button">Listado de compras</a>
           </c:when>
           <c:otherwise>
            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogo" role="button">Ver catálogo</a>

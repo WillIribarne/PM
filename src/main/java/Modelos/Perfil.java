@@ -35,7 +35,7 @@ public class Perfil {
         this.billetera = 0;
         this.domicilio = p.domicilio;
         this.telefono = p.telefono;
-        this.foto ="foto";
+        this.foto =foto;
         this.id_usuario=ID;
     }
     

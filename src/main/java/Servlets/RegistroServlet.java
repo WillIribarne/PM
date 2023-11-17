@@ -36,10 +36,12 @@ public class RegistroServlet extends HttpServlet {
         String email = req.getParameter("correo");
         String domicilio = req.getParameter("domicilio");
         String telefono = req.getParameter("tel");
-        //String foto = "foto";
+        String foto = "foto";
         
-        //Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
-        Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono);
+       // Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono,foto);
+        //Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono);
+       Perfil p = new Perfil(nom,ape,date,email,domicilio,telefono);
+       
        
         Usuario u = new Usuario(user, pass);
         UsuarioDAO uDAO = new UsuarioDAO();
@@ -56,6 +58,7 @@ public class RegistroServlet extends HttpServlet {
                     PerfilDAO pDAO = new PerfilDAO();
                     uDAO.add(u);
                     Perfil pp = new Perfil(p,uDAO.getID(u.getNombre()));
+                    //Perfil pp = new Perfil(p,15);
                     
                     pDAO.add(pp);
                 } catch (Exception ex) {

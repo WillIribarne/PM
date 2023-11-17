@@ -70,9 +70,21 @@ public class CompraDAO implements DAO<Compra, Integer, String>{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+     
     @Override
     public List<Compra> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       List <Compra> compra = new LinkedList<>();
+        String query = "SELECT * FROM compra";
+        try(Connection con = ConnectionPool.getInstance().getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();){
+            while (rs.next()){ //.next(): devuelve el siguiente elemento y devuelve si tiene algo o esta vacío (boolean)
+                compra.add(rsRowTo(rs));
+            }
+        } catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+        return compra;
     }
 
     @Override
