@@ -16,8 +16,8 @@
             <p class="text-light"><span class="badge fs-6 fw-bolder">Nombre: </span>${producto.nombre}</p>
             <p class="text-light"><span class="badge fs-6 fw-bolder">Marca: </span>${producto.marca}</p>
             <p class="text-light"><span class="badge fs-6 fw-bolder">Descripcion: </span>${producto.descripcion}</p>
-            <p class="text-light"><span class="badge fs-6 fw-bolder">Precio: </span>${producto.precio}</p>
-            <p class="text-light"><span class="badge fs-6 fw-bolder">Precio: </span>${producto.stock}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Precio unitario: </span>${producto.precio}</p>
+            <p class="text-light"><span class="badge fs-6 fw-bolder">Cantidad: </span>${producto.stock}</p>
           </div>    
         </c:forEach>
       </div>
