@@ -30,6 +30,8 @@
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Stock</th>
+                <th scope="col"> </th>
+                
               </tr>
             </thead>
         
@@ -42,6 +44,9 @@
                         <td>${producto.descripcion}</td>
                         <td>$ ${producto.precio}</td>
                         <td>${producto.stock}</td>
+                        <td>
+                       <button name="IDproduct" value=${producto.id_producto} type="submit" class="btn btn-success" href="catalogoAdmin">Editar producto</button>
+                       </td>
                     </tr>
                 </c:forEach>
             </tbody> 
@@ -50,15 +55,6 @@
         
         <span class="fuente-botones-index">Ingrese el ID del producto que desea editar</span>
         
-        <div class="mb-3">
-            <label for="userInput" class="form-label text-light">Nombre *</label>
-            <input type="nom" class="form-control" id="nom" name="nom">
-        </div>
-        <button type="submit" class="btn btn-success btn-lg fuente-botones-index m-5">Editar</button>
-        
-        
-        
-
         </form>
     </div>
   <c:import url="/footer.jsp"/>
