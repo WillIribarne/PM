@@ -41,6 +41,11 @@
     </servlet>
     
     <servlet>
+        <servlet-name>ListadoComprasServlet</servlet-name>
+        <servlet-class>Servlets.ListadoComprasServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>RegistroUsuarioServlet</servlet-name>
         <servlet-class>Servlets.RegistroUsuarioServlet</servlet-class>
     </servlet>
@@ -94,6 +99,11 @@
     <servlet-mapping>
         <servlet-name>agregarProductoServlet</servlet-name>
         <url-pattern>/producto</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ListadoComprasServlet</servlet-name>
+        <url-pattern>/listadoproductostotal</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

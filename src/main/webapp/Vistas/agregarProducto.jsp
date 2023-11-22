@@ -28,7 +28,7 @@
                 <div class="mb-4">
                     <label for="descripcionInput" class="form-label badge text-bg-light">Descripcion:</label>
                     
-                    <textarea id="descripcion" class="form-control" name="descripcion" rows="3" cols="35">soi omero chino</textarea>
+                    <textarea id="descripcion" class="form-control" name="descripcion" rows="3" cols="35"></textarea>
                 </div>
                 <div class="mb-4">
                     <select class="form-select" name="categoria">

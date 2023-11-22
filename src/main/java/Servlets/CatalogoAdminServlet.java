@@ -45,13 +45,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     try {
         HttpSession session = req.getSession(); // Pido la sesión actual
-        String id =req.getParameter("nom");
-        int IDproduc = Integer.parseInt(id);
-//        
-       Producto p = new ProductoDAO().get(IDproduc);
-       session.setAttribute("pedit", p);
+       
+        String b = req.getParameter("IDproduct"); // Obtener el valor del botón
+        int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
  
-        req.getRequestDispatcher("Vistas/editarProducto.jsp").forward(req, resp);
+        Producto p = new ProductoDAO().get(boton);
+        //Producto p = new ProductoDAO().get(3);
+        session.setAttribute("pedit", p);
+       
+       req.getRequestDispatcher("Vistas/editarProducto.jsp").forward(req, resp);
 
     } catch (Exception ex) {
         Logger.getLogger(CatalogoAdminServlet.class.getName()).log(Level.SEVERE, null, ex);

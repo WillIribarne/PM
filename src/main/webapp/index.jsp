@@ -10,7 +10,7 @@
 <div class="container-fluid m-0 p-0 g-0">
   <div class="row justify-content-center m-0">
     <div class="col-md-4">
-      <img src="recursos/imgs/PM-Index.jpeg" class="img-fluid" alt="">
+      <img src="recursos/imgs/PM-Index.png" class="img-fluid" alt="">
     </div>
     <div class="col-lg-4">
       <div class="text-center">
@@ -21,7 +21,7 @@
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoAdmin" role="button">Editar catálogo</a>
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="producto" role="button">Agregar producto</a>
             <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadousuarios" role="button">Listado de usuarios</a>
-            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="" role="button">Listado de compras</a>
+            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadoproductostotal" role="button">Listado de compras</a>
           </c:when>
           <c:otherwise>
            <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogo" role="button">Ver catálogo</a>

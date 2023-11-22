@@ -74,7 +74,9 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     
     @Override
     public void add(Perfil p) throws Exception {
-        String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,foto,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+       //String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,id_usuario) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+       String query = "INSERT INTO perfil (nombre,apellido,fechaNac,email,billetera,domicilio,telefono,foto,id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
             //ver el id
             preparedStatement.setString(1, p.getNombre());
@@ -170,6 +172,7 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
                     rs.getString("foto"),
                     rs.getInt("id_usuario")
             );
+//        
     }
 
 

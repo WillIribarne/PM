@@ -14,7 +14,7 @@
         <!-- opcion de enlace a mostrar -->
         <c:choose>
         <c:when test="${mensajeInfo == false}">
-            <p class="text-light text-center"> Se creó con éxito el usuario. Haga click <a href="producto">aquí</a> para agregar otro produtco o <a href="catalogoAdmin">aquí</a> para ver el catalogo.</p>
+            <p class="text-light text-center"> Se creó con éxito el usuario. Haga click <a href="producto">aquí</a> para agregar otro producto o <a href="catalogoAdmin">aquí</a> para ver el catalogo.</p>
         </c:when>
         <c:otherwise>
             <p class="text-light text-center"> Se modificó con éxito el usuario. Haga click <a href="catalogoAdmin">aquí</a> para volver al catalogo.</p>

@@ -147,9 +147,22 @@ public class UsuarioDAO implements DAO<Usuario, Integer, String>{
     }
 
  
-    @Override
-    public int getID(String l) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        @Override
+    public int getID(String nombre) throws Exception {
+        String query = "SELECT * FROM usuario WHERE nombre = ?";
+        Usuario user = null;
+        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
+            preparedStatement.setString(1, nombre);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    user = rsRowTo(resultSet);
+                }
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return user.getId_usuario();
+    
+       }
 
 }

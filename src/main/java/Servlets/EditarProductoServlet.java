@@ -33,6 +33,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
         HttpSession sessionProducto = req.getSession(); // Pido la sesión actual
         Producto p = (Producto) sessionProducto.getAttribute("pedit") ;
         
+            
         String precio = req.getParameter("precio");
         double pre = Double.parseDouble(precio);
         String stock = req.getParameter("stock");
