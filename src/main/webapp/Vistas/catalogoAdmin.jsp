@@ -53,8 +53,6 @@
             
         </table>
         
-        <span class="fuente-botones-index">Ingrese el ID del producto que desea editar</span>
-        
         </form>
     </div>
   <c:import url="/footer.jsp"/>
