@@ -15,9 +15,22 @@
                 <li class="nav-item">
                     <a class="nav-link fuente-navbar-estandar mx-2" href="info">Quienes Somos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fuente-navbar-estandar mx-2" href="catalogo">Catalogo</a>
-                </li>
+                
+                <c:choose>
+                        <c:when test="${tipoUser==2}"> 
+                            <li class="nav-item">
+                             <a class="nav-link fuente-navbar-estandar mx-2" href="catalogoAdmin">Catalogo</a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                             <li class="nav-item">
+                             <a class="nav-link fuente-navbar-estandar mx-2" href="catalogo">Catalogo</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+                            
+                            
+                
                 
                 <li class="nav-item"> 
                     <c:choose>
