@@ -18,7 +18,7 @@
         </div>
          -->
         <!--tipoUser=1 es usuario Final y tipoUser=2 es admin-->
-          <c:choose>
+        <c:choose>
           <c:when test="${tipoUser==1}"> 
         <div class="col-md-6 d-flex justify-content-end my-2 py-md-4">
             <a class="btn btn-info btn fs-4 fw-bold" href="registroUsuario" role="button">Ver compras anteriores</a>

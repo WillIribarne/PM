@@ -60,7 +60,7 @@ public class ConnectionPool {
             tamInicial=NúmeroInicialDeConexionesEnElPool
             tamMaximo=NúmeroMáximoDeConexionesEnElPool
          */
-        try (InputStream in = getClass().getClassLoader().getResourceAsStream("META-INF/DBConnection.properties")) {
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("../../META-INF/DBConnection.properties")) {
             this.props.load(in);
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
