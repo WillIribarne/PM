@@ -59,9 +59,27 @@ public class CatServlet extends HttpServlet {
    
        //tipoUser==2 admin tipoUser==1 final
         HttpSession session = req.getSession(); // Pido la sesión actual
-        int n= (int) session.getAttribute("tipoUser");
+        int n=0;
+        if(session.getAttribute("userLogueado")!=null) n= (int) session.getAttribute("tipoUser");
+        
        if(n==2){ //usuario admin
+                      try //final o no logueado
+            {
+                String b = req.getParameter("IDproduct"); // Obtener el valor del botón
+                int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
+                
+                Producto p = new ProductoDAO().get(boton);
+                //Producto p = new ProductoDAO().get(3);
+                session.setAttribute("pedit", p);
+                
+                req.getRequestDispatcher("Vistas/editarProducto.jsp").forward(req, resp);
+            } catch (Exception ex) {
+                Logger.getLogger(CatServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
            
+       }
+       else
+       {
            if (session != null && session.getAttribute("userLogueado") != null){
             //antes de mandar al jsp de compras, chequea si queres agregar un producto y ver el carrito o unicamente ver el carrito
             
@@ -117,22 +135,6 @@ public class CatServlet extends HttpServlet {
             req.getRequestDispatcher("Vistas/inicioSesion.jsp").forward(req, resp);
         }
        
-           
-       }
-       else        {
-            try //final o no logueado
-            {
-                String b = req.getParameter("IDproduct"); // Obtener el valor del botón
-                int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
-                
-                Producto p = new ProductoDAO().get(boton);
-                //Producto p = new ProductoDAO().get(3);
-                session.setAttribute("pedit", p);
-                
-                req.getRequestDispatcher("Vistas/editarProducto.jsp").forward(req, resp);
-            } catch (Exception ex) {
-                Logger.getLogger(CatServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
 
        }
    }
