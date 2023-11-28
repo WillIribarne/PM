@@ -48,7 +48,7 @@ public class CatServlet extends HttpServlet {
         session.setAttribute("productos", cat.getCatalogo());
           
     } catch (Exception ex) {
-        Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(CatServlet.class.getName()).log(Level.SEVERE, null, ex);
     }
     
     req.getRequestDispatcher("Vistas/catalogoTotal.jsp").forward(req, resp);
@@ -112,7 +112,7 @@ public class CatServlet extends HttpServlet {
                     //session.setAttribute("productos", catal.getCatalogo());
                    
                 } catch (Exception ex) {
-                    Logger.getLogger(CatalogoServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CatServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }
