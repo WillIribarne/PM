@@ -2,6 +2,7 @@
 package Modelos;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Perfil {
     private int id_perfil;
@@ -128,7 +129,9 @@ public class Perfil {
         return cont;
     }
     
-    
+//    public List retortaCatalogo(){
+//        
+//    }
     
     
 }

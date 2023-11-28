@@ -12,7 +12,7 @@
 
     <p class="fuente-botones-index">Catálogo:  
 
-    <span class="fuente-botones-index">Editar productos</span>
+    
     
     
    <td style="text-align: right;">

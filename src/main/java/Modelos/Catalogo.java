@@ -25,6 +25,21 @@ public class Catalogo {
         this.catalogo = catalogo;
     }
     
+    public void setCatalogo(List<Producto> cat, int n) {
+        this.catalogo = new LinkedList<>();
+        for(Producto p : cat){
+            if(p.getStock()> n){
+                this.catalogo.add(p);
+            }
+        }   
+    }
+    
+     public List<Producto> getCatalogo() {
+        return catalogo;
+    }
+     
+     
+    
     public void aumentoStock(int id) {
         for (Producto p : catalogo){
             if(p.getId_producto()==id){
@@ -135,13 +150,17 @@ public class Catalogo {
     }
     
  
-    public List<Producto> getCatalogo() {
-        return catalogo;
-    }
+   
 
     private void modificarEnLaBD() throws Exception {
       for(Producto p : catalogo){
              p.modificarEnLaBD(p);
          }
     }
+    
+//    public List retortaCatalogo(int n){
+//        
+//    }
+    
+    
 }
