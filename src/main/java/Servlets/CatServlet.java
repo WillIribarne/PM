@@ -65,7 +65,7 @@ public class CatServlet extends HttpServlet {
        if(n==2){ //usuario admin
                       try //final o no logueado
             {
-                String b = req.getParameter("IDproduct"); // Obtener el valor del botón
+                String b = req.getParameter("valorButton"); // Obtener el valor del botón
                 int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
                 
                 Producto p = new ProductoDAO().get(boton);
@@ -78,11 +78,15 @@ public class CatServlet extends HttpServlet {
             }
            
        }
-       else
+       else //usuario final
        {
            if (session != null && session.getAttribute("userLogueado") != null){
             //antes de mandar al jsp de compras, chequea si queres agregar un producto y ver el carrito o unicamente ver el carrito
             
+            ///********
+            // Obtener el valor seleccionado del menú desplegable
+            int cantidadSeleccionada = Integer.parseInt(req.getParameter("cantidad"));
+            ///***********
             String b = req.getParameter("valorButton"); // Obtener el valor del botón "Carrito" que fue presionado
             int boton = Integer.parseInt(b); // Convertir el valor a entero si es necesario
  
@@ -93,20 +97,23 @@ public class CatServlet extends HttpServlet {
                     Producto p = new ProductoDAO().get(boton); //traigo el producto seleccionado 
                     Carrito carr = (Carrito) session.getAttribute("carrito");
                    
+                    
+                    //saco un stock del catalogo
                     ProductoDAO pDAO = new ProductoDAO();
-                    pDAO.updateStock(p.getId_producto(),p.getStock()-1);
+                    pDAO.updateStock(p.getId_producto(),p.getStock(), cantidadSeleccionada);
                     
                     Catalogo catal = new Catalogo();
                     catal.setCatalogo(pDAO.getAll());
                     session.setAttribute("productos", catal.getCatalogo());
                     
+                    //cantidadSeleccionada: cantidad elegida
                     
+                    //obtengo la cantidad elegida y se la doy al producto
                     //agrego al carrito
-                    carr.addProductoAlCarrito(p);
+                    carr.addProductoAlCarrito(p,cantidadSeleccionada);
                     //modifico el costo total a pagar
                     carr.modificarCosto(p.getPrecio());
-                    
-                    
+                                        
                     // Actualiza  la sesión
                     session.setAttribute("carrito", carr);
                     //session.setAttribute("productos", catal.getCatalogo());
@@ -124,10 +131,11 @@ public class CatServlet extends HttpServlet {
                     req.setAttribute("hayError", true);
                     req.setAttribute("mensajeError", "No hay ningun producto en el carrito");
                 }
-            }           
+            }          
+            //*****MODIFICADO****************************************
             //llevo a la pagina de comprar
             req.getRequestDispatcher("Vistas/comprar.jsp").forward(req, resp);
-                     
+                   
         }
         else{
             req.setAttribute("hayError", true);

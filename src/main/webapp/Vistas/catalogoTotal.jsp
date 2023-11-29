@@ -56,11 +56,19 @@
                         <td>
                        <c:choose>
                        <c:when test="${tipoUser==2}"> 
-                            <button name="IDproduct" value=${producto.id_producto} type="submit" class="btn btn-success" href="catalogoAdmin">Editar producto</button>
-                       </c:when>
-                       <c:otherwise>
-                            <button name="valorButton" value=${producto.id_producto} type="submit" class="btn btn-success" href="comprar">Añadir al carrito</button>
-                       </c:otherwise>     
+                            <button name="valorButton" value=${producto.id_producto} type="submit" class="btn btn-success" href="catalogoropa">Editar producto</button>
+                            </c:when>
+                            <c:otherwise>
+                                <form action="catalogoropa" method="post">
+                                    <input type="hidden" name="valorButton" value="${producto.id_producto}">
+                                    <select name="cantidad">
+                                        <c:forEach begin="1" end="${producto.stock}" var="i">
+                                            <option value="${i}">${i} </option>
+                                        </c:forEach>
+                                    </select>
+                                    <button type="submit" class="btn btn-success">Añadir al carrito</button>
+                                </form>
+                            </c:otherwise>     
                         </c:choose> 
                        </td> 
                       </tr>
