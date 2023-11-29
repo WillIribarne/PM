@@ -30,6 +30,11 @@
         <servlet-class>Servlets.ComprarServlet</servlet-class>
     </servlet>
     
+     <servlet>
+        <servlet-name>CatServlet</servlet-name>
+        <servlet-class>Servlets.CatServlet</servlet-class>
+    </servlet>
+    
     <servlet>
         <servlet-name>EditarProductoServlet</servlet-name>
         <servlet-class>Servlets.EditarProductoServlet</servlet-class>
@@ -99,6 +104,11 @@
     <servlet-mapping>
         <servlet-name>agregarProductoServlet</servlet-name>
         <url-pattern>/producto</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CatServlet</servlet-name>
+        <url-pattern>/catalogoropa</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

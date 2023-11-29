@@ -33,7 +33,7 @@
                 <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-5 my-3" href="./" role="button">Volver a Inicio</a>
             </div>
             <div class="col-md-6 d-flex justify-content-center">
-                <a class="btn btn-warning btn-lg fuente-botones-index m-xl-5 my-3" href="catalogo" role="button">Ir a catálogo</a>
+                <a class="btn btn-warning btn-lg fuente-botones-index m-xl-5 my-3" href="catalogoropa" role="button">Ir a catálogo</a>
             </div>
         </div>
     </div>
