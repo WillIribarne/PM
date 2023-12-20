@@ -52,7 +52,7 @@
           <c:when test="${tipoUser==1}"> 
             <div class="container rounded-pill bg-light">
                 <div class="row text-center">
-                    <h1><p class="m-2">Billetera: <span class="fw-bold">${perfilLogueado.billetera}</span></p></h1>
+                    <h1><p class="m-2">Billetera: <span class="fw-bold">$${perfilLogueado.billetera}</span></p></h1>
                 </div>
             </div>
          
