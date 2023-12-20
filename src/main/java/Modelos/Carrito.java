@@ -26,20 +26,25 @@ public class Carrito {
         return flag;
     }
     
+    public void modificoLaCantidad(Producto p, int cant){
+        p.aumentoCantidad(cant);
+    }
+    
     public void modificoLaCantidad(Producto p){
         p.setCantidad();
     }
+    
     
     public void valeUnoLaCantidad(Producto p){
         p.setCantidad(1);
     }
     
-    public boolean chequeo(Producto p){
+    public boolean chequeo(Producto p, int cant){
         boolean flag=false;
         for(Producto x : carr){
             if(x.getId_producto()==p.getId_producto()){
                 flag=true;
-                modificoLaCantidad(x); //aumento el contador de cantidad
+                modificoLaCantidad(x, cant); //aumento el contador de cantidad
             }
         }
         
@@ -48,13 +53,13 @@ public class Carrito {
         return flag;
     }
     
-    public List addProductoAlCarrito (Producto p){
+    public List addProductoAlCarrito (Producto p, int cant){
         if(carr.isEmpty()){
             List <Producto> carrito = new LinkedList<>();
         }
         
         //chequeo si ya existe en la lista
-        boolean f=chequeo(p);
+        boolean f=chequeo(p,cant);
         
         //lo agrego
         if(f==false){

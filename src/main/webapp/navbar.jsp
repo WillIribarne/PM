@@ -16,6 +16,8 @@
                     <a class="nav-link fuente-navbar-estandar mx-2" href="info">Quienes Somos</a>
                 </li>
                 
+                <!--
+                <%--
                 <c:choose>
                         <c:when test="${tipoUser==2}"> 
                             <li class="nav-item">
@@ -28,9 +30,12 @@
                             </li>
                         </c:otherwise>
                     </c:choose>
+                 --%>           ******VIENE LO NUEVOOO*****
+                  -->          
+                <li class="nav-item">
+                    <a class="nav-link fuente-navbar-estandar mx-2" href="catalogoropa">Catalogo</a>
+                </li>
                             
-                            
-                
                 
                 <li class="nav-item"> 
                     <c:choose>

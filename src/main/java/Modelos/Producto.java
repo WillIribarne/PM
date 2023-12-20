@@ -75,6 +75,11 @@ public class Producto {
         return stock++;
     }
     
+    public void aumentoCantidad( int cant) {
+        stock=stock+cant;
+    }
+    
+    
     public int setCantidad(int n) {
         return stock=n;
     }
@@ -128,7 +133,6 @@ public class Producto {
        
        return cat;
     }
-    
     
     
  }

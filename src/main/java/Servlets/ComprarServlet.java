@@ -128,7 +128,7 @@ import java.util.logging.Logger;
                 c.vaciarCarrito();
                 session.setAttribute("carrito", c);
                 
-                req.getRequestDispatcher("Vistas/catalogo.jsp").forward(req, resp);
+                req.getRequestDispatcher("Vistas/catalogoTotal.jsp").forward(req, resp);
             } catch (Exception ex) {
                 Logger.getLogger(ComprarServlet.class.getName()).log(Level.SEVERE, null, ex);
             }

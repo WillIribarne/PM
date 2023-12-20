@@ -65,10 +65,10 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
     }
     
     
-    public void updateStock(int id, int stock) throws Exception {
+    public void updateStock(int id, int stock, int cant) throws Exception {
         String query = "UPDATE producto SET stock = ? WHERE id_producto = ?";
         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            preparedStatement.setInt(1, stock);
+            preparedStatement.setInt(1, stock-cant);
             preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {

@@ -35,7 +35,7 @@
                 <div class="container text-light">
                 <h3>${mensajeError}</h3>
                 </div>
-                <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
+                <a class="btn btn-lg btn-warning me-lg-5 me-2"  href="catalogoropa" role="button">Seguir viendo el catálogo</a>
             </c:when>
              <c:otherwise>
                  
@@ -45,7 +45,7 @@
              </form>
             <br>
             
-            <a class="btn btn-lg btn-warning me-lg-5 mb-3 p-md-2"  href="catalogo" role="button">Seguir viendo el catálogo</a>
+            <a class="btn btn-lg btn-warning me-lg-5 mb-3 p-md-2"  href="catalogoropa" role="button">Seguir viendo el catálogo</a>
             <br>
             <form action="comprar" method="post">
             <button type="submit" class="btn btn-lg btn-danger me-lg-5 mb-3 p-md-2" name="butt" value="3">Vaciar carrito</button>
