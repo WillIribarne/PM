@@ -51,7 +51,7 @@
                <c:choose>
                 <c:when test="${usuarioIngresado && tipoUser==1}">
                     <li class="nav-item">
-                        <a class="nav-link fuente-navbar-estandar me-5" href="billetera">Billetera: $ ${perfilLogueado.billetera} </a>
+                        <a class="nav-link fuente-navbar-estandar me-5" href="billetera">Billetera: $${perfilLogueado.billetera} </a>
                         </li>
                 </c:when>
                 </c:choose>

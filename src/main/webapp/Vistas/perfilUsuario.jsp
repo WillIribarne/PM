@@ -18,7 +18,7 @@
         </div>
          -->
         <!--tipoUser=1 es usuario Final y tipoUser=2 es admin-->
-          <c:choose>
+        <c:choose>
           <c:when test="${tipoUser==1}"> 
         <div class="col-md-6 d-flex justify-content-end my-2 py-md-4">
             <a class="btn btn-info btn fs-4 fw-bold" href="registroUsuario" role="button">Ver compras anteriores</a>
@@ -52,7 +52,7 @@
           <c:when test="${tipoUser==1}"> 
             <div class="container rounded-pill bg-light">
                 <div class="row text-center">
-                    <h1><p class="m-2">Billetera: <span class="fw-bold">${perfilLogueado.billetera}</span></p></h1>
+                    <h1><p class="m-2">Billetera: <span class="fw-bold">$${perfilLogueado.billetera}</span></p></h1>
                 </div>
             </div>
          

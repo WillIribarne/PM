@@ -24,11 +24,11 @@
                     <label for="descripcionInput" class="form-label badge text-bg-light"style="font-size: 18px;" >Descripcion: ${pedit.descripcion}</label>
                 </div>
                 <div class="mb-4">
-                    <label for="precioInput" class="form-label badge text-bg-light"style="font-size: 18px;" >Precio (precio viejo:${pedit.precio}) :</label>
+                    <label for="precioInput" class="form-label badge text-bg-light"style="font-size: 18px;" >Precio (precio actual: $${pedit.precio}) :</label>
                     <input type="text" class="form-control" id="precio" name="precio" required min="1">
                 </div>
                 <div class="mb-4">
-                    <label for="stockInput" class="form-label badge text-bg-light"style="font-size: 18px;" >Stock (stock viejo:${pedit.stock}):</label>
+                    <label for="stockInput" class="form-label badge text-bg-light"style="font-size: 18px;" >Stock (stock actual: ${pedit.stock}):</label>
                     <input type="number" class="form-control" id="stock" name="stock" required min="1>
                 </div>
                 </form>
