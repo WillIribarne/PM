@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Carrito')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container bg-negro p-5 my-5 rounded-5">
+    <h2 class="text-light fw-bolder mb-4">Tu Carrito</h2>
+
+    <div th:if="${mensajeError != null}" class="text-center p-5">
+        <h3 class="text-warning" th:text="${mensajeError}"></h3>
+        <a class="btn btn-lg btn-warning mt-4" href="/catalogoropa">Seguir viendo el catálogo</a>
+    </div>
+
+    <div th:unless="${mensajeError != null}">
+        <div th:each="producto : ${carrito.carr}" class="bg-secondary p-3 my-3 rounded-3 shadow">
+            <div class="row text-light">
+                <div class="col-md-8">
+                    <p class="mb-1"><span class="fw-bold">Producto:</span> [[${producto.nombre}]] ([[${producto.marca}]])</p>
+                    <p class="small italic">[[${producto.descripcion}]]</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <p class="mb-0">Cant: [[${producto.stock}]] x $[[${producto.precio}]]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5 pt-4 border-top">
+            <div class="col-md-6 text-light">
+                <h4>Billetera: <span class="text-success">$[[${perfilLogueado?.billetera}]]</span></h4>
+            </div>
+            <div class="col-md-6 text-end text-light">
+                <h4>Total a pagar: <span class="text-warning">$[[${carrito.precio}]]</span></h4>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-4 mt-5">
+            <form th:action="@{/comprar}" method="post">
+                <button type="submit" name="butt" value="1" class="btn btn-lg btn-success px-5">Confirmar Compra</button>
+            </form>
+            <form th:action="@{/comprar}" method="post">
+                <button type="submit" name="butt" value="2" class="btn btn-lg btn-danger px-5">Vaciar Carrito</button>
+            </form>
+            <a class="btn btn-lg btn-warning px-5" href="/catalogoropa">Seguir comprando</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Agregar Producto')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+
+<div class="container-xl rounded-5 bg-negro p-xl-5 p-2 m-xl-5 mx-0">
+    <div class="row align-items-center">
+        <div class="col-md-12">
+            <p class="fuente-botones-index text-white">Catálogo:
+                <span class="text-white">Agregar productos</span>
+            </p>
+            <form th:action="@{/producto}" method="post" class="p-5 m-3">
+                <div class="mb-4">
+                    <label class="form-label badge text-bg-light">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label badge text-bg-light">Marca:</label>
+                    <input type="text" class="form-control" name="marca" required>
+                </div>
+                <div class="mb-4">
+                    <label for="descripcionInput" class="form-label badge text-bg-light">Descripcion:</label>
+                    <textarea id="descripcion" class="form-control" name="descripcion" rows="3" cols="35"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label badge text-bg-light">Categoría:</label>
+                    <select name="categoria" class="form-select">
+                        <option value="Zapatillas">Zapatillas</option>
+                        <option value="Ojotas">Ojotas</option>
+                        <option value="Zapatos">Zapatos</option>
+                        <option value="Pantalon">Pantalones</option>
+                        <option value="Pollera">Polleras</option>
+                        <option value="Remera">Remeras</option>
+                        <option value="Campera">Camperas</option>
+                        <option value="Buzo">Buzos</option>
+                        <option value="Guantes">Guantes</option>
+                        <option value="Gorro">Gorros</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label badge text-bg-light">Precio:</label>
+                    <input type="number" class="form-control" name="precio" required min="1">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label badge text-bg-light">Stock:</label>
+                    <input type="number" class="form-control" name="stock" required min="1">
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg fuente-botones-index m-5">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

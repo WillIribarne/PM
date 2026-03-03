@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Editar Producto')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container-xl rounded-5 bg-negro p-5 my-5">
+    <p class="fuente-botones-index text-white fs-2">Catálogo: <span>Editar producto</span></p>
+
+    <form th:action="@{/editarProducto}" method="post" class="p-5 mt-3">
+        <input type="hidden" name="id_producto" th:value="${pedit.id_producto}">
+
+        <div class="mb-4">
+            <label class="form-label badge text-bg-light fs-5">Nombre: [[${pedit.nombre}]]</label>
+        </div>
+        <div class="mb-4">
+            <label class="form-label badge text-bg-light fs-5">Marca: [[${pedit.marca}]]</label>
+        </div>
+        <div class="mb-4">
+            <label class="form-label badge text-bg-light fs-5">Precio actual: $[[${pedit.precio}]]</label>
+            <input type="number" class="form-control mt-2" name="precio" placeholder="Nuevo precio" required min="1">
+        </div>
+        <div class="mb-4">
+            <label class="form-label badge text-bg-light fs-5">Stock actual: [[${pedit.stock}]]</label>
+            <input type="number" class="form-control mt-2" name="stock" placeholder="Nuevo stock" required min="1">
+        </div>
+
+        <div class="d-flex gap-3 mt-5">
+            <button type="submit" class="btn btn-success btn-lg px-5">Guardar Cambios</button>
+            <a href="/catalogoropa" class="btn btn-secondary btn-lg px-5">Volver</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

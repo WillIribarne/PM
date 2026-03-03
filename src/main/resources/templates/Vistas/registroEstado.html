@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Estado de Registro')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container bg-negro p-5 my-5 text-center rounded-5">
+    <div th:if="${mensaje}" class="mb-4">
+        <h3 class="text-light">[[${mensajeInfo}]]</h3>
+    </div>
+
+    <div th:if="${mensajeInfo == 'Felicitaciones! Su usuario ha sido creado con éxito'}">
+        <p class="text-light fs-5">Ya puedes empezar a comprar.</p>
+        <a href="/inicioSesion" class="btn btn-success btn-lg">Iniciar Sesión</a>
+    </div>
+    <div th:unless="${mensajeInfo == 'Felicitaciones! Su usuario ha sido creado con éxito'}">
+        <p class="text-light fs-5">Hubo un problema con el registro.</p>
+        <a href="/registro" class="btn btn-warning btn-lg">Intentar de nuevo</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Compras Totales')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container bg-negro p-5 my-5">
+    <span class="fuente-botones-index text-white fs-2">Registro Global de Compras</span>
+    <table class="table table-dark mt-4">
+        <thead>
+        <tr>
+            <th>ID Compra</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listado : ${listadoComprasTotal}">
+            <td th:text="${listado.id_compra}"></td>
+            <td th:text="${listado.fecha}"></td>
+            <td th:text="'$ ' + ${listado.monto}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

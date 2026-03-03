@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Eliminar Producto')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+
+<div class="container bg-negro p-5 my-5">
+    <p class="fuente-botones-index text-white mb-4">¿Desea eliminar el producto del catálogo?</p>
+    <div class="row">
+        <div class="col-sm-6 text-light">
+            <h2>
+                <span class="fw-bolder">Producto: </span> <span th:text="${pedit.nombre}"></span>
+            </h2>
+            <p> <span class="fw-bolder">Marca: </span> <span th:text="${pedit.marca}"></span></p>
+            <p> <span class="fw-bolder" th:text="'&quot;' + ${pedit.descripcion} + '&quot;'"></span></p>
+        </div>
+        <div class="col-sm-6 text-light">
+            <h2>
+                <p> <span class="fw-bolder">Precio:</span> <span class="text-danger" th:text="'$' + ${pedit.precio}"></span></p>
+            </h2>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-sm-12 d-flex justify-content-center gap-3">
+            <form th:action="@{/eliminarProducto}" method="post">
+                <input type="hidden" name="id_producto" th:value="${pedit.id_producto}">
+                <button type="submit" class="btn btn-lg btn-danger px-5">Confirmar Eliminación</button>
+            </form>
+            <a href="/catalogoropa" class="btn btn-lg btn-secondary px-5">Cancelar</a>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-negro" th:fragment="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand fuente-navbar-brand" th:href="@{/}">PrograModa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link fuente-navbar-estandar mx-2" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link fuente-navbar-estandar mx-2" href="info">Quienes Somos</a></li>
+                <li class="nav-item"><a class="nav-link fuente-navbar-estandar mx-2" href="catalogoropa">Catalogo</a></li>
+
+                <li class="nav-item">
+                    <a th:if="${usuarioIngresado && tipoUser == 2}"
+                       class="nav-link fuente-navbar-estandar me-5" href="#"
+                       th:text="'Hola Administrador :)'"></a>
+
+                    <a th:if="${usuarioIngresado && tipoUser == 1}"
+                       class="nav-link fuente-navbar-estandar me-5" href="perfil"
+                       th:text="'Hola ' + ${perfilLogueado.nombre} + ' ' + ${perfilLogueado.apellido} + ' :)'"></a>
+
+                    <a th:unless="${usuarioIngresado}"
+                       class="nav-link fuente-navbar-estandar me-5" href="inicioSesion">Iniciar Sesión</a>
+                </li>
+
+                <li class="nav-item" th:if="${usuarioIngresado && tipoUser == 1}">
+                    <a class="nav-link fuente-navbar-estandar me-5" href="billetera"
+                       th:text="'Billetera: $' + ${perfilLogueado.billetera}"></a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <span th:if="${usuarioIngresado}" class="fuente-navbar-brand me-2">Bienvenido a PrograModa</span>
+                <div th:unless="${usuarioIngresado}">
+                    <span class="fuente-navbar-estandar me-2">¿No tienes cuenta?</span>
+                    <a href="registro">Registrate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

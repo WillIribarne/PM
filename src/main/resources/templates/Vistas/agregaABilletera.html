@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Billetera')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+
+<main class="container mt-5">
+    <form th:action="@{/billetera}" method="post" class="p-5 m-3">
+        <p class="fs-1 d-flex justify-content-center text-light">¿Cuánto dinero desea agregar?</p>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-sm-3 d-flex justify-content-center"
+                     th:each="monto : ${#strings.arraySplit('100,500,1000,5000,10000', ',')}">
+                    <button name="boton" th:value="${monto}" type="submit"
+                            class="btn btn-success btn-lg fuente-botones-index m-xl-5 p-xl-4 my-3"
+                            th:text="'$' + ${monto}"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

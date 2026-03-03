@@ -49,27 +49,15 @@ public class ConnectionPool {
     }
 
     private void cargarPropiedades() {
-        /*
-            Creá un archivo 'DBConnection.properties' y colocalo dentro de la carpeta 'META-INF' en 'Other sources'
-            Su contenido será el siguiente:
-
-            driverClassName=com.mysql.cj.jdbc.Driver
-            url=jdbc:mysql://direccionIPDondeEstaLaBD:3306/nombreDeTuBaseDeDatos
-            username=nombreDelUsuarioQueSeConectaraALaBaseDeDatos
-            password=claveDelUsuarioQueSeConectaraALaBaseDeDatos
-            tamInicial=NúmeroInicialDeConexionesEnElPool
-            tamMaximo=NúmeroMáximoDeConexionesEnElPool
-         */
-        try (InputStream in = getClass().getClassLoader().getResourceAsStream("../../META-INF/DBConnection.properties");
-             InputStream aux = getClass().getClassLoader().getResourceAsStream("META-INF/DBConnection.properties")) {
-            if (in == null){
-                this.props.load(aux);
-            } else {
-                this.props.load(in);
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream("META-INF/DBConnection.properties")) {
+            if (in == null) {
+                System.err.println("ERROR: No se encontró el archivo en src/main/resources/META-INF/DBConnection.properties");
+                return;
             }
-
+            this.props.load(in);
+            System.out.println("Configuración de base de datos cargada con éxito.");
         } catch (IOException ex) {
-            ex.printStackTrace(System.out);
+            ex.printStackTrace();
         }
     }
 }

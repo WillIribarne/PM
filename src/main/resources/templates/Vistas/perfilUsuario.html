@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Perfil')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container bg-negro p-md-5 my-5 rounded-5">
+    <div class="d-flex align-items-start m-5">
+        <p class="text-light text-center fs-1 fw-bolder">Mi perfil: [[${perfilLogueado.nombre}]]</p>
+    </div>
+
+    <div class="row m-5 justify-content-between">
+        <div class="col-md-6 text-light">
+            <h4 class="mb-4">
+                <span class="badge text-bg-light">Nombre completo:</span>
+                <p>[[${perfilLogueado.nombre}]] [[${perfilLogueado.apellido}]]</p>
+
+                <span class="badge text-bg-light">Email:</span>
+                <p>[[${perfilLogueado.email}]]</p>
+            </h4>
+        </div>
+
+        <div class="col-md-6 text-light">
+            <h4 class="mb-4">
+                <span class="badge text-bg-light">Fecha de nacimiento:</span>
+                <p>[[${perfilLogueado.fechaNac}]]</p>
+
+                <span class="badge text-bg-light">Teléfono:</span>
+                <p>[[${perfilLogueado.telefono}]]</p>
+            </h4>
+        </div>
+    </div>
+
+    <div th:if="${tipoUser == 1}" class="row m-5">
+        <div class="container rounded-pill bg-light p-3 text-center">
+            <h1>Billetera: <span class="fw-bold text-success">$[[${perfilLogueado.billetera}]]</span></h1>
+        </div>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a class="btn btn-info btn-lg fw-bold" href="/comprasUsuario">Ver compras anteriores</a>
+            <a class="btn btn-success btn-lg fw-bold" href="/billetera">Agregar dinero</a>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a class="btn btn-danger btn-lg" href="/cerrarSesion">Cerrar Sesión</a>
+    </div>
+</div>
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

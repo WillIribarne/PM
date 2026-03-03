@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Tu negocio de moda')}"></head>
+<body>
+<header th:replace="~{navbar.html :: navbar}"></header>
+<div class="container bg-negro p-5 my-5 rounded-5">
+    <div class="row justify-content-center m-5">
+        <p class="text-light text-center fs-2">Se ha iniciado sesión de manera correcta :)</p>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-warning">Ir al Inicio</a>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

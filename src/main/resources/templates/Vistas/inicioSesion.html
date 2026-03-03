@@ -1,0 +1,25 @@
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Inicio Sesión')}"></head>
+<body>
+<nav th:replace="~{navbar.html :: navbar}"></nav>
+<div class="container bg-negro rounded-5">
+    <form action="/inicioSesion" method="post" class="p-5 m-3">
+        <div class="mb-3">
+            <label class="form-label text-light">Usuario</label>
+            <input type="text" class="form-control" name="usuario" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light">Contraseña</label>
+            <input type="password" class="form-control" name="clave" required>
+        </div>
+
+        <div th:if="${hayError}" class="container text-light">
+            <h3 th:text="${mensajeError}">Error al iniciar sesión</h3>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+</div>
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>
