@@ -33,6 +33,21 @@ public class RegistroComprasDAO implements DAO<RegistroCompras, Integer, String>
         }
     }
 
+    public int getLastId() throws Exception {
+        int lastId = 0;
+        String query = "SELECT LAST_INSERT_ID() as last_id";
+        try (Connection con = ConnectionPool.getInstance().getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                lastId = rs.getInt("last_id");
+            }
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        return lastId;
+    }
+
     @Override
     public void update(RegistroCompras e) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -62,24 +77,6 @@ public class RegistroComprasDAO implements DAO<RegistroCompras, Integer, String>
     public RegistroCompras get(Integer id) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-//    //devuelve el ultimo id
-//    public int getID() throws Exception {
-//        RegistroCompras x=null;
-//        //agarra el id del ultimo registro
-//        String query = "SELECT * FROM registro_compras WHERE id_registro_compras = (SELECT MAX(id_registro_compras) FROM registro_compras)";
-//         try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
-//            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-//                if (resultSet.next()) {
-//                    x=rsRowTo(resultSet);
-//                }
-//            }
-//        } catch (SQLException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        return x.getId_registro_compras();
-//   }
-
  public int getID() throws Exception {
     int lastId = -1;
 

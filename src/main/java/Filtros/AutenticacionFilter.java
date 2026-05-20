@@ -1,4 +1,4 @@
-package filtros;
+package Filtros;
 
 import io.javalin.http.Context;
 import Modelos.Usuario;
@@ -20,6 +20,15 @@ public class AutenticacionFilter {
         Integer tipoUser = ctx.sessionAttribute("tipoUser"); // 2 = Admin, 1 = Final
 
         if (user == null || tipoUser == null || tipoUser != 2) {
+            ctx.redirect("/");
+        }
+    }
+
+    public static void verificarUsuarioFinal(Context ctx) {
+        Usuario user = ctx.sessionAttribute("userLogueado");
+        Integer tipoUser = ctx.sessionAttribute("tipoUser"); // 2 = Admin, 1 = Final
+
+        if (user == null || tipoUser == null || tipoUser != 1) {
             ctx.redirect("/");
         }
     }

@@ -13,19 +13,25 @@
         <div class="col-lg-4">
             <div class="text-center">
                 <div class="row m-0">
+
                     <div th:if="${tipoUser == 2}" th:remove="tag">
-                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoropa" role="button">Editar catálogo</a>
-                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="producto" role="button">Agregar producto</a>
-                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadousuarios" role="button">Listado de usuarios</a>
-                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadoproductostotal" role="button">Listado de compras</a>
+                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoTotal" role="button">Editar catálogo</a>
+                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="agregarProducto" role="button">Agregar producto</a>
+                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadoUsuarios" role="button">Listado de usuarios</a>
+                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="listadoCompras" role="button">Listado de compras</a>
                     </div>
 
                     <div th:if="${tipoUser != 2}" th:remove="tag">
-                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoropa" role="button">Ver catálogo</a>
+                        <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="catalogoTotal" role="button">Ver catálogo</a>
+
+                        <a th:if="${tipoUser == 1}" class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="perfilUsuario" role="button">Mi Perfil</a>
                     </div>
 
                     <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="info" role="button">Sobre nosotros</a>
-                    <a class="btn btn-secondary btn-lg fuente-botones-index m-xl-4 my-3" href="perfil" role="button">Mi Perfil</a>
+
+                    <div th:if="${tipoUser == 2 || tipoUser == 1}" th:remove="tag">
+                        <a class="btn btn-danger btn-lg fuente-botones-index m-xl-4 my-3" href="cerrarSesion" role="button">Cerrar Sesión</a>
+                    </div>
                 </div>
             </div>
         </div>

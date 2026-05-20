@@ -1,47 +1,59 @@
-<form action="/registro" method="post" class="p-5 m-3">
-    <div class="mb-3">
-        <label class="form-label text-light">Usuario *</label>
-        <input type="text" class="form-control" name="usuario" required>
-    </div>
-    <div class="mb-3">
-        <label class="form-label text-light">Contraseña *</label>
-        <input type="password" class="form-control" name="clave" required>
-    </div>
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{header.html :: head(tituloPagina='PM - Tu negocio de moda')}"></head>
 
-    <hr class="text-light">
+<body>
+<nav th:replace="~{navbar.html :: navbar}"></nav>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label text-light">Nombre *</label>
-                <input type="text" class="form-control" name="nombre" required>
+    <form action="/registro" method="post" class="p-5 m-3">
+        <div class="mb-3">
+            <label class="form-label text-light">Usuario *</label>
+            <input type="text" class="form-control" name="usuario" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-light">Contraseña *</label>
+            <input type="password" class="form-control" name="clave" required>
+        </div>
+
+        <hr class="text-light">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label text-light">Nombre *</label>
+                    <input type="text" class="form-control" name="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Apellido *</label>
+                    <input type="text" class="form-control" name="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Fecha de Nacimiento *</label>
+                    <input type="date" class="form-control" name="fecha" required>
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label text-light">Apellido *</label>
-                <input type="text" class="form-control" name="apellido" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label text-light">Fecha de Nacimiento *</label>
-                <input type="date" class="form-control" name="fecha" required>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label text-light">Email *</label>
+                    <input type="email" class="form-control" name="correo" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Domicilio *</label>
+                    <input type="text" class="form-control" name="domicilio" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label text-light">Número de Teléfono</label>
+                    <input type="tel" class="form-control" name="tel">
+                </div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label class="form-label text-light">Email *</label>
-                <input type="email" class="form-control" name="correo" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label text-light">Domicilio *</label>
-                <input type="text" class="form-control" name="domicilio" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label text-light">Número de Teléfono</label>
-                <input type="tel" class="form-control" name="tel">
-            </div>
-        </div>
-    </div>
+        <div class="form-text text-light my-2">* Campo obligatorio</div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
 
-    <div class="form-text text-light my-2">* Campo obligatorio</div>
-    <button type="submit" class="btn btn-primary">Registrarse</button>
-</form>
+
+<footer th:replace="~{footer.html :: footer}"></footer>
+</body>
+</html>

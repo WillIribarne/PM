@@ -133,6 +133,10 @@ public class Producto {
        
        return cat;
     }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
     
     
  }

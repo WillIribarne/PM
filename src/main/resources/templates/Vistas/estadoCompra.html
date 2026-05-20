@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{header.html :: head(tituloPagina='PM - Tu Tienda de Moda')}"></head>
+<head th:replace="~{header.html :: head(tituloPagina='PM - Estado de Compra')}"></head>
 <body>
 <header th:replace="~{navbar.html :: navbar}"></header>
+
 <div class="container rounded-5 bg-negro p-5 my-5">
     <div class="row align-items-center">
-        <h1 class="text-light m-5" th:if="${mensajeError != null}" th:text="${mensajeError}"></h1>
 
-        <div th:if="${hayError}">
-            <h1 class="text-light m-5">¡MUCHAS GRACIAS POR COMPRAR EN PROGRAMODA!</h1>
+        <div th:if="${compraExitosa}">
+            <h1 class="text-success m-5">¡MUCHAS GRACIAS POR COMPRAR EN PROGRAMODA!</h1>
             <p class="fs-3 text-light m-5">Su compra se realizó con éxito. ¡Cuando desee la puede retirar por el local!</p>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-lg btn-primary" href="/catalogoTotal">Volver al catálogo</a>
+            </div>
         </div>
 
-        <div th:unless="${hayError}">
-            <div class="col-md-12">
-                <p class="fs-1 text-light text-center m-5">ERROR - No se pudo realizar la compra debido a que tu billetera no dispone del saldo necesario.</p>
-            </div>
+        <div th:unless="${compraExitosa}">
+            <h1 class="text-danger m-5">UPS! Ocurrió un problema</h1>
+            <p class="fs-3 text-light m-5" th:text="${mensajeError}">No se pudo realizar la compra.</p>
+
             <div class="d-flex justify-content-center gap-3">
-                <a class="btn btn-lg btn-success" href="billetera">Agregar dinero</a>
-                <a class="btn btn-lg btn-warning" href="catalogoropa">Volver al catálogo</a>
+                <a class="btn btn-lg btn-success" href="/billetera">Agregar dinero</a>
+                <a class="btn btn-lg btn-warning" href="/catalogoTotal">Volver al catálogo</a>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-4">
-        <div class="col-md-12 d-flex justify-content-center">
-            <a class="btn btn-secondary btn-lg fuente-botones-index m-3" href="/">Volver a Inicio</a>
-        </div>
     </div>
 </div>
-<footer th:replace="~{footer.html :: footer}"></footer>
 </body>
 </html>

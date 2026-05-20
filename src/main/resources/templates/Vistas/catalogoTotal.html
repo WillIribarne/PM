@@ -2,32 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{header.html :: head(tituloPagina='PM - Catálogo')}"></head>
 <body>
-<header th:replace="~{navbar.html :: navbar}"></header>
+<nav th:replace="~{navbar.html :: navbar}"></nav>
 
-<div class="container-fluid bg-negro p-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <p class="fuente-botones-index text-white fs-2">
-            Catálogo <span th:text="${tipoUser == 2 ? '- Editar productos' : '- Todos los Productos'}"></span>
-        </p>
-
-        <div th:if="${tipoUser == 2}">
-            <a class="btn btn-warning fw-bold" href="/producto">Agregar Nuevo Producto</a>
-        </div>
-        <div th:unless="${tipoUser == 2}">
-            <a class="btn btn-success" href="/comprar">Ver el carrito</a>
-        </div>
+<div class="container-fluid bg-negro p-5" style="min-height: 100vh;">
+    <div class="d-flex justify-content-between align-items-center mb-4 text-white">
+        <h2>Catálogo de Productos</h2>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-dark table-hover">
-            <thead>
+    <div class="table-responsive rounded-3 shadow-lg">
+        <table class="table table-dark table-hover align-middle">
+            <thead class="table-secondary text-dark">
             <tr>
                 <th>Nombre</th>
                 <th>Marca</th>
                 <th>Descripción</th>
                 <th>Precio</th>
                 <th>Stock</th>
-                <th>Acción</th>
             </tr>
             </thead>
             <tbody>
@@ -38,20 +28,30 @@
                 <td th:text="'$' + ${producto.precio}"></td>
                 <td th:text="${producto.stock}"></td>
                 <td>
-                    <div th:if="${tipoUser == 2}">
-                        <form th:action="@{/catalogoropa}" method="post">
-                            <button name="valorButton" th:value="${producto.id_producto}" type="submit" class="btn btn-success">Editar producto</button>
-                        </form>
+                    <div th:if="${usuarioIngresado and tipoUser == 2}" class="d-flex gap-2 justify-content-center">
+                        <a th:href="@{/editarProducto(id_producto=${producto.id_producto})}" class="btn btn-info btn-sm w-50">
+                            Editar
+                        </a>
+                        <a th:href="@{/eliminarProducto(id_producto=${producto.id_producto})}" class="btn btn-danger btn-sm w-50">
+                            Eliminar
+                        </a>
                     </div>
-                    <div th:unless="${tipoUser == 2}">
-                        <form th:action="@{/catalogoropa}" method="post" class="d-flex gap-2">
-                            <input type="hidden" name="valorButton" th:value="${producto.id_producto}">
-                            <select name="cantidad" class="form-select form-select-sm" style="width: 70px;">
-                                <option th:each="i : ${#numbers.sequence(1, producto.stock)}" th:value="${i}" th:text="${i}"></option>
-                            </select>
-                            <button type="submit" class="btn btn-success btn-sm">Añadir al carrito</button>
-                        </form>
+
+                <td>
+                    <div th:if="${usuarioIngresado and tipoUser == 1}">
+                        <a th:href="@{/comprar(id_producto=${producto.id_producto})}"
+                           class="btn btn-success btn-sm w-100"
+                           th:disabled="${producto.stock <= 0}">
+                            Comprar
+                        </a>
                     </div>
+
+                    <div th:if="${!usuarioIngresado}" class="text-center">
+                        <a href="/inicioSesion" class="btn btn-outline-warning btn-sm w-100">Iniciá sesión para comprar</a>
+                    </div>
+                </td>
+
+
                 </td>
             </tr>
             </tbody>

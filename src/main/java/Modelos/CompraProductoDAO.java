@@ -24,23 +24,22 @@ public class CompraProductoDAO implements DAO<CompraProducto, Integer, String>{
     
     public void addProductorCarrito (Carrito c) throws Exception {
          List <Producto> p= c.getCarr();
-         
-         
+
+
     }
-    
+
     public void add(CompraProducto cp) throws Exception {
         String query = "INSERT INTO compra_producto (compra_id_compra, producto_id_producto, cantidad) VALUES (?, ?, ?)";
-        try (Connection con = ConnectionPool.getInstance().getConnection(); PreparedStatement preparedStatement = con.prepareStatement(query)) {
-            //ver el id
-            preparedStatement.setInt(1, cp.getCompra_id_compra());
-            preparedStatement.setInt(2, cp.getProducto_id_producto());
-            preparedStatement.setInt(3, cp.getCantidad());
-            preparedStatement.executeUpdate();
+        try (Connection con = ConnectionPool.getInstance().getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setInt(1, cp.getCompra_id_compra());
+            ps.setInt(2, cp.getProducto_id_producto());
+            ps.setInt(3, cp.getCantidad());
+            ps.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
-
  
  
     @Override

@@ -95,8 +95,20 @@ public class PerfilDAO implements DAO<Perfil, Integer, String>{
     }
 
     @Override
-    public void update(Perfil e) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Perfil p) throws Exception {
+        String query = "UPDATE perfil SET billetera = ? WHERE id_usuario = ?";
+
+        try (Connection con = ConnectionPool.getInstance().getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+
+            preparedStatement.setDouble(1, p.getBilletera());
+            preparedStatement.setInt(2, p.getId_perfil());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException("Error al actualizar el saldo en la base de datos", ex);
+        }
     }
 
     @Override

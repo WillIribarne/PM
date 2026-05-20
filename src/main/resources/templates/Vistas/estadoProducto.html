@@ -7,10 +7,10 @@
 <div class="container bg-negro p-5 my-5 rounded-5">
     <div class="row justify-content-center m-5">
         <div th:if="${mensajeInfo == false}">
-            <p class="text-light text-center fs-4"> Se creó con éxito el producto. Haga click <a href="producto" class="text-warning">aquí</a> para agregar otro o <a href="catalogoropa" class="text-warning">aquí</a> para ver el catálogo.</p>
+            <p class="text-light text-center fs-4"> Se creó con éxito el producto. Haga click <a href="agregarProducto" class="text-warning">aquí</a> para agregar otro o <a href="catalogoropa" class="text-warning">aquí</a> para ver el catálogo.</p>
         </div>
         <div th:unless="${mensajeInfo == false}">
-            <p class="text-light text-center fs-4"> Se modificó con éxito el producto. Haga click <a href="catalogoropa" class="text-warning">aquí</a> para volver al catálogo.</p>
+            <p class="text-light text-center fs-4"> Se modificó con éxito el producto. Haga click <a href="catalogoTotal" class="text-warning">aquí</a> para volver al catálogo.</p>
         </div>
     </div>
 </div>

@@ -109,7 +109,21 @@ public class ProductoDAO implements DAO<Producto, Integer, String>{
 
     @Override
     public Producto getByID(Integer id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Producto product = null;
+        String query = "SELECT * FROM producto WHERE id_producto = ?";
+        try (Connection con = ConnectionPool.getInstance().getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    product = rsRowTo(resultSet);
+                }
+            }
+        } catch (SQLException ex){
+            throw new RuntimeException(ex);
+        }
+        return product;
     }
     
     @Override

@@ -4,10 +4,11 @@ import io.javalin.rendering.JavalinRenderer;
 import io.javalin.rendering.template.JavalinThymeleaf;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.FileTemplateResolver;
-
 import Modelos.*;
 import java.util.*;
 import java.time.LocalDate;
+import Filtros.AutenticacionFilter;
+import Servicios.sesion;
 
 public class App {
 
@@ -30,36 +31,41 @@ public class App {
             config.staticFiles.add("src/main/webapp", Location.EXTERNAL); //agrega los archivos estaticos externos (i.e. assets de diseño)
         }).start(8080);
 
-        // DAOs
+        // --- CREACION DE DAOs ---
         UsuarioDAO uDAO = new UsuarioDAO();
         PerfilDAO pDAO = new PerfilDAO();
         ProductoDAO prodDAO = new ProductoDAO();
         CompraDAO cDAO = new CompraDAO();
+        CompraProductoDAO cpDAO= new CompraProductoDAO();
         RegistroComprasDAO regCompDAO = new RegistroComprasDAO();
+
+        // --- FILTROS DE SEGURIDAD ---
+
+        app.before("/listadoUsuarios", AutenticacionFilter::verificarAdministrador);
+        app.before("/agregarProducto", AutenticacionFilter::verificarAdministrador);
+        app.before("/editarProducto", AutenticacionFilter::verificarAdministrador);
+        app.before("/eliminarProducto", AutenticacionFilter::verificarAdministrador);
+        app.before("/listadoCompras", AutenticacionFilter::verificarAdministrador);
+        app.before("/estadoProducto", AutenticacionFilter::verificarAdministrador);
+        app.before("/billetera", AutenticacionFilter::verificarUsuarioFinal);
 
         // --- RUTAS PÚBLICAS ---
 
-        app.before(ctx -> {
-            Usuario user = ctx.sessionAttribute("userLogueado");
-            if (user != null) {
-                ctx.attribute("userLogueado", user);
-                ctx.attribute("perfilLogueado", ctx.sessionAttribute("perfilLogueado"));
-                ctx.attribute("tipoUser", ctx.sessionAttribute("tipoUser"));
-            }
-        });
-
         app.get("/", ctx -> {
-            Map<String, Object> modelo = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
 
             Usuario user = ctx.sessionAttribute("userLogueado");
             Perfil perfil = ctx.sessionAttribute("perfilLogueado");
             Integer tipo = ctx.sessionAttribute("tipoUser");
 
-            modelo.put("userLogueado", user);
-            modelo.put("perfilLogueado", perfil);
-            modelo.put("tipoUser", tipo);
+            model.put("userLogueado", user);
+            model.put("perfilLogueado", perfil);
+            model.put("tipoUser", tipo);
 
-            ctx.render("index.html", modelo);
+            // AGREGAMOS ESTA LÍNEA (que es la que busca tu navbar.html)
+            model.put("usuarioIngresado", user != null);
+
+            ctx.render("index.html", model);
         });
 
         app.get("/info", ctx -> ctx.render("vistas/quienesSomos.html"));
@@ -129,54 +135,84 @@ public class App {
 
         // --- RUTAS DE USUARIO LOGUEADO ---
 
-        app.get("/perfil", ctx -> {
-            if (ctx.sessionAttribute("userLogueado") == null) {
+        app.get("/perfilUsuario", ctx -> {
+            Usuario user = ctx.sessionAttribute("userLogueado");
+            Perfil perfil = ctx.sessionAttribute("perfilLogueado");
+            if (user == null) {
                 ctx.redirect("/inicioSesion");
                 return;
             }
             Map<String, Object> modelo = new HashMap<>();
-            modelo.put("userLogueado", ctx.sessionAttribute("userLogueado"));
-            modelo.put("perfilLogueado", ctx.sessionAttribute("perfilLogueado"));
+            modelo.put("userLogueado", user);
+            modelo.put("perfilLogueado", perfil);
             modelo.put("tipoUser", ctx.sessionAttribute("tipoUser"));
+            modelo.put("usuarioIngresado", true); // Para que el navbar no se rompa aquí
+
             ctx.render("vistas/perfilUsuario.html", modelo);
         });
 
-        app.get("/cerrarsesion", ctx -> {
+        app.get("/cerrarSesion", ctx -> {
             ctx.req().getSession().invalidate();
             ctx.redirect("/");
         });
 
         // CATÁLOGO Y CARRITO
-        app.get("/catalogoropa", ctx -> {
+        app.get("/catalogoTotal", ctx -> {
             Map<String, Object> modelo = new HashMap<>();
+
+            // 1. Cargamos los productos (fundamental para que se vea el catálogo)
             modelo.put("productos", prodDAO.getAll());
+
+            // 2. Pasamos datos de sesión para el Navbar
+            Usuario user = ctx.sessionAttribute("userLogueado");
+            modelo.put("userLogueado", user);
+            modelo.put("perfilLogueado", ctx.sessionAttribute("perfilLogueado"));
             modelo.put("tipoUser", ctx.sessionAttribute("tipoUser"));
+            modelo.put("usuarioIngresado", user != null);
+
             ctx.render("vistas/catalogoTotal.html", modelo);
         });
 
-        app.post("/catalogoropa", ctx -> {
-            if (ctx.sessionAttribute("userLogueado") == null) {
-                ctx.redirect("/inicioSesion");
-                return;
-            }
-            int idProd = Integer.parseInt(ctx.formParam("valorButton"));
-            int cantidad = Integer.parseInt(ctx.formParam("cantidad"));
+        app.post("/catalogoTotal", ctx -> {
+            Usuario user = ctx.sessionAttribute("userLogueado");
+            Integer tipo = ctx.sessionAttribute("tipoUser");
 
-            Carrito carrito = ctx.sessionAttribute("carrito");
-            Producto p = prodDAO.get(idProd);
+            // Solo el Usuario Final (1) usa este POST para el carrito
+            if (user != null && tipo != null && tipo == 1) {
+                String idString = ctx.formParam("idParaAccion");
+                String cantString = ctx.formParam("cantidad");
 
-            if (p != null && p.getStock() >= cantidad) {
-                carrito.addProductoAlCarrito(p, cantidad);
-                carrito.modificarCosto(p.getPrecio() * cantidad);
-                ctx.sessionAttribute("carrito", carrito);
+                if (idString != null && !idString.isEmpty()) {
+                    int idProd = Integer.parseInt(idString);
+                    int cantidad = (cantString != null) ? Integer.parseInt(cantString) : 1;
+
+                    Producto p = prodDAO.getByID(idProd);
+                    if (p != null) {
+                        Carrito carrito = ctx.sessionAttribute("carrito");
+                        if (carrito == null) {
+                            carrito = new Carrito();
+                            ctx.sessionAttribute("carrito", carrito);
+                        }
+                        carrito.addProductoAlCarrito(p, cantidad);
+                        ctx.redirect("/comprar");
+                        return;
+                    }
+                }
             }
-            ctx.redirect("/comprar");
+            ctx.redirect("/catalogoTotal");
         });
 
         app.get("/comprar", ctx -> {
-            Map<String, Object> modelo = new HashMap<>();
-            modelo.put("carrito", ctx.sessionAttribute("carrito"));
-            modelo.put("perfilLogueado", ctx.sessionAttribute("perfilLogueado"));
+            String idStr = ctx.queryParam("id_producto");
+            if (idStr == null) {
+                ctx.redirect("/catalogoTotal");
+                return;
+            }
+
+            Producto p = prodDAO.getByID(Integer.parseInt(idStr));
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+            modelo.put("producto", p);
+
             ctx.render("vistas/comprar.html", modelo);
         });
 
@@ -200,12 +236,69 @@ public class App {
                 }
             } else if ("3".equals(accion)) { // VACIAR
                 carrito.vaciarCarrito();
-                ctx.redirect("/catalogoropa");
+                ctx.redirect("/catalogoTotal");
+            }
+        });
+
+        app.post("/confirmarCompra", ctx -> {
+            int idProd = Integer.parseInt(ctx.formParam("id_producto"));
+            Perfil perfil = ctx.sessionAttribute("perfilLogueado");
+            Producto p = prodDAO.get(idProd);
+
+            // Preparar modelo para la vista
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+
+            // 1. Validación: Stock
+            if (p.getStock() <= 0) {
+                modelo.put("compraExitosa", false);
+                modelo.put("mensajeError", "Error: No hay stock disponible de este producto.");
+                ctx.render("vistas/estadoCompra.html", modelo);
+            }
+
+            // 2. Validación: Saldo
+            if (perfil.getBilletera() < p.getPrecio()) {
+                modelo.put("compraExitosa", false);
+                modelo.put("mensajeError", "Error: Saldo insuficiente para realizar la compra.");
+                ctx.render("vistas/estadoCompra.html", modelo);
+            }
+
+            try {
+                // --- LÓGICA DE COMPRA EXITOSA (Sin carrito) ---
+                p.setStock(p.getStock() - 1);
+                prodDAO.update(p);
+
+                perfil.setBilletera(perfil.getBilletera() - p.getPrecio());
+                pDAO.update(perfil);
+
+                RegistroCompras rc = new RegistroCompras(perfil.getId_perfil());
+                regCompDAO.add(rc);
+
+                int idRegistro = regCompDAO.getLastId();
+                Compra c = new Compra(idRegistro, java.time.LocalDate.now().toString(), p.getPrecio());
+                cDAO.add(c);
+
+                CompraProducto cp = new CompraProducto(idRegistro, p.getId_producto(), 1);
+                cpDAO.add(cp);
+
+                // Renderizar vista de éxito
+                modelo.put("compraExitosa", true);
+                ctx.render("vistas/estadoCompra.html", modelo);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+                modelo.put("compraExitosa", false);
+                modelo.put("mensajeError", "Ocurrió un error inesperado al procesar la compra");
+                ctx.render("vistas/estadoCompra.html", modelo);
             }
         });
 
         // BILLETERA
-        app.get("/billetera", ctx -> ctx.render("vistas/agregaABilletera.html"));
+        app.get("/billetera", ctx -> {
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+            ctx.render("vistas/agregaABilletera.html", modelo);
+        });
+
 
         app.post("/billetera", ctx -> {
             Perfil perfil = ctx.sessionAttribute("perfilLogueado");
@@ -213,7 +306,7 @@ public class App {
             double nuevoSaldo = pDAO.updateBilletera(perfil.getId_usuario(), monto);
             perfil.setBilletera(nuevoSaldo);
             ctx.sessionAttribute("perfilLogueado", perfil);
-            ctx.redirect("/perfil");
+            ctx.redirect("/perfilUsuario");
         });
 
         // HISTORIAL DE COMPRAS
@@ -226,9 +319,12 @@ public class App {
 
         // --- RUTAS DE ADMINISTRADOR ---
 
-        app.get("/producto", ctx -> ctx.render("vistas/agregarProducto.html"));
+        app.get("/agregarProducto", ctx -> {
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+            ctx.render("vistas/agregarProducto.html", modelo);
+        });
 
-        app.post("/producto", ctx -> {
+        app.post("/agregarProducto", ctx -> {
             String nombre = ctx.formParam("nombre");
             String marca = ctx.formParam("marca");
             String desc = ctx.formParam("descripcion");
@@ -237,18 +333,99 @@ public class App {
             Categoria cat = new Producto().devolverCategoria(ctx.formParam("categoria"));
 
             prodDAO.add(new Producto(nombre, marca, cat, precio, stock, desc));
-            ctx.render("vistas/estadoProducto.html", Map.of("mensajeInfo", false));
+
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+            modelo.put("mensajeInfo", false);
+            ctx.render("vistas/estadoProducto.html", modelo);
         });
 
-        app.get("/listadousuarios", ctx -> {
-            ctx.render("vistas/listadoUsuarios.html", Map.of(
-                    "listadoPerfil", pDAO.getAll(),
-                    "listadoUser", uDAO.getAll()
-            ));
+        app.get("/editarProducto", ctx -> {
+            String idStr = ctx.queryParam("id_producto");
+
+            if (idStr != null && !idStr.isEmpty()) {
+                int id = Integer.parseInt(idStr);
+                Producto p = prodDAO.getByID(id);
+
+                if (p != null) {
+                    ctx.sessionAttribute("pedit", p);
+                    Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+                    modelo.put("pedit", p);
+                    ctx.render("vistas/editarProducto.html", modelo);
+                    return;
+                }
+            }
+            ctx.redirect("/catalogoTotal");
         });
 
-        app.get("/listadoproductostotal", ctx -> {
-            ctx.render("vistas/listadoCompras.html", Map.of("listadoComprasTotal", cDAO.getAll()));
+        app.post("/editarProducto", ctx -> {
+            Producto pOriginal = ctx.sessionAttribute("pedit");
+            if (pOriginal != null) {
+                int id = Integer.parseInt(ctx.formParam("id_producto"));
+                double nuevoPrecio = Double.parseDouble(ctx.formParam("precio"));
+                int nuevoStock = Integer.parseInt(ctx.formParam("stock"));
+
+                // Creamos el objeto nuevo manteniendo los datos fijos del original
+                Producto productoEditado = new Producto(
+                        id,
+                        pOriginal.getNombre(),
+                        pOriginal.getMarca(),
+                        pOriginal.getCat(),
+                        nuevoPrecio,
+                        nuevoStock,
+                        pOriginal.getDescripcion()
+                );
+
+                prodDAO.update(productoEditado);
+            }
+            ctx.sessionAttribute("pedit", null);
+            ctx.redirect("/catalogoTotal");
         });
+
+        app.get("/listadoUsuarios", ctx -> {
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+
+            modelo.put("listadoPerfil", pDAO.getAll());
+            modelo.put("listadoUser", uDAO.getAll());
+
+            ctx.render("vistas/listadoUsuarios.html", modelo);
+        });
+
+        app.get("/listadoCompras", ctx -> {
+            Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+            modelo.put("listadoComprasTotal", cDAO.getAll());
+            ctx.render("vistas/listadoCompras.html", modelo);
+        });
+
+        app.get("/eliminarProducto", ctx -> {
+            String idStr = ctx.queryParam("id_producto");
+
+            if (idStr != null && !idStr.isEmpty()) {
+                int id = Integer.parseInt(idStr);
+                Producto p = prodDAO.getByID(id);
+
+                if (p != null) {
+                    Map<String, Object> modelo = sesion.crearModeloBase(ctx);
+                    modelo.put("pedit", p);
+                    ctx.render("vistas/eliminarProducto.html", modelo);
+                    return;
+                }
+            }
+            ctx.redirect("/catalogoTotal");
+        });
+
+        app.post("/eliminarProducto", ctx -> {
+            String idStr = ctx.formParam("id_producto"); // Ahora viene del formulario oculto
+
+            if (idStr != null && !idStr.isEmpty()) {
+                int id = Integer.parseInt(idStr);
+                try {
+                    prodDAO.delete(id);
+                } catch (Exception e) {
+                    System.out.println("Error al eliminar el producto: " + e.getMessage());
+                }
+            }
+            ctx.redirect("/catalogoTotal");
+        });
+
     }
 }
